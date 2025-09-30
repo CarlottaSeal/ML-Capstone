@@ -1,0 +1,7 @@
+venv
+results/
+checkpoints/
+__pycache__/
+sweeps/
+test_results/
+FinTSBridge_models/TSLib_baseline/*.txt

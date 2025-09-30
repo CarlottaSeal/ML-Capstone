@@ -32,13 +32,13 @@ class Exp_Long_Term_Forecast(Exp_Basic):
     def _get_data(self, flag):
         data_set, data_loader = data_provider(self.args, flag)
         return data_set, data_loader
-    
+
 
     def _select_optimizer(self):
-        
+
         model_optim = SAM(self.model.parameters(), base_optimizer=optim.AdamW, rho=self.args.rho,
-                            lr=self.args.learning_rate, weight_decay=1e-8) 
-        
+                            lr=self.args.learning_rate, weight_decay=1e-8)
+
         return model_optim
 
     def _select_criterion(self):
@@ -71,10 +71,10 @@ class Exp_Long_Term_Forecast(Exp_Basic):
 
                 if cal_icir:
                     msIC_loss, msIR_loss = msICIR(pred.numpy(), true.numpy(), per_variate=False)
-                    
+
                     loss = mse_loss + self.reg_w*(-msIC_loss)
                     total_loss+=loss.item()
-                    
+
                     total_mse_loss+=mse_loss
                     total_msic_loss+=msIC_loss
                     total_msir_loss+=msIR_loss
@@ -109,16 +109,16 @@ class Exp_Long_Term_Forecast(Exp_Basic):
 
 
         if self.args.lradj == 'OneCircle':   # Choose OneCricle schedule based on your needs
-            scheduler = OneCycleLR(model_optim, 
-                               max_lr=self.args.learning_rate, 
-                               pct_start=0.8, 
-                               steps_per_epoch=train_steps, 
-                               cycle_momentum=False, 
+            scheduler = OneCycleLR(model_optim,
+                               max_lr=self.args.learning_rate,
+                               pct_start=0.8,
+                               steps_per_epoch=train_steps,
+                               cycle_momentum=False,
                                epochs=self.args.train_epochs)
-            
+
         elif self.args.lradj == 'constant':  # No LR schedule as Default.
             scheduler = None
-        
+
 
         criterion = self._select_criterion()
         self.cos_sim = torch.nn.CosineSimilarity(dim=1, eps=1e-8)
@@ -157,7 +157,7 @@ class Exp_Long_Term_Forecast(Exp_Basic):
 
 
                 loss.backward()
-                torch.nn.utils.clip_grad_norm_(self.model.parameters(), max_norm=4)
+                torch.nn.utils.clip_grad_norm_(self.model.parameters(), max_norm=1)
 
                 model_optim.first_step(zero_grad=True)
 
@@ -171,7 +171,7 @@ class Exp_Long_Term_Forecast(Exp_Basic):
                 loss = mse_loss + self.reg_w*(1.-cos_sim_loss)
 
                 loss.backward()
-                torch.nn.utils.clip_grad_norm_(self.model.parameters(), max_norm=4)
+                torch.nn.utils.clip_grad_norm_(self.model.parameters(), max_norm=1)
                 model_optim.second_step(zero_grad=True)
 
                 if self.args.lradj == 'OneCircle':
@@ -189,7 +189,7 @@ class Exp_Long_Term_Forecast(Exp_Basic):
 
             print("Epoch: {0}, Steps: {1} | Train Loss: {2:.7f} Vali Loss: {3:.7f} Test Loss: {4:.7f}".format(
                 epoch + 1, train_steps, train_loss, vali_mse_loss, test_mse_loss))
-            
+
             self.early_stopping(vali_loss, self.model, path)
 
             if self.early_stopping.early_stop:
@@ -206,7 +206,7 @@ class Exp_Long_Term_Forecast(Exp_Basic):
         self.model.load_state_dict(torch.load(best_model_path))
 
         return self.model
-    
+
 
     def test(self, setting, test=0):
         test_data, test_loader = self._get_data(flag='test')
@@ -264,8 +264,8 @@ class Exp_Long_Term_Forecast(Exp_Basic):
         folder_path = './results/' + setting + '/'
         if not os.path.exists(folder_path):
             os.makedirs(folder_path)
-        
-            
+
+
 
         mae, mse, rmse, mape, mspe = metric(preds, trues)
         msIC, msIR, msIC_per, msIR_per = msICIR(preds, trues, per_variate=True)

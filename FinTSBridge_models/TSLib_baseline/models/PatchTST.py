@@ -5,7 +5,7 @@ from layers.SelfAttention_Family import FullAttention, AttentionLayer
 from layers.Embed import PatchEmbedding
 
 class Transpose(nn.Module):
-    def __init__(self, *dims, contiguous=False): 
+    def __init__(self, *dims, contiguous=False):
         super().__init__()
         self.dims, self.contiguous = dims, contiguous
     def forward(self, x):
@@ -126,7 +126,7 @@ class Model(nn.Module):
         # do patching and embedding
         x_enc = x_enc.permute(0, 2, 1)
         # u: [bs * nvars x patch_num x d_model]
-        enc_out, n_vars = self.patch_embedding(x_enc)
+        enc_out, n_vars = self.patch_embedding(x_enc) # !!! INTERPRET EACH FEATURE AS A BATCH OF ITS OWN
 
         # Encoder
         # z: [bs * nvars x patch_num x d_model]

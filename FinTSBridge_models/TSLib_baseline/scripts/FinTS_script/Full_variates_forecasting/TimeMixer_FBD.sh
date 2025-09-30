@@ -16,7 +16,7 @@ d_ff=32
 train_epochs=10
 patience=10
 
-for data in GSMI OPTION BTCF
+for data in OPTION BTCF
 do
 for pred_len in 5 21 63 126
 do

@@ -1,7 +1,10 @@
-numpy
+numpy<2.0
 pandas
 matplotlib
 einops
 scikit-learn
 torch==2.3.1
-
+patool
+tqdm
+sktime
+reformer-pytorch
