@@ -272,8 +272,8 @@ python -u run.py \
     --label_len 0 \
     --pred_len ${PRED_LEN} \
     --e_layers 2 \
-    --enc_in ${CHANNEL_NUM} \
-    --dec_in ${CHANNEL_NUM} \
+    --enc_in 6 \
+    --dec_in 6 \
     --c_out 1 \
     --d_model 32 \
     --d_ff 64 \

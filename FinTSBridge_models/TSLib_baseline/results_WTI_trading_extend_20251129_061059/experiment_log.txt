@@ -1,0 +1,49 @@
+==============================================================
+EXPERIMENT: WTI_trading_extend_20251129_061059
+Started: Sat Nov 29 06:10:59 AM UTC 2025
+Results will be saved to: ./results_WTI_trading_extend_20251129_061059
+==============================================================
+Start Time: Sat Nov 29 06:10:59 AM UTC 2025
+Data: ./dataset/FBD/WTI-log.csv
+Target: daily_return
+Channels: 6
+Iterations per config: 3
+
+OUTPUT DIRECTORIES:
+  Results: ./results_WTI_trading_extend_20251129_061059
+  Checkpoints: ./checkpoints_WTI_trading_extend_20251129_061059
+  Log file: ./results_WTI_trading_extend_20251129_061059/experiment_log.txt
+End Time: Sat Nov 29 07:31:30 AM UTC 2025
+
+Collecting results to ./results_WTI_trading_extend_20251129_061059...
+  Copied: result_long_term_forecast_TimeMixer_WTI-log.txt
+  Copied: result_long_term_forecast_PatchTST_WTI-log.txt
+  Copied: result_long_term_forecast_TiDE_WTI-log.txt
+  Copied: result_long_term_forecast_Transformer_WTI-log.txt
+  Copied: result_long_term_forecast_Naive_WTI-log.txt
+  Copied: result_long_term_forecast_DLinear_WTI-log.txt
+  Copied: result_long_term_forecast_iTransformer_WTI-log.txt
+  Copied: result_long_term_forecast_Informer_WTI-log.txt
+  Copied: result_long_term_forecast_Autoformer_WTI-log.txt
+  Copied: result_long_term_forecast_FEDformer_WTI-log.txt
+  Copied: result_long_term_forecast_TimesNet_WTI-log.txt
+  Copied: result_long_term_forecast_Crossformer_WTI-log.txt
+
+Files collected:
+total 208
+drwxr-xr-x 1 rguan users  1152 Nov 29 07:31 .
+drwxr-xr-x 1 rguan users  3948 Nov 29 06:11 ..
+-rw-r--r-- 1 rguan users  1457 Nov 29 07:31 experiment_log.txt
+-rw-r--r-- 1 rguan users  5650 Nov 29 07:31 result_long_term_forecast_Autoformer_WTI-log.txt
+-rw-r--r-- 1 rguan users  3804 Nov 29 07:31 result_long_term_forecast_Crossformer_WTI-log.txt
+-rw-r--r-- 1 rguan users 66460 Nov 29 07:31 result_long_term_forecast_DLinear_WTI-log.txt
+-rw-r--r-- 1 rguan users  3951 Nov 29 07:31 result_long_term_forecast_FEDformer_WTI-log.txt
+-rw-r--r-- 1 rguan users  5552 Nov 29 07:31 result_long_term_forecast_Informer_WTI-log.txt
+-rw-r--r-- 1 rguan users 11433 Nov 29 07:31 result_long_term_forecast_iTransformer_WTI-log.txt
+-rw-r--r-- 1 rguan users 12648 Nov 29 07:31 result_long_term_forecast_Naive_WTI-log.txt
+-rw-r--r-- 1 rguan users 47769 Nov 29 07:31 result_long_term_forecast_PatchTST_WTI-log.txt
+-rw-r--r-- 1 rguan users  4826 Nov 29 07:31 result_long_term_forecast_TiDE_WTI-log.txt
+-rw-r--r-- 1 rguan users 13139 Nov 29 07:31 result_long_term_forecast_TimeMixer_WTI-log.txt
+-rw-r--r-- 1 rguan users  3686 Nov 29 07:31 result_long_term_forecast_TimesNet_WTI-log.txt
+-rw-r--r-- 1 rguan users  6685 Nov 29 07:31 result_long_term_forecast_Transformer_WTI-log.txt
+==============================================================
