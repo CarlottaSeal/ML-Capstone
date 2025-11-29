@@ -1,0 +1,7 @@
+WALK-FORWARD VALIDATION SUMMARY
+============================================================
+
+Horizon 0 (Next-Day) Results:
+  Direction Accuracy: 50.4% ± 0.4%
+  Correlation (IC):   -0.0153 ± 0.0173
+  MSE:                0.000714 ± 0.000176

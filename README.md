@@ -5,3 +5,5 @@ To run the models, please refer to the corresponding `.sh` files in the correspo
 
 For example, to run the TimesNet model for the multivariate forecasting multivariate task, execute the following command: \
 `sh ./FinTSBridge_models/TSLib_baseline/scripts/FinTS_script/Full_variates_forecasting/TimesNet_FBD.sh`
+
+This is Charlotte's part for Crude Oil.

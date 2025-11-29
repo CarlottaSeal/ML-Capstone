@@ -1,0 +1,60 @@
+long_term_forecast_WTI-log_iTransformer_pl5_iTransformer_custom_ftMS_sl512_ll48_pl5_dm64_nh4_el2_dl1_df64_expand2_dc4_fc1_ebtimeF_dtTrue_ModelComparison_0  
+mse:1.3190739154815674, mae:0.6980839371681213, dtw:Not calculated
+
+long_term_forecast_WTI-log_iTransformer_pl5_iTransformer_custom_ftMS_sl512_ll48_pl5_dm64_nh4_el2_dl1_df64_expand2_dc4_fc1_ebtimeF_dtTrue_ModelComparison_1  
+mse:1.3293639421463013, mae:0.6985092759132385, dtw:Not calculated
+
+long_term_forecast_WTI-log_iTransformer_pl5_iTransformer_custom_ftMS_sl512_ll48_pl5_dm64_nh4_el2_dl1_df64_expand2_dc4_fc1_ebtimeF_dtTrue_ModelComparison_2  
+mse:1.324334979057312, mae:0.6971494555473328, dtw:Not calculated
+
+Multiple_run_Results:long_term_forecast_WTI-log_iTransformer_pl5_iTransformer_custom_ftMS_sl512_ll48_pl5_dm64_nh4_el2_dl1_df64_expand2_dc4_fc1_ebtimeF_dtTrue_ModelComparison_2  
+MSE:1.3243±0.0042, MAE:0.6979±0.0006,                    msIC:0.0050±0.0076, msIR:0.0104±0.0159
+
+long_term_forecast_WTI-log_iTransformer_pl5_iTransformer_custom_ftMS_sl512_ll48_pl5_dm64_nh4_el2_dl1_df64_expand2_dc4_fc1_ebtimeF_dtTrue_ModelComparison_0  
+mse:1.319074273109436, mae:0.6980835795402527, dtw:Not calculated
+
+long_term_forecast_WTI-log_iTransformer_pl5_iTransformer_custom_ftMS_sl512_ll48_pl5_dm64_nh4_el2_dl1_df64_expand2_dc4_fc1_ebtimeF_dtTrue_ModelComparison_1  
+mse:1.3293631076812744, mae:0.6985090374946594, dtw:Not calculated
+
+long_term_forecast_WTI-log_iTransformer_pl5_iTransformer_custom_ftMS_sl512_ll48_pl5_dm64_nh4_el2_dl1_df64_expand2_dc4_fc1_ebtimeF_dtTrue_ModelComparison_2  
+mse:1.3243331909179688, mae:0.6971492171287537, dtw:Not calculated
+
+Multiple_run_Results:long_term_forecast_WTI-log_iTransformer_pl5_iTransformer_custom_ftMS_sl512_ll48_pl5_dm64_nh4_el2_dl1_df64_expand2_dc4_fc1_ebtimeF_dtTrue_ModelComparison_2  
+MSE:1.3243±0.0042, MAE:0.6979±0.0006,                    msIC:0.0050±0.0076, msIR:0.0104±0.0159
+
+long_term_forecast_WTI-log_iTransformer_pl5_iTransformer_custom_ftMS_sl512_ll48_pl5_dm64_nh4_el2_dl1_df64_expand2_dc4_fc1_ebtimeF_dtTrue_ModelComparison_0  
+mse:1.3190735578536987, mae:0.6980835199356079, dtw:Not calculated
+
+long_term_forecast_WTI-log_iTransformer_pl5_iTransformer_custom_ftMS_sl512_ll48_pl5_dm64_nh4_el2_dl1_df64_expand2_dc4_fc1_ebtimeF_dtTrue_ModelComparison_1  
+mse:1.3293639421463013, mae:0.6985093951225281, dtw:Not calculated
+
+long_term_forecast_WTI-log_iTransformer_pl5_iTransformer_custom_ftMS_sl512_ll48_pl5_dm64_nh4_el2_dl1_df64_expand2_dc4_fc1_ebtimeF_dtTrue_ModelComparison_2  
+mse:1.3243322372436523, mae:0.6971486210823059, dtw:Not calculated
+
+Multiple_run_Results:long_term_forecast_WTI-log_iTransformer_pl5_iTransformer_custom_ftMS_sl512_ll48_pl5_dm64_nh4_el2_dl1_df64_expand2_dc4_fc1_ebtimeF_dtTrue_ModelComparison_2  
+MSE:1.3243±0.0042, MAE:0.6979±0.0006,                    msIC:0.0050±0.0076, msIR:0.0104±0.0159
+
+long_term_forecast_WTI-log_iTransformer_pl5_iTransformer_custom_ftMS_sl512_ll48_pl5_dm64_nh4_el2_dl1_df64_expand2_dc4_fc1_ebtimeF_dtTrue_ModelComparison_0  
+mse:1.3190741539001465, mae:0.6980835795402527, dtw:Not calculated
+
+long_term_forecast_WTI-log_iTransformer_pl5_iTransformer_custom_ftMS_sl512_ll48_pl5_dm64_nh4_el2_dl1_df64_expand2_dc4_fc1_ebtimeF_dtTrue_ModelComparison_1  
+mse:1.32936429977417, mae:0.6985094547271729, dtw:Not calculated
+
+long_term_forecast_WTI-log_iTransformer_pl5_iTransformer_custom_ftMS_sl512_ll48_pl5_dm64_nh4_el2_dl1_df64_expand2_dc4_fc1_ebtimeF_dtTrue_ModelComparison_2  
+mse:1.324333906173706, mae:0.6971494555473328, dtw:Not calculated
+
+Multiple_run_Results:long_term_forecast_WTI-log_iTransformer_pl5_iTransformer_custom_ftMS_sl512_ll48_pl5_dm64_nh4_el2_dl1_df64_expand2_dc4_fc1_ebtimeF_dtTrue_ModelComparison_2  
+MSE:1.3243±0.0042, MAE:0.6979±0.0006,                    msIC:0.0050±0.0076, msIR:0.0104±0.0159
+
+long_term_forecast_WTI-log_iTransformer_pl5_iTransformer_custom_ftMS_sl512_ll48_pl5_dm64_nh4_el2_dl1_df64_expand2_dc4_fc1_ebtimeF_dtTrue_ModelComparison_0  
+mse:1.3190746307373047, mae:0.6980836987495422, dtw:Not calculated
+
+long_term_forecast_WTI-log_iTransformer_pl5_iTransformer_custom_ftMS_sl512_ll48_pl5_dm64_nh4_el2_dl1_df64_expand2_dc4_fc1_ebtimeF_dtTrue_ModelComparison_1  
+mse:1.329363226890564, mae:0.6985090374946594, dtw:Not calculated
+
+long_term_forecast_WTI-log_iTransformer_pl5_iTransformer_custom_ftMS_sl512_ll48_pl5_dm64_nh4_el2_dl1_df64_expand2_dc4_fc1_ebtimeF_dtTrue_ModelComparison_2  
+mse:1.324333906173706, mae:0.6971492171287537, dtw:Not calculated
+
+Multiple_run_Results:long_term_forecast_WTI-log_iTransformer_pl5_iTransformer_custom_ftMS_sl512_ll48_pl5_dm64_nh4_el2_dl1_df64_expand2_dc4_fc1_ebtimeF_dtTrue_ModelComparison_2  
+MSE:1.3243±0.0042, MAE:0.6979±0.0006,                    msIC:0.0050±0.0076, msIR:0.0104±0.0159
+

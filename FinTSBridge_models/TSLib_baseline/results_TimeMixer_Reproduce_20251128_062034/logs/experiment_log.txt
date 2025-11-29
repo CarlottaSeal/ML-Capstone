@@ -1,0 +1,71 @@
+==============================================================
+TIMEMIXER REPRODUCTION EXPERIMENT
+==============================================================
+Started: Fri Nov 28 06:20:34 AM UTC 2025
+Output Directory: ./results_TimeMixer_Reproduce_20251128_062034
+
+EXACT PARAMETERS FROM BEST MODEL:
+  Data: WTI-log
+  seq_len: 512
+  label_len: 0
+  pred_len: 6
+  d_model: 16
+  d_ff: 32
+  n_heads: 8
+  e_layers: 2
+  d_layers: 1
+  down_sampling_layers: 3
+  down_sampling_window: 2
+  dropout: 0.1
+  iterations: 3
+==============================================================
+
+Starting training with 3 iterations...
+
+Collecting results for WTI-log_512_6_TimeMixer_Reproduce...
+  Copied: ./results/long_term_forecast_WTI-log_512_6_TimeMixer_Reproduce_TimeMixer_custom_ftMS_sl512_ll0_pl6_dm16_nh8_el2_dl1_df32_expand2_dc4_fc1_ebtimeF_dtTrue_Reproduce_0
+  Copied: ./results/long_term_forecast_WTI-log_512_6_TimeMixer_Reproduce_TimeMixer_custom_ftMS_sl512_ll0_pl6_dm16_nh8_el2_dl1_df32_expand2_dc4_fc1_ebtimeF_dtTrue_Reproduce_1
+  Copied: ./results/long_term_forecast_WTI-log_512_6_TimeMixer_Reproduce_TimeMixer_custom_ftMS_sl512_ll0_pl6_dm16_nh8_el2_dl1_df32_expand2_dc4_fc1_ebtimeF_dtTrue_Reproduce_2
+  Copied checkpoint: ./checkpoints/long_term_forecast_WTI-log_512_6_TimeMixer_Reproduce_TimeMixer_custom_ftMS_sl512_ll0_pl6_dm16_nh8_el2_dl1_df32_expand2_dc4_fc1_ebtimeF_dtTrue_Reproduce_0
+  Copied checkpoint: ./checkpoints/long_term_forecast_WTI-log_512_6_TimeMixer_Reproduce_TimeMixer_custom_ftMS_sl512_ll0_pl6_dm16_nh8_el2_dl1_df32_expand2_dc4_fc1_ebtimeF_dtTrue_Reproduce_1
+  Copied checkpoint: ./checkpoints/long_term_forecast_WTI-log_512_6_TimeMixer_Reproduce_TimeMixer_custom_ftMS_sl512_ll0_pl6_dm16_nh8_el2_dl1_df32_expand2_dc4_fc1_ebtimeF_dtTrue_Reproduce_2
+
+==============================================================
+Running comparison with 'bad' parameters (dm32, df64, pl5)
+==============================================================
+Collecting results for WTI-log_512_5_TimeMixer_BadParams...
+  Copied: ./results/long_term_forecast_WTI-log_512_5_TimeMixer_BadParams_TimeMixer_custom_ftMS_sl512_ll0_pl5_dm32_nh8_el2_dl1_df64_expand2_dc4_fc1_ebtimeF_dtTrue_BadParams_0
+  Copied: ./results/long_term_forecast_WTI-log_512_5_TimeMixer_BadParams_TimeMixer_custom_ftMS_sl512_ll0_pl5_dm32_nh8_el2_dl1_df64_expand2_dc4_fc1_ebtimeF_dtTrue_BadParams_1
+  Copied: ./results/long_term_forecast_WTI-log_512_5_TimeMixer_BadParams_TimeMixer_custom_ftMS_sl512_ll0_pl5_dm32_nh8_el2_dl1_df64_expand2_dc4_fc1_ebtimeF_dtTrue_BadParams_2
+  Copied checkpoint: ./checkpoints/long_term_forecast_WTI-log_512_5_TimeMixer_BadParams_TimeMixer_custom_ftMS_sl512_ll0_pl5_dm32_nh8_el2_dl1_df64_expand2_dc4_fc1_ebtimeF_dtTrue_BadParams_0
+  Copied checkpoint: ./checkpoints/long_term_forecast_WTI-log_512_5_TimeMixer_BadParams_TimeMixer_custom_ftMS_sl512_ll0_pl5_dm32_nh8_el2_dl1_df64_expand2_dc4_fc1_ebtimeF_dtTrue_BadParams_1
+  Copied checkpoint: ./checkpoints/long_term_forecast_WTI-log_512_5_TimeMixer_BadParams_TimeMixer_custom_ftMS_sl512_ll0_pl5_dm32_nh8_el2_dl1_df64_expand2_dc4_fc1_ebtimeF_dtTrue_BadParams_2
+
+==============================================================
+RUNNING ANALYSIS
+==============================================================
+
+==============================================================
+EXPERIMENT COMPLETE
+==============================================================
+End Time: Fri Nov 28 06:22:57 AM UTC 2025
+
+Output Directory: ./results_TimeMixer_Reproduce_20251128_062034
+
+Files:
+total 12
+drwxr-xr-x 1 rguan users 1928 Nov 28 06:22 .
+drwxr-xr-x 1 rguan users 1920 Nov 28 06:20 ..
+-rw-r--r-- 1 rguan users 5963 Nov 28 06:22 analyze_results.py
+drwxr-xr-x 1 rguan users  140 Nov 28 06:22 logs
+drwxr-xr-x 1 rguan users  138 Nov 28 06:22 long_term_forecast_WTI-log_512_5_TimeMixer_BadParams_TimeMixer_custom_ftMS_sl512_ll0_pl5_dm32_nh8_el2_dl1_df64_expand2_dc4_fc1_ebtimeF_dtTrue_BadParams_0
+drwxr-xr-x 1 rguan users  138 Nov 28 06:22 long_term_forecast_WTI-log_512_5_TimeMixer_BadParams_TimeMixer_custom_ftMS_sl512_ll0_pl5_dm32_nh8_el2_dl1_df64_expand2_dc4_fc1_ebtimeF_dtTrue_BadParams_1
+drwxr-xr-x 1 rguan users  138 Nov 28 06:22 long_term_forecast_WTI-log_512_5_TimeMixer_BadParams_TimeMixer_custom_ftMS_sl512_ll0_pl5_dm32_nh8_el2_dl1_df64_expand2_dc4_fc1_ebtimeF_dtTrue_BadParams_2
+drwxr-xr-x 1 rguan users  138 Nov 28 06:21 long_term_forecast_WTI-log_512_6_TimeMixer_Reproduce_TimeMixer_custom_ftMS_sl512_ll0_pl6_dm16_nh8_el2_dl1_df32_expand2_dc4_fc1_ebtimeF_dtTrue_Reproduce_0
+drwxr-xr-x 1 rguan users  138 Nov 28 06:21 long_term_forecast_WTI-log_512_6_TimeMixer_Reproduce_TimeMixer_custom_ftMS_sl512_ll0_pl6_dm16_nh8_el2_dl1_df32_expand2_dc4_fc1_ebtimeF_dtTrue_Reproduce_1
+drwxr-xr-x 1 rguan users  138 Nov 28 06:21 long_term_forecast_WTI-log_512_6_TimeMixer_Reproduce_TimeMixer_custom_ftMS_sl512_ll0_pl6_dm16_nh8_el2_dl1_df32_expand2_dc4_fc1_ebtimeF_dtTrue_Reproduce_2
+-rw-r--r-- 1 rguan users 1681 Nov 28 06:22 reproduction_results.csv
+
+To re-run analysis:
+  python ./results_TimeMixer_Reproduce_20251128_062034/analyze_results.py ./results_TimeMixer_Reproduce_20251128_062034
+==============================================================

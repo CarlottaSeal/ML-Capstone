@@ -1,0 +1,54 @@
+long_term_forecast_WTI_512_6_TimeMixer_TimeMixer_custom_ftMS_sl512_ll0_pl6_dm16_nh8_el2_dl1_df32_expand2_dc4_fc1_ebtimeF_dtTrue_Exp_0  
+mse:10.791454315185547, mae:0.9112070202827454, dtw:Not calculated
+
+Multiple_run_Results:long_term_forecast_WTI_512_6_TimeMixer_TimeMixer_custom_ftMS_sl512_ll0_pl6_dm16_nh8_el2_dl1_df32_expand2_dc4_fc1_ebtimeF_dtTrue_Exp_0  
+MSE:10.7915±0.0000, MAE:0.9112±0.0000,                    msIC:-0.0209±0.0000, msIR:-0.0459±0.0000
+
+long_term_forecast_WTI_512_6_TimeMixer_TimeMixer_custom_ftMS_sl512_ll0_pl6_dm16_nh8_el2_dl1_df32_expand2_dc4_fc1_ebtimeF_dtTrue_Exp_0  
+mse:10.791454315185547, mae:0.9112070798873901, dtw:Not calculated
+
+Multiple_run_Results:long_term_forecast_WTI_512_6_TimeMixer_TimeMixer_custom_ftMS_sl512_ll0_pl6_dm16_nh8_el2_dl1_df32_expand2_dc4_fc1_ebtimeF_dtTrue_Exp_0  
+MSE:10.7915±0.0000, MAE:0.9112±0.0000,                    msIC:-0.0209±0.0000, msIR:-0.0459±0.0000
+
+long_term_forecast_WTI_512_6_TimeMixer_TimeMixer_custom_ftMS_sl512_ll0_pl6_dm16_nh8_el2_dl1_df32_expand2_dc4_fc1_ebtimeF_dtTrue_Exp_0  
+mse:10.791454315185547, mae:0.9112070798873901, dtw:Not calculated
+
+Multiple_run_Results:long_term_forecast_WTI_512_6_TimeMixer_TimeMixer_custom_ftMS_sl512_ll0_pl6_dm16_nh8_el2_dl1_df32_expand2_dc4_fc1_ebtimeF_dtTrue_Exp_0  
+MSE:10.7915±0.0000, MAE:0.9112±0.0000,                    msIC:-0.0209±0.0000, msIR:-0.0459±0.0000
+
+long_term_forecast_WTI_512_6_TimeMixer_TimeMixer_custom_ftMS_sl512_ll0_pl6_dm16_nh8_el2_dl1_df32_expand2_dc4_fc1_ebtimeF_dtTrue_Exp_0  
+mse:10.791455268859863, mae:0.9112070798873901, dtw:Not calculated
+
+Multiple_run_Results:long_term_forecast_WTI_512_6_TimeMixer_TimeMixer_custom_ftMS_sl512_ll0_pl6_dm16_nh8_el2_dl1_df32_expand2_dc4_fc1_ebtimeF_dtTrue_Exp_0  
+MSE:10.7915±0.0000, MAE:0.9112±0.0000,                    msIC:-0.0209±0.0000, msIR:-0.0459±0.0000
+
+long_term_forecast_WTI_512_6_TimeMixer_TimeMixer_custom_ftMS_sl512_ll0_pl6_dm16_nh8_el2_dl1_df32_expand2_dc4_fc1_ebtimeF_dtTrue_Exp_0  
+mse:10.791454315185547, mae:0.9112070798873901, dtw:Not calculated
+
+Multiple_run_Results:long_term_forecast_WTI_512_6_TimeMixer_TimeMixer_custom_ftMS_sl512_ll0_pl6_dm16_nh8_el2_dl1_df32_expand2_dc4_fc1_ebtimeF_dtTrue_Exp_0  
+MSE:10.7915±0.0000, MAE:0.9112±0.0000,                    msIC:-0.0209±0.0000, msIR:-0.0459±0.0000
+
+long_term_forecast_WTI_512_6_TimeMixer_TimeMixer_custom_ftMS_sl512_ll0_pl6_dm16_nh8_el2_dl1_df32_expand2_dc4_fc1_ebtimeF_dtTrue_Exp_0  
+mse:10.791454315185547, mae:0.9112070202827454, dtw:Not calculated
+
+Multiple_run_Results:long_term_forecast_WTI_512_6_TimeMixer_TimeMixer_custom_ftMS_sl512_ll0_pl6_dm16_nh8_el2_dl1_df32_expand2_dc4_fc1_ebtimeF_dtTrue_Exp_0  
+MSE:10.7915±0.0000, MAE:0.9112±0.0000,                    msIC:-0.0209±0.0000, msIR:-0.0459±0.0000
+
+long_term_forecast_WTI_512_6_TimeMixer_TimeMixer_custom_ftMS_sl512_ll0_pl6_dm16_nh8_el2_dl1_df32_expand2_dc4_fc1_ebtimeF_dtTrue_Exp_0  
+mse:10.791454315185547, mae:0.9112070798873901, dtw:Not calculated
+
+Multiple_run_Results:long_term_forecast_WTI_512_6_TimeMixer_TimeMixer_custom_ftMS_sl512_ll0_pl6_dm16_nh8_el2_dl1_df32_expand2_dc4_fc1_ebtimeF_dtTrue_Exp_0  
+MSE:10.7915±0.0000, MAE:0.9112±0.0000,                    msIC:-0.0209±0.0000, msIR:-0.0459±0.0000
+
+long_term_forecast_WTI_512_6_TimeMixer_TimeMixer_custom_ftMS_sl512_ll0_pl6_dm16_nh8_el2_dl1_df32_expand2_dc4_fc1_ebtimeF_dtTrue_Exp_0  
+mse:10.791455268859863, mae:0.9112070798873901, dtw:Not calculated
+
+Multiple_run_Results:long_term_forecast_WTI_512_6_TimeMixer_TimeMixer_custom_ftMS_sl512_ll0_pl6_dm16_nh8_el2_dl1_df32_expand2_dc4_fc1_ebtimeF_dtTrue_Exp_0  
+MSE:10.7915±0.0000, MAE:0.9112±0.0000,                    msIC:-0.0209±0.0000, msIR:-0.0459±0.0000
+
+long_term_forecast_WTI_512_6_TimeMixer_TimeMixer_custom_ftMS_sl512_ll0_pl6_dm16_nh8_el2_dl1_df32_expand2_dc4_fc1_ebtimeF_dtTrue_Exp_0  
+mse:11.87930965423584, mae:0.9645374417304993, dtw:Not calculated
+
+Multiple_run_Results:long_term_forecast_WTI_512_6_TimeMixer_TimeMixer_custom_ftMS_sl512_ll0_pl6_dm16_nh8_el2_dl1_df32_expand2_dc4_fc1_ebtimeF_dtTrue_Exp_0  
+MSE:11.8793±0.0000, MAE:0.9645±0.0000,                    msIC:0.3976±0.0000, msIR:1.0515±0.0000
+

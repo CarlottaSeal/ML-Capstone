@@ -1,0 +1,103 @@
+================================================================================
+WALK-FORWARD VALIDATION RESULTS
+================================================================================
+Found 4 result directories
+
+Processing: long_term_forecast_WTI-log_TimeMixer_fold0_TimeMixer_custom_ftMS_sl512_ll0_pl6_dm16_nh8_el2_dl1_df32_expand2_dc4_fc1_ebtimeF_dtTrue_WalkForward_Fold0_0
+  Predictions shape: (1490, 6, 1)
+  True shape: (1490, 6, 1)
+
+Processing: long_term_forecast_WTI-log_TimeMixer_fold1_TimeMixer_custom_ftMS_sl512_ll0_pl6_dm16_nh8_el2_dl1_df32_expand2_dc4_fc1_ebtimeF_dtTrue_WalkForward_Fold1_0
+  Predictions shape: (1704, 6, 1)
+  True shape: (1704, 6, 1)
+
+Processing: long_term_forecast_WTI-log_TimeMixer_fold2_TimeMixer_custom_ftMS_sl512_ll0_pl6_dm16_nh8_el2_dl1_df32_expand2_dc4_fc1_ebtimeF_dtTrue_WalkForward_Fold2_0
+  Predictions shape: (1918, 6, 1)
+  True shape: (1918, 6, 1)
+
+Processing: long_term_forecast_WTI-log_TimeMixer_fold3_TimeMixer_custom_ftMS_sl512_ll0_pl6_dm16_nh8_el2_dl1_df32_expand2_dc4_fc1_ebtimeF_dtTrue_WalkForward_Fold3_0
+  Predictions shape: (2132, 6, 1)
+  True shape: (2132, 6, 1)
+
+================================================================================
+RESULTS BY FOLD
+================================================================================
+
+fold0:
+ horizon  n_samples      mse  correlation  direction_accuracy
+       0       1490 0.000703     0.007984            0.500000
+       1       1490 0.000722    -0.018162            0.473154
+       2       1490 0.000740    -0.059285            0.464430
+       3       1490 0.000703    -0.011423            0.493289
+       4       1490 0.000706    -0.018534            0.484564
+       5       1490 0.000740    -0.057794            0.489933
+
+fold1:
+ horizon  n_samples      mse  correlation  direction_accuracy
+       0       1704 0.000480    -0.030352            0.508216
+       1       1704 0.000475    -0.007853            0.511737
+       2       1704 0.000491    -0.026072            0.490610
+       3       1704 0.000478    -0.018259            0.512324
+       4       1704 0.000492    -0.051862            0.505282
+       5       1704 0.000477    -0.036846            0.518192
+
+fold2:
+ horizon  n_samples      mse  correlation  direction_accuracy
+       0       1918 0.000898    -0.026405            0.500521
+       1       1918 0.000899    -0.017743            0.508342
+       2       1918 0.000926    -0.064455            0.481752
+       3       1918 0.000897    -0.017602            0.507299
+       4       1918 0.000907     0.017627            0.515641
+       5       1918 0.000908    -0.028773            0.507821
+
+fold3:
+ horizon  n_samples      mse  correlation  direction_accuracy
+       0       2132 0.000776    -0.012260            0.506098
+       1       2132 0.000778     0.004591            0.519700
+       2       2132 0.000770     0.003480            0.509850
+       3       2132 0.000769     0.002404            0.514071
+       4       2132 0.000773    -0.012738            0.515009
+       5       2132 0.000771     0.005565            0.512664
+
+================================================================================
+AGGREGATED RESULTS (Mean ± Std across folds)
+================================================================================
+            mse             mae  ... direction_accuracy         n_samples
+           mean     std    mean  ...               mean     std       sum
+horizon                          ...                                     
+0        0.0007  0.0002  0.0174  ...             0.5037  0.0041      7244
+1        0.0007  0.0002  0.0175  ...             0.5032  0.0206      7244
+2        0.0007  0.0002  0.0178  ...             0.4867  0.0189      7244
+3        0.0007  0.0002  0.0174  ...             0.5067  0.0094      7244
+4        0.0007  0.0002  0.0176  ...             0.5051  0.0145      7244
+5        0.0007  0.0002  0.0176  ...             0.5072  0.0122      7244
+
+[6 rows x 9 columns]
+
+================================================================================
+HORIZON 0 (Next-Day) SUMMARY
+================================================================================
+  Number of folds: 4
+  Total samples: 7244
+  Direction Accuracy: 50.4% ± 0.4%
+  Correlation (IC):   -0.0153 ± 0.0173
+  MSE:                0.000714 ± 0.000176
+
+================================================================================
+STATISTICAL SIGNIFICANCE TESTS
+================================================================================
+
+Test 1: Direction Accuracy vs 50% (random)
+  Mean: 0.5037
+  t-statistic: 1.8181
+  p-value: 0.1666
+  ✗ NOT significant - Cannot reject that model is random
+
+Test 2: Correlation vs 0 (no predictive power)
+  Mean: -0.0153
+  t-statistic: -1.7607
+  p-value: 0.1765
+  ✗ NOT significant - Cannot reject that model has no predictive power
+
+Results saved to: ./results_WTI_WalkForward_TimeMixer_20251128_055449/walkforward_results.csv
+Summary saved to: ./results_WTI_WalkForward_TimeMixer_20251128_055449/walkforward_summary.txt

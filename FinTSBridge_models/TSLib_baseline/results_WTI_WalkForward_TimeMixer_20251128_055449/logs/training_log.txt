@@ -1,0 +1,538 @@
+Using GPU
+Args in experiment:
+[1mBasic Config[0m
+  Task Name:          long_term_forecast  Is Training:        1                   
+  Model ID:           WTI-log_TimeMixer_fold0Model:              TimeMixer           
+
+[1mData Loader[0m
+  Data:               custom              Root Path:          ./results_WTI_WalkForward_TimeMixer_20251128_055449/fold_0/
+  Data Path:          WTI_fold0.csv       Features:           MS                  
+  Target:             daily_return        Freq:               d                   
+  Checkpoints:        ./checkpoints/      
+
+[1mForecasting Task[0m
+  Seq Len:            512                 Label Len:          0                   
+  Pred Len:           6                   Seasonal Patterns:  Monthly             
+  Inverse:            0                   
+
+[1mModel Parameters[0m
+  Top k:              5                   Num Kernels:        6                   
+  Enc In:             6                   Dec In:             6                   
+  C Out:              1                   d model:            16                  
+  n heads:            8                   e layers:           2                   
+  d layers:           1                   d FF:               32                  
+  Moving Avg:         25                  Factor:             1                   
+  Distil:             1                   Dropout:            0.1                 
+  Embed:              timeF               Activation:         gelu                
+
+[1mRun Parameters[0m
+  Num Workers:        0                   Itr:                1                   
+  Train Epochs:       100                 Batch Size:         64                  
+  Patience:           15                  Learning Rate:      0.001               
+  Des:                WalkForward_Fold0   Loss:               MSE                 
+  Lradj:              type1               Use Amp:            0                   
+
+[1mGPU[0m
+  Use GPU:            1                   GPU:                0                   
+  Use Multi GPU:      0                   Devices:            0,1,2,3             
+
+[1mDe-stationary Projector Params[0m
+  P Hidden Dims:      128, 128            P Hidden Layers:    2                   
+
+Use GPU: cuda:0
+>>>>>>>start training : long_term_forecast_WTI-log_TimeMixer_fold0_TimeMixer_custom_ftMS_sl512_ll0_pl6_dm16_nh8_el2_dl1_df32_expand2_dc4_fc1_ebtimeF_dtTrue_WalkForward_Fold0_0>>>>>>>>>>>>>>>>>>>>>>>>>>
+train 4718
+val 744
+test 1490
+Epoch: 1 cost time: 0.9791793823242188
+Epoch: 1, Steps: 74 | Train Loss: 1.1969012 Vali Loss: 0.8330879 Test Loss: 1.2157924
+Validation loss decreased (inf --> 0.833088).  Saving model ...
+Updating learning rate to 0.001
+Epoch: 2 cost time: 0.6914689540863037
+Epoch: 2, Steps: 74 | Train Loss: 1.1200115 Vali Loss: 0.8219023 Test Loss: 1.2232394
+Validation loss decreased (0.833088 --> 0.821902).  Saving model ...
+Updating learning rate to 0.0005
+Epoch: 3 cost time: 1.0141558647155762
+Epoch: 3, Steps: 74 | Train Loss: 1.0521617 Vali Loss: 0.8583695 Test Loss: 1.2484516
+EarlyStopping counter: 1 out of 15
+Updating learning rate to 0.00025
+Epoch: 4 cost time: 0.8083062171936035
+Epoch: 4, Steps: 74 | Train Loss: 0.9894826 Vali Loss: 0.8777878 Test Loss: 1.2667571
+EarlyStopping counter: 2 out of 15
+Updating learning rate to 0.000125
+Epoch: 5 cost time: 0.6639847755432129
+Epoch: 5, Steps: 74 | Train Loss: 0.9518758 Vali Loss: 0.8976860 Test Loss: 1.2919713
+EarlyStopping counter: 3 out of 15
+Updating learning rate to 6.25e-05
+Epoch: 6 cost time: 0.9226973056793213
+Epoch: 6, Steps: 74 | Train Loss: 0.9295372 Vali Loss: 0.9190649 Test Loss: 1.3029374
+EarlyStopping counter: 4 out of 15
+Updating learning rate to 3.125e-05
+Epoch: 7 cost time: 0.7035319805145264
+Epoch: 7, Steps: 74 | Train Loss: 0.9178584 Vali Loss: 0.9118157 Test Loss: 1.3057870
+EarlyStopping counter: 5 out of 15
+Updating learning rate to 1.5625e-05
+Epoch: 8 cost time: 0.7192492485046387
+Epoch: 8, Steps: 74 | Train Loss: 0.9101477 Vali Loss: 0.9100280 Test Loss: 1.3070856
+EarlyStopping counter: 6 out of 15
+Updating learning rate to 7.8125e-06
+Epoch: 9 cost time: 0.6914591789245605
+Epoch: 9, Steps: 74 | Train Loss: 0.9073694 Vali Loss: 0.9147272 Test Loss: 1.3083032
+EarlyStopping counter: 7 out of 15
+Updating learning rate to 3.90625e-06
+Epoch: 10 cost time: 0.8365826606750488
+Epoch: 10, Steps: 74 | Train Loss: 0.9058149 Vali Loss: 0.9171873 Test Loss: 1.3084947
+EarlyStopping counter: 8 out of 15
+Updating learning rate to 1.953125e-06
+Epoch: 11 cost time: 0.6765117645263672
+Epoch: 11, Steps: 74 | Train Loss: 0.9042490 Vali Loss: 0.9139671 Test Loss: 1.3087803
+EarlyStopping counter: 9 out of 15
+Updating learning rate to 9.765625e-07
+Epoch: 12 cost time: 0.6760194301605225
+Epoch: 12, Steps: 74 | Train Loss: 0.9056224 Vali Loss: 0.9175033 Test Loss: 1.3089905
+EarlyStopping counter: 10 out of 15
+Updating learning rate to 4.8828125e-07
+Epoch: 13 cost time: 0.6437616348266602
+Epoch: 13, Steps: 74 | Train Loss: 0.9089761 Vali Loss: 0.9102221 Test Loss: 1.3089825
+EarlyStopping counter: 11 out of 15
+Updating learning rate to 2.44140625e-07
+Epoch: 14 cost time: 0.6934680938720703
+Epoch: 14, Steps: 74 | Train Loss: 0.9067453 Vali Loss: 0.9206212 Test Loss: 1.3090280
+EarlyStopping counter: 12 out of 15
+Updating learning rate to 1.220703125e-07
+Epoch: 15 cost time: 0.6246418952941895
+Epoch: 15, Steps: 74 | Train Loss: 0.9030573 Vali Loss: 0.9135885 Test Loss: 1.3090500
+EarlyStopping counter: 13 out of 15
+Updating learning rate to 6.103515625e-08
+Epoch: 16 cost time: 0.867922306060791
+Epoch: 16, Steps: 74 | Train Loss: 0.9039257 Vali Loss: 0.9110056 Test Loss: 1.3090544
+EarlyStopping counter: 14 out of 15
+Updating learning rate to 3.0517578125e-08
+Epoch: 17 cost time: 0.877051830291748
+Epoch: 17, Steps: 74 | Train Loss: 0.9035108 Vali Loss: 0.9113303 Test Loss: 1.3090608
+EarlyStopping counter: 15 out of 15
+Early stopping
+>>>>>>>testing : long_term_forecast_WTI-log_TimeMixer_fold0_TimeMixer_custom_ftMS_sl512_ll0_pl6_dm16_nh8_el2_dl1_df32_expand2_dc4_fc1_ebtimeF_dtTrue_WalkForward_Fold0_0<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+test 1490
+test shape: (1490, 6, 1) (1490, 6, 1)
+test shape: (1490, 6, 1) (1490, 6, 1)
+mse:1.2549, mae:0.7903, msIC:-0.0063, msIR:-0.0138
+Total Evaluation 
+
+MSE:1.2549±0.0000
+MAE:0.7903±0.0000
+msIC:-0.0063±0.0000
+msIR:-0.0138±0.0000
+Using GPU
+Args in experiment:
+[1mBasic Config[0m
+  Task Name:          long_term_forecast  Is Training:        1                   
+  Model ID:           WTI-log_TimeMixer_fold1Model:              TimeMixer           
+
+[1mData Loader[0m
+  Data:               custom              Root Path:          ./results_WTI_WalkForward_TimeMixer_20251128_055449/fold_1/
+  Data Path:          WTI_fold1.csv       Features:           MS                  
+  Target:             daily_return        Freq:               d                   
+  Checkpoints:        ./checkpoints/      
+
+[1mForecasting Task[0m
+  Seq Len:            512                 Label Len:          0                   
+  Pred Len:           6                   Seasonal Patterns:  Monthly             
+  Inverse:            0                   
+
+[1mModel Parameters[0m
+  Top k:              5                   Num Kernels:        6                   
+  Enc In:             6                   Dec In:             6                   
+  C Out:              1                   d model:            16                  
+  n heads:            8                   e layers:           2                   
+  d layers:           1                   d FF:               32                  
+  Moving Avg:         25                  Factor:             1                   
+  Distil:             1                   Dropout:            0.1                 
+  Embed:              timeF               Activation:         gelu                
+
+[1mRun Parameters[0m
+  Num Workers:        0                   Itr:                1                   
+  Train Epochs:       100                 Batch Size:         64                  
+  Patience:           15                  Learning Rate:      0.001               
+  Des:                WalkForward_Fold1   Loss:               MSE                 
+  Lradj:              type1               Use Amp:            0                   
+
+[1mGPU[0m
+  Use GPU:            1                   GPU:                0                   
+  Use Multi GPU:      0                   Devices:            0,1,2,3             
+
+[1mDe-stationary Projector Params[0m
+  P Hidden Dims:      128, 128            P Hidden Layers:    2                   
+
+Use GPU: cuda:0
+>>>>>>>start training : long_term_forecast_WTI-log_TimeMixer_fold1_TimeMixer_custom_ftMS_sl512_ll0_pl6_dm16_nh8_el2_dl1_df32_expand2_dc4_fc1_ebtimeF_dtTrue_WalkForward_Fold1_0>>>>>>>>>>>>>>>>>>>>>>>>>>
+train 5466
+val 851
+test 1704
+Epoch: 1 cost time: 1.341719627380371
+Epoch: 1, Steps: 86 | Train Loss: 1.1710696 Vali Loss: 1.7559711 Test Loss: 0.8473426
+Validation loss decreased (inf --> 1.755971).  Saving model ...
+Updating learning rate to 0.001
+Epoch: 2 cost time: 0.7717654705047607
+Epoch: 2, Steps: 86 | Train Loss: 1.1019143 Vali Loss: 1.7309198 Test Loss: 0.8427934
+Validation loss decreased (1.755971 --> 1.730920).  Saving model ...
+Updating learning rate to 0.0005
+Epoch: 3 cost time: 0.7912442684173584
+Epoch: 3, Steps: 86 | Train Loss: 1.0410808 Vali Loss: 1.7215780 Test Loss: 0.8566612
+Validation loss decreased (1.730920 --> 1.721578).  Saving model ...
+Updating learning rate to 0.00025
+Epoch: 4 cost time: 0.8608424663543701
+Epoch: 4, Steps: 86 | Train Loss: 0.9838433 Vali Loss: 1.8052311 Test Loss: 0.8743213
+EarlyStopping counter: 1 out of 15
+Updating learning rate to 0.000125
+Epoch: 5 cost time: 0.7306039333343506
+Epoch: 5, Steps: 86 | Train Loss: 0.9505563 Vali Loss: 1.7946869 Test Loss: 0.8962808
+EarlyStopping counter: 2 out of 15
+Updating learning rate to 6.25e-05
+Epoch: 6 cost time: 0.7376818656921387
+Epoch: 6, Steps: 86 | Train Loss: 0.9298557 Vali Loss: 1.8438855 Test Loss: 0.9037045
+EarlyStopping counter: 3 out of 15
+Updating learning rate to 3.125e-05
+Epoch: 7 cost time: 0.7281088829040527
+Epoch: 7, Steps: 86 | Train Loss: 0.9211333 Vali Loss: 1.8210579 Test Loss: 0.9067433
+EarlyStopping counter: 4 out of 15
+Updating learning rate to 1.5625e-05
+Epoch: 8 cost time: 0.7274789810180664
+Epoch: 8, Steps: 86 | Train Loss: 0.9138131 Vali Loss: 1.8092512 Test Loss: 0.9076050
+EarlyStopping counter: 5 out of 15
+Updating learning rate to 7.8125e-06
+Epoch: 9 cost time: 0.7569527626037598
+Epoch: 9, Steps: 86 | Train Loss: 0.9132612 Vali Loss: 1.8163671 Test Loss: 0.9086045
+EarlyStopping counter: 6 out of 15
+Updating learning rate to 3.90625e-06
+Epoch: 10 cost time: 0.7260749340057373
+Epoch: 10, Steps: 86 | Train Loss: 0.9109301 Vali Loss: 1.8178787 Test Loss: 0.9095445
+EarlyStopping counter: 7 out of 15
+Updating learning rate to 1.953125e-06
+Epoch: 11 cost time: 0.7257940769195557
+Epoch: 11, Steps: 86 | Train Loss: 0.9078875 Vali Loss: 1.8640798 Test Loss: 0.9096914
+EarlyStopping counter: 8 out of 15
+Updating learning rate to 9.765625e-07
+Epoch: 12 cost time: 0.7402408123016357
+Epoch: 12, Steps: 86 | Train Loss: 0.9098306 Vali Loss: 1.8259124 Test Loss: 0.9098487
+EarlyStopping counter: 9 out of 15
+Updating learning rate to 4.8828125e-07
+Epoch: 13 cost time: 0.72727370262146
+Epoch: 13, Steps: 86 | Train Loss: 0.9100286 Vali Loss: 1.8416004 Test Loss: 0.9098948
+EarlyStopping counter: 10 out of 15
+Updating learning rate to 2.44140625e-07
+Epoch: 14 cost time: 0.9187264442443848
+Epoch: 14, Steps: 86 | Train Loss: 0.9059356 Vali Loss: 1.7919878 Test Loss: 0.9099385
+EarlyStopping counter: 11 out of 15
+Updating learning rate to 1.220703125e-07
+Epoch: 15 cost time: 0.7257833480834961
+Epoch: 15, Steps: 86 | Train Loss: 0.9081103 Vali Loss: 1.8124018 Test Loss: 0.9099564
+EarlyStopping counter: 12 out of 15
+Updating learning rate to 6.103515625e-08
+Epoch: 16 cost time: 0.7310333251953125
+Epoch: 16, Steps: 86 | Train Loss: 0.9099256 Vali Loss: 1.8502419 Test Loss: 0.9099656
+EarlyStopping counter: 13 out of 15
+Updating learning rate to 3.0517578125e-08
+Epoch: 17 cost time: 0.7373313903808594
+Epoch: 17, Steps: 86 | Train Loss: 0.9056124 Vali Loss: 1.8520600 Test Loss: 0.9099686
+EarlyStopping counter: 14 out of 15
+Updating learning rate to 1.52587890625e-08
+Epoch: 18 cost time: 0.8005454540252686
+Epoch: 18, Steps: 86 | Train Loss: 0.9231752 Vali Loss: 1.8382633 Test Loss: 0.9099700
+EarlyStopping counter: 15 out of 15
+Early stopping
+>>>>>>>testing : long_term_forecast_WTI-log_TimeMixer_fold1_TimeMixer_custom_ftMS_sl512_ll0_pl6_dm16_nh8_el2_dl1_df32_expand2_dc4_fc1_ebtimeF_dtTrue_WalkForward_Fold1_0<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+test 1704
+test shape: (1704, 6, 1) (1704, 6, 1)
+test shape: (1704, 6, 1) (1704, 6, 1)
+mse:0.8619, mae:0.6739, msIC:-0.0003, msIR:-0.0007
+Total Evaluation 
+
+MSE:0.8619±0.0000
+MAE:0.6739±0.0000
+msIC:-0.0003±0.0000
+msIR:-0.0007±0.0000
+Using GPU
+Args in experiment:
+[1mBasic Config[0m
+  Task Name:          long_term_forecast  Is Training:        1                   
+  Model ID:           WTI-log_TimeMixer_fold2Model:              TimeMixer           
+
+[1mData Loader[0m
+  Data:               custom              Root Path:          ./results_WTI_WalkForward_TimeMixer_20251128_055449/fold_2/
+  Data Path:          WTI_fold2.csv       Features:           MS                  
+  Target:             daily_return        Freq:               d                   
+  Checkpoints:        ./checkpoints/      
+
+[1mForecasting Task[0m
+  Seq Len:            512                 Label Len:          0                   
+  Pred Len:           6                   Seasonal Patterns:  Monthly             
+  Inverse:            0                   
+
+[1mModel Parameters[0m
+  Top k:              5                   Num Kernels:        6                   
+  Enc In:             6                   Dec In:             6                   
+  C Out:              1                   d model:            16                  
+  n heads:            8                   e layers:           2                   
+  d layers:           1                   d FF:               32                  
+  Moving Avg:         25                  Factor:             1                   
+  Distil:             1                   Dropout:            0.1                 
+  Embed:              timeF               Activation:         gelu                
+
+[1mRun Parameters[0m
+  Num Workers:        0                   Itr:                1                   
+  Train Epochs:       100                 Batch Size:         64                  
+  Patience:           15                  Learning Rate:      0.001               
+  Des:                WalkForward_Fold2   Loss:               MSE                 
+  Lradj:              type1               Use Amp:            0                   
+
+[1mGPU[0m
+  Use GPU:            1                   GPU:                0                   
+  Use Multi GPU:      0                   Devices:            0,1,2,3             
+
+[1mDe-stationary Projector Params[0m
+  P Hidden Dims:      128, 128            P Hidden Layers:    2                   
+
+Use GPU: cuda:0
+>>>>>>>start training : long_term_forecast_WTI-log_TimeMixer_fold2_TimeMixer_custom_ftMS_sl512_ll0_pl6_dm16_nh8_el2_dl1_df32_expand2_dc4_fc1_ebtimeF_dtTrue_WalkForward_Fold2_0>>>>>>>>>>>>>>>>>>>>>>>>>>
+train 6214
+val 957
+test 1918
+Epoch: 1 cost time: 1.3526899814605713
+Epoch: 1, Steps: 98 | Train Loss: 1.1471464 Vali Loss: 0.5426411 Test Loss: 1.5149863
+Validation loss decreased (inf --> 0.542641).  Saving model ...
+Updating learning rate to 0.001
+Epoch: 2 cost time: 0.9706120491027832
+Epoch: 2, Steps: 98 | Train Loss: 1.0898225 Vali Loss: 0.5333448 Test Loss: 1.4848212
+Validation loss decreased (0.542641 --> 0.533345).  Saving model ...
+Updating learning rate to 0.0005
+Epoch: 3 cost time: 1.1038973331451416
+Epoch: 3, Steps: 98 | Train Loss: 1.0380448 Vali Loss: 0.5496053 Test Loss: 1.5072978
+EarlyStopping counter: 1 out of 15
+Updating learning rate to 0.00025
+Epoch: 4 cost time: 0.8570044040679932
+Epoch: 4, Steps: 98 | Train Loss: 0.9902924 Vali Loss: 0.5745798 Test Loss: 1.5372492
+EarlyStopping counter: 2 out of 15
+Updating learning rate to 0.000125
+Epoch: 5 cost time: 0.8279862403869629
+Epoch: 5, Steps: 98 | Train Loss: 0.9725317 Vali Loss: 0.6099576 Test Loss: 1.5817623
+EarlyStopping counter: 3 out of 15
+Updating learning rate to 6.25e-05
+Epoch: 6 cost time: 0.8290300369262695
+Epoch: 6, Steps: 98 | Train Loss: 0.9193691 Vali Loss: 0.6172693 Test Loss: 1.5983938
+EarlyStopping counter: 4 out of 15
+Updating learning rate to 3.125e-05
+Epoch: 7 cost time: 0.891974925994873
+Epoch: 7, Steps: 98 | Train Loss: 0.8999544 Vali Loss: 0.6253766 Test Loss: 1.6120224
+EarlyStopping counter: 5 out of 15
+Updating learning rate to 1.5625e-05
+Epoch: 8 cost time: 0.8239302635192871
+Epoch: 8, Steps: 98 | Train Loss: 0.9018531 Vali Loss: 0.6277707 Test Loss: 1.6160271
+EarlyStopping counter: 6 out of 15
+Updating learning rate to 7.8125e-06
+Epoch: 9 cost time: 0.9552080631256104
+Epoch: 9, Steps: 98 | Train Loss: 0.8844518 Vali Loss: 0.6306509 Test Loss: 1.6205583
+EarlyStopping counter: 7 out of 15
+Updating learning rate to 3.90625e-06
+Epoch: 10 cost time: 0.9336972236633301
+Epoch: 10, Steps: 98 | Train Loss: 0.8827520 Vali Loss: 0.6308719 Test Loss: 1.6207680
+EarlyStopping counter: 8 out of 15
+Updating learning rate to 1.953125e-06
+Epoch: 11 cost time: 1.0187098979949951
+Epoch: 11, Steps: 98 | Train Loss: 0.8879744 Vali Loss: 0.6314775 Test Loss: 1.6214231
+EarlyStopping counter: 9 out of 15
+Updating learning rate to 9.765625e-07
+Epoch: 12 cost time: 0.8920817375183105
+Epoch: 12, Steps: 98 | Train Loss: 0.8792946 Vali Loss: 0.6314833 Test Loss: 1.6215937
+EarlyStopping counter: 10 out of 15
+Updating learning rate to 4.8828125e-07
+Epoch: 13 cost time: 0.8312244415283203
+Epoch: 13, Steps: 98 | Train Loss: 0.8833534 Vali Loss: 0.6314375 Test Loss: 1.6216476
+EarlyStopping counter: 11 out of 15
+Updating learning rate to 2.44140625e-07
+Epoch: 14 cost time: 0.8307285308837891
+Epoch: 14, Steps: 98 | Train Loss: 0.8793797 Vali Loss: 0.6314541 Test Loss: 1.6216199
+EarlyStopping counter: 12 out of 15
+Updating learning rate to 1.220703125e-07
+Epoch: 15 cost time: 0.9542467594146729
+Epoch: 15, Steps: 98 | Train Loss: 0.8803340 Vali Loss: 0.6313250 Test Loss: 1.6216329
+EarlyStopping counter: 13 out of 15
+Updating learning rate to 6.103515625e-08
+Epoch: 16 cost time: 0.8934493064880371
+Epoch: 16, Steps: 98 | Train Loss: 0.8868438 Vali Loss: 0.6315411 Test Loss: 1.6216446
+EarlyStopping counter: 14 out of 15
+Updating learning rate to 3.0517578125e-08
+Epoch: 17 cost time: 0.8232572078704834
+Epoch: 17, Steps: 98 | Train Loss: 0.8775139 Vali Loss: 0.6310285 Test Loss: 1.6216532
+EarlyStopping counter: 15 out of 15
+Early stopping
+>>>>>>>testing : long_term_forecast_WTI-log_TimeMixer_fold2_TimeMixer_custom_ftMS_sl512_ll0_pl6_dm16_nh8_el2_dl1_df32_expand2_dc4_fc1_ebtimeF_dtTrue_WalkForward_Fold2_0<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+test 1918
+test shape: (1918, 6, 1) (1918, 6, 1)
+test shape: (1918, 6, 1) (1918, 6, 1)
+mse:1.4857, mae:0.7555, msIC:-0.0014, msIR:-0.0030
+Total Evaluation 
+
+MSE:1.4857±0.0000
+MAE:0.7555±0.0000
+msIC:-0.0014±0.0000
+msIR:-0.0030±0.0000
+Using GPU
+Args in experiment:
+[1mBasic Config[0m
+  Task Name:          long_term_forecast  Is Training:        1                   
+  Model ID:           WTI-log_TimeMixer_fold3Model:              TimeMixer           
+
+[1mData Loader[0m
+  Data:               custom              Root Path:          ./results_WTI_WalkForward_TimeMixer_20251128_055449/fold_3/
+  Data Path:          WTI_fold3.csv       Features:           MS                  
+  Target:             daily_return        Freq:               d                   
+  Checkpoints:        ./checkpoints/      
+
+[1mForecasting Task[0m
+  Seq Len:            512                 Label Len:          0                   
+  Pred Len:           6                   Seasonal Patterns:  Monthly             
+  Inverse:            0                   
+
+[1mModel Parameters[0m
+  Top k:              5                   Num Kernels:        6                   
+  Enc In:             6                   Dec In:             6                   
+  C Out:              1                   d model:            16                  
+  n heads:            8                   e layers:           2                   
+  d layers:           1                   d FF:               32                  
+  Moving Avg:         25                  Factor:             1                   
+  Distil:             1                   Dropout:            0.1                 
+  Embed:              timeF               Activation:         gelu                
+
+[1mRun Parameters[0m
+  Num Workers:        0                   Itr:                1                   
+  Train Epochs:       100                 Batch Size:         64                  
+  Patience:           15                  Learning Rate:      0.001               
+  Des:                WalkForward_Fold3   Loss:               MSE                 
+  Lradj:              type1               Use Amp:            0                   
+
+[1mGPU[0m
+  Use GPU:            1                   GPU:                0                   
+  Use Multi GPU:      0                   Devices:            0,1,2,3             
+
+[1mDe-stationary Projector Params[0m
+  P Hidden Dims:      128, 128            P Hidden Layers:    2                   
+
+Use GPU: cuda:0
+>>>>>>>start training : long_term_forecast_WTI-log_TimeMixer_fold3_TimeMixer_custom_ftMS_sl512_ll0_pl6_dm16_nh8_el2_dl1_df32_expand2_dc4_fc1_ebtimeF_dtTrue_WalkForward_Fold3_0>>>>>>>>>>>>>>>>>>>>>>>>>>
+train 6962
+val 1064
+test 2132
+	iters: 100, epoch: 1 | loss: 1.9020919
+	speed: 0.0145s/iter; left time: 156.2971s
+Epoch: 1 cost time: 1.539644718170166
+Epoch: 1, Steps: 109 | Train Loss: 1.1375583 Vali Loss: 0.9176480 Test Loss: 1.3192912
+Validation loss decreased (inf --> 0.917648).  Saving model ...
+Updating learning rate to 0.001
+	iters: 100, epoch: 2 | loss: 1.0065007
+	speed: 0.0128s/iter; left time: 137.0081s
+Epoch: 2 cost time: 1.0429296493530273
+Epoch: 2, Steps: 109 | Train Loss: 1.0824766 Vali Loss: 0.8977526 Test Loss: 1.3029119
+Validation loss decreased (0.917648 --> 0.897753).  Saving model ...
+Updating learning rate to 0.0005
+	iters: 100, epoch: 3 | loss: 0.9962654
+	speed: 0.0122s/iter; left time: 128.7591s
+Epoch: 3 cost time: 0.9437029361724854
+Epoch: 3, Steps: 109 | Train Loss: 1.0317933 Vali Loss: 0.9040256 Test Loss: 1.3313709
+EarlyStopping counter: 1 out of 15
+Updating learning rate to 0.00025
+	iters: 100, epoch: 4 | loss: 1.0543033
+	speed: 0.0108s/iter; left time: 112.6533s
+Epoch: 4 cost time: 0.9412765502929688
+Epoch: 4, Steps: 109 | Train Loss: 0.9802782 Vali Loss: 0.9323445 Test Loss: 1.3718022
+EarlyStopping counter: 2 out of 15
+Updating learning rate to 0.000125
+	iters: 100, epoch: 5 | loss: 0.9299161
+	speed: 0.0111s/iter; left time: 115.1171s
+Epoch: 5 cost time: 0.962592601776123
+Epoch: 5, Steps: 109 | Train Loss: 0.9325043 Vali Loss: 0.9711839 Test Loss: 1.4200281
+EarlyStopping counter: 3 out of 15
+Updating learning rate to 6.25e-05
+	iters: 100, epoch: 6 | loss: 0.6097288
+	speed: 0.0116s/iter; left time: 119.4577s
+Epoch: 6 cost time: 1.0213544368743896
+Epoch: 6, Steps: 109 | Train Loss: 0.8957042 Vali Loss: 0.9688624 Test Loss: 1.4501823
+EarlyStopping counter: 4 out of 15
+Updating learning rate to 3.125e-05
+	iters: 100, epoch: 7 | loss: 0.9695444
+	speed: 0.0108s/iter; left time: 109.8692s
+Epoch: 7 cost time: 0.9394886493682861
+Epoch: 7, Steps: 109 | Train Loss: 0.8703657 Vali Loss: 0.9704610 Test Loss: 1.4520230
+EarlyStopping counter: 5 out of 15
+Updating learning rate to 1.5625e-05
+	iters: 100, epoch: 8 | loss: 1.2226003
+	speed: 0.0122s/iter; left time: 122.8290s
+Epoch: 8 cost time: 1.1022253036499023
+Epoch: 8, Steps: 109 | Train Loss: 0.8584854 Vali Loss: 0.9745978 Test Loss: 1.4550084
+EarlyStopping counter: 6 out of 15
+Updating learning rate to 7.8125e-06
+	iters: 100, epoch: 9 | loss: 0.8749211
+	speed: 0.0163s/iter; left time: 161.4096s
+Epoch: 9 cost time: 1.5058887004852295
+Epoch: 9, Steps: 109 | Train Loss: 0.8519383 Vali Loss: 0.9779904 Test Loss: 1.4583565
+EarlyStopping counter: 7 out of 15
+Updating learning rate to 3.90625e-06
+	iters: 100, epoch: 10 | loss: 0.9468213
+	speed: 0.0112s/iter; left time: 110.0168s
+Epoch: 10 cost time: 0.9333798885345459
+Epoch: 10, Steps: 109 | Train Loss: 0.8471958 Vali Loss: 0.9810008 Test Loss: 1.4594873
+EarlyStopping counter: 8 out of 15
+Updating learning rate to 1.953125e-06
+	iters: 100, epoch: 11 | loss: 1.4075334
+	speed: 0.0106s/iter; left time: 102.8109s
+Epoch: 11 cost time: 0.918734073638916
+Epoch: 11, Steps: 109 | Train Loss: 0.8465913 Vali Loss: 0.9805693 Test Loss: 1.4607359
+EarlyStopping counter: 9 out of 15
+Updating learning rate to 9.765625e-07
+	iters: 100, epoch: 12 | loss: 1.0944717
+	speed: 0.0106s/iter; left time: 101.6255s
+Epoch: 12 cost time: 0.9182519912719727
+Epoch: 12, Steps: 109 | Train Loss: 0.8440519 Vali Loss: 0.9754090 Test Loss: 1.4609350
+EarlyStopping counter: 10 out of 15
+Updating learning rate to 4.8828125e-07
+	iters: 100, epoch: 13 | loss: 0.7735219
+	speed: 0.0107s/iter; left time: 101.1439s
+Epoch: 13 cost time: 0.9258716106414795
+Epoch: 13, Steps: 109 | Train Loss: 0.8436207 Vali Loss: 0.9833969 Test Loss: 1.4611889
+EarlyStopping counter: 11 out of 15
+Updating learning rate to 2.44140625e-07
+	iters: 100, epoch: 14 | loss: 0.8149064
+	speed: 0.0106s/iter; left time: 99.8030s
+Epoch: 14 cost time: 0.9221348762512207
+Epoch: 14, Steps: 109 | Train Loss: 0.8453069 Vali Loss: 0.9885373 Test Loss: 1.4612792
+EarlyStopping counter: 12 out of 15
+Updating learning rate to 1.220703125e-07
+	iters: 100, epoch: 15 | loss: 0.6913285
+	speed: 0.0106s/iter; left time: 98.3882s
+Epoch: 15 cost time: 0.9211664199829102
+Epoch: 15, Steps: 109 | Train Loss: 0.8449880 Vali Loss: 0.9788216 Test Loss: 1.4613440
+EarlyStopping counter: 13 out of 15
+Updating learning rate to 6.103515625e-08
+	iters: 100, epoch: 16 | loss: 0.8966858
+	speed: 0.0111s/iter; left time: 102.0009s
+Epoch: 16 cost time: 0.9966082572937012
+Epoch: 16, Steps: 109 | Train Loss: 0.8423340 Vali Loss: 0.9836496 Test Loss: 1.4613723
+EarlyStopping counter: 14 out of 15
+Updating learning rate to 3.0517578125e-08
+	iters: 100, epoch: 17 | loss: 1.1612532
+	speed: 0.0122s/iter; left time: 110.2068s
+Epoch: 17 cost time: 1.05299711227417
+Epoch: 17, Steps: 109 | Train Loss: 0.8435365 Vali Loss: 0.9738865 Test Loss: 1.4613823
+EarlyStopping counter: 15 out of 15
+Early stopping
+>>>>>>>testing : long_term_forecast_WTI-log_TimeMixer_fold3_TimeMixer_custom_ftMS_sl512_ll0_pl6_dm16_nh8_el2_dl1_df32_expand2_dc4_fc1_ebtimeF_dtTrue_WalkForward_Fold3_0<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+test 2132
+test shape: (2132, 6, 1) (2132, 6, 1)
+test shape: (2132, 6, 1) (2132, 6, 1)
+mse:1.3242, mae:0.6924, msIC:0.0163, msIR:0.0373
+Total Evaluation 
+
+MSE:1.3242±0.0000
+MAE:0.6924±0.0000
+msIC:0.0163±0.0000
+msIR:0.0373±0.0000

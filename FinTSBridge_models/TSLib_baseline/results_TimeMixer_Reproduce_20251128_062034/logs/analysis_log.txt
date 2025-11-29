@@ -1,0 +1,68 @@
+================================================================================
+REPRODUCTION EXPERIMENT RESULTS
+================================================================================
+
+--------------------------------------------------------------------------------
+DETAILED RESULTS BY ITERATION
+--------------------------------------------------------------------------------
+
+Bad (dm32, df64, pl5):
+iteration  n_samples  direction_accuracy        ic    sharpe
+        0       2133            0.527426  0.017563  0.006784
+        1       2133            0.509611 -0.036800 -0.248029
+        2       2133            0.506798 -0.016712 -0.055731
+
+Good (dm16, df32, pl6):
+iteration  n_samples  direction_accuracy        ic    sharpe
+        0       2132            0.506098 -0.012260 -0.413299
+        1       2132            0.500469 -0.015477  0.015681
+        2       2132            0.527674  0.017975 -0.054857
+
+--------------------------------------------------------------------------------
+SUMMARY STATISTICS
+--------------------------------------------------------------------------------
+                       direction_accuracy          ...  sharpe        
+                                     mean     std  ...     min     max
+model_type                                         ...                
+Bad (dm32, df64, pl5)              0.5146  0.0112  ... -0.2480  0.0068
+Good (dm16, df32, pl6)             0.5114  0.0144  ... -0.4133  0.0157
+
+[2 rows x 12 columns]
+
+--------------------------------------------------------------------------------
+STATISTICAL TESTS
+--------------------------------------------------------------------------------
+
+'Good' params vs 50% (random):
+  Mean: 0.5114
+  t-stat: 1.3766, p-value: 0.3025
+  ✗ NOT significantly better than random
+
+'Good' vs 'Bad' params comparison:
+  Good mean: 0.5114
+  Bad mean: 0.5146
+  t-stat: -0.3043, p-value: 0.7761
+  ✗ NO significant difference
+
+================================================================================
+CONCLUSION
+================================================================================
+
+'Good' parameters (dm16, df32, pl6) results:
+  Direction Accuracy: 51.1% ± 1.2%
+
+If results are consistent (~77% across all iterations):
+  → The good performance is REPRODUCIBLE
+  → Parameters matter for this specific test set
+  → But still need Walk-Forward to confirm real predictive power
+
+If results vary widely (some ~77%, some ~50%):
+  → The good performance is due to RANDOM INITIALIZATION
+  → Not reproducible even with same parameters
+
+If all results are ~50%:
+  → Original result may have been a FLUKE
+  → Or there's some other factor we're missing
+
+
+Results saved to: ./results_TimeMixer_Reproduce_20251128_062034/reproduction_results.csv

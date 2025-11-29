@@ -1,0 +1,492 @@
+
+================================================================================
+                    WTI TRADING STRATEGY ANALYSIS REPORT
+================================================================================
+
+EVALUATION PHILOSOPHY
+---------------------
+This report evaluates models from a TRADING perspective, NOT just prediction accuracy.
+
+Key Principle: Low MSE ≠ Good Trading Strategy
+
+What we actually evaluate:
+1. Direction Accuracy - Can the model predict if price goes UP or DOWN?
+2. Information Coefficient - Is there a correlation between predictions and outcomes?
+3. Risk-Adjusted Returns - Can we make money AFTER transaction costs?
+4. Stability - Is the predictive power consistent over time?
+
+================================================================================
+
+================================================================================
+SECTION 1: MODEL RANKINGS (by Sharpe Ratio)
+================================================================================
+
+Rank  Model                                                Sharpe  Dir.Acc       IC    MaxDD
+-------------------------------------------------------------------------------------
+1     Transformer_pl5_Transformer_custom_ftMS_sl512_ll      0.043   53.4%   0.0143  100.0%
+2     Informer_pl5_Informer_custom_ftMS_sl512_ll48_pl5      0.038   53.4%   0.0272  100.0%
+3     Transformer_pl5_Transformer_custom_ftMS_sl512_ll      0.015   52.9%   0.0095  100.0%
+4     Transformer_pl5_Transformer_custom_ftMS_sl512_ll     -0.002   53.5%   0.0117  100.0%
+5     Informer_pl5_Informer_custom_ftMS_sl512_ll48_pl5     -0.021   53.1%   0.0441  100.0%
+6     Informer_pl5_Informer_custom_ftMS_sl512_ll48_pl5     -0.025   53.6%   0.0307  100.0%
+7     TimesNet_pl5_TimesNet_custom_ftMS_sl512_ll48_pl5     -0.309   52.8%   0.0237  100.0%
+8     Crossformer_pl5_Crossformer_custom_ftMS_sl512_ll     -0.447   50.0%  -0.0017   83.3%
+9     Naive_pl5_Naive_custom_ftMS_sl512_ll48_pl5_dm512     -0.463   49.7%   0.0022  100.0%
+10    Naive_pl5_Naive_custom_ftMS_sl512_ll48_pl5_dm512     -0.464   49.7%   0.0023  100.0%
+11    Naive_pl5_Naive_custom_ftMS_sl512_ll48_pl5_dm512     -0.464   49.7%   0.0022  100.0%
+12    FEDformer_pl5_FEDformer_custom_ftMS_sl512_ll48_p     -0.558   51.8%  -0.0285  100.0%
+13    Crossformer_pl5_Crossformer_custom_ftMS_sl512_ll     -0.610   51.3%   0.0040   75.6%
+14    FEDformer_pl5_FEDformer_custom_ftMS_sl512_ll48_p     -0.698   51.6%  -0.0429  100.0%
+15    Autoformer_pl5_Autoformer_custom_ftMS_sl512_ll48     -0.725   51.0%  -0.0419  100.0%
+16    Autoformer_pl5_Autoformer_custom_ftMS_sl512_ll48     -0.731   51.5%  -0.0327  100.0%
+17    FEDformer_pl5_FEDformer_custom_ftMS_sl512_ll48_p     -0.764   50.8%  -0.0308  100.0%
+18    TimeMixer_pl5_TimeMixer_custom_ftMS_sl512_ll0_pl     -0.765   50.7%   0.0017  100.0%
+19    DLinear_pl5_DLinear_custom_ftMS_sl512_ll48_pl5_d     -0.822   51.6%   0.0123  100.0%
+20    Autoformer_pl5_Autoformer_custom_ftMS_sl512_ll48     -0.853   51.2%  -0.0266  100.0%
+21    iTransformer_pl5_iTransformer_custom_ftMS_sl512_     -0.859   51.3%   0.0139  100.0%
+22    TiDE_pl5_TiDE_custom_ftMS_sl512_ll48_pl5_dm64_nh     -0.874   51.3%   0.0133  100.0%
+23    TimeMixer_pl5_TimeMixer_custom_ftMS_sl512_ll0_pl     -0.885   50.2%  -0.0046  100.0%
+24    iTransformer_pl5_iTransformer_custom_ftMS_sl512_     -0.895   51.5%   0.0166  100.0%
+25    TimeMixer_pl5_TimeMixer_custom_ftMS_sl512_ll0_pl     -0.911   51.1%  -0.0155  100.0%
+26    Crossformer_pl5_Crossformer_custom_ftMS_sl512_ll     -0.935   48.5%   0.0008  100.0%
+27    TiDE_pl5_TiDE_custom_ftMS_sl512_ll48_pl5_dm64_nh     -0.937   52.0%   0.0098  100.0%
+28    PatchTST_pl5_PatchTST_custom_ftMS_sl512_ll48_pl5     -0.941   51.1%  -0.0029  100.0%
+29    DLinear_pl5_DLinear_custom_ftMS_sl512_ll48_pl5_d     -0.941   51.8%   0.0238  100.0%
+30    DLinear_pl5_DLinear_custom_ftMS_sl512_ll48_pl5_d     -0.944   52.0%   0.0208  100.0%
+31    PatchTST_pl5_PatchTST_custom_ftMS_sl512_ll48_pl5     -0.974   50.4%  -0.0196  100.0%
+32    PatchTST_pl5_PatchTST_custom_ftMS_sl512_ll48_pl5     -0.991   51.0%  -0.0376  100.0%
+33    TimesNet_pl5_TimesNet_custom_ftMS_sl512_ll48_pl5     -0.993   48.3%  -0.0162  100.0%
+34    TiDE_pl5_TiDE_custom_ftMS_sl512_ll48_pl5_dm64_nh     -1.013   51.5%   0.0096  100.0%
+35    TimesNet_pl5_TimesNet_custom_ftMS_sl512_ll48_pl5     -1.015   49.8%  -0.0166  100.0%
+36    iTransformer_pl5_iTransformer_custom_ftMS_sl512_     -1.052   49.9%   0.0107  100.0%
+
+================================================================================
+SECTION 2: DETAILED MODEL ANALYSIS
+================================================================================
+
+--------------------------------------------------------------------------------
+Model: Transformer_pl5_Transformer_custom_ftMS_sl512_ll48_pl5_dm64_nh4_el2_dl1_df128_expand2_dc4_fc1_ebtimeF_dtTrue_ModelComparison_1
+Status: ✗ NOT RECOMMENDED
+--------------------------------------------------------------------------------
+
+  PREDICTION QUALITY
+  ------------------
+  Direction Accuracy:  53.44%  [Good]
+  Information Coef:    0.0143  [Weak]
+  Rank IC:             0.0363
+  IC Decay:            -0.0501  [Unstable - possible overfit]
+
+  TRADING PERFORMANCE (after costs)
+  ---------------------------------
+  Sharpe Ratio:        0.043  [Poor]
+  Sortino Ratio:       0.048
+  Max Drawdown:        100.0%  [High Risk]
+  
+  Total Return:        386.05%
+  Annual Return:       3.81%
+  Win Rate:            53.0%
+  Profit Factor:       1.07
+
+  TRADING STATISTICS
+  ------------------
+  Number of Trades:    230
+  Transaction Costs:   0.3465
+  Buy & Hold Return:   -96.47%
+  Excess Return:       482.52%  [Beat B&H]
+
+  REFERENCE METRICS (not for trading decisions)
+  ---------------------------------------------
+  MSE:                 0.000767
+  RMSE:                0.027700
+  MAE:                 0.016616
+
+--------------------------------------------------------------------------------
+Model: Informer_pl5_Informer_custom_ftMS_sl512_ll48_pl5_dm64_nh4_el2_dl1_df128_expand2_dc4_fc3_ebtimeF_dtTrue_ModelComparison_2
+Status: ✗ NOT RECOMMENDED
+--------------------------------------------------------------------------------
+
+  PREDICTION QUALITY
+  ------------------
+  Direction Accuracy:  53.43%  [Good]
+  Information Coef:    0.0272  [Moderate]
+  Rank IC:             0.0499
+  IC Decay:            0.0255  [Stable]
+
+  TRADING PERFORMANCE (after costs)
+  ---------------------------------
+  Sharpe Ratio:        0.038  [Poor]
+  Sortino Ratio:       0.042
+  Max Drawdown:        100.0%  [High Risk]
+  
+  Total Return:        344.81%
+  Annual Return:       3.59%
+  Win Rate:            52.8%
+  Profit Factor:       1.07
+
+  TRADING STATISTICS
+  ------------------
+  Number of Trades:    276
+  Transaction Costs:   0.4155
+  Buy & Hold Return:   -96.47%
+  Excess Return:       441.29%  [Beat B&H]
+
+  REFERENCE METRICS (not for trading decisions)
+  ---------------------------------------------
+  MSE:                 0.000758
+  RMSE:                0.027534
+  MAE:                 0.016478
+
+--------------------------------------------------------------------------------
+Model: Transformer_pl5_Transformer_custom_ftMS_sl512_ll48_pl5_dm64_nh4_el2_dl1_df128_expand2_dc4_fc1_ebtimeF_dtTrue_ModelComparison_2
+Status: ✗ NOT RECOMMENDED
+--------------------------------------------------------------------------------
+
+  PREDICTION QUALITY
+  ------------------
+  Direction Accuracy:  52.93%  [Weak]
+  Information Coef:    0.0095  [Weak]
+  Rank IC:             0.0282
+  IC Decay:            -0.0839  [Unstable - possible overfit]
+
+  TRADING PERFORMANCE (after costs)
+  ---------------------------------
+  Sharpe Ratio:        0.015  [Poor]
+  Sortino Ratio:       0.017
+  Max Drawdown:        100.0%  [High Risk]
+  
+  Total Return:        199.40%
+  Annual Return:       2.62%
+  Win Rate:            51.7%
+  Profit Factor:       1.06
+
+  TRADING STATISTICS
+  ------------------
+  Number of Trades:    513
+  Transaction Costs:   0.7905
+  Buy & Hold Return:   -96.47%
+  Excess Return:       295.87%  [Beat B&H]
+
+  REFERENCE METRICS (not for trading decisions)
+  ---------------------------------------------
+  MSE:                 0.000772
+  RMSE:                0.027791
+  MAE:                 0.016852
+
+--------------------------------------------------------------------------------
+Model: Transformer_pl5_Transformer_custom_ftMS_sl512_ll48_pl5_dm64_nh4_el2_dl1_df128_expand2_dc4_fc1_ebtimeF_dtTrue_ModelComparison_0
+Status: ✗ NOT RECOMMENDED
+--------------------------------------------------------------------------------
+
+  PREDICTION QUALITY
+  ------------------
+  Direction Accuracy:  53.50%  [Good]
+  Information Coef:    0.0117  [Weak]
+  Rank IC:             0.0316
+  IC Decay:            -0.0617  [Unstable - possible overfit]
+
+  TRADING PERFORMANCE (after costs)
+  ---------------------------------
+  Sharpe Ratio:        -0.002  [Poor]
+  Sortino Ratio:       -0.003
+  Max Drawdown:        100.0%  [High Risk]
+  
+  Total Return:        121.52%
+  Annual Return:       1.90%
+  Win Rate:            52.6%
+  Profit Factor:       1.06
+
+  TRADING STATISTICS
+  ------------------
+  Number of Trades:    471
+  Transaction Costs:   0.7095
+  Buy & Hold Return:   -96.47%
+  Excess Return:       218.00%  [Beat B&H]
+
+  REFERENCE METRICS (not for trading decisions)
+  ---------------------------------------------
+  MSE:                 0.000772
+  RMSE:                0.027777
+  MAE:                 0.016784
+
+--------------------------------------------------------------------------------
+Model: Informer_pl5_Informer_custom_ftMS_sl512_ll48_pl5_dm64_nh4_el2_dl1_df128_expand2_dc4_fc3_ebtimeF_dtTrue_ModelComparison_1
+Status: ✗ NOT RECOMMENDED
+--------------------------------------------------------------------------------
+
+  PREDICTION QUALITY
+  ------------------
+  Direction Accuracy:  53.07%  [Good]
+  Information Coef:    0.0441  [Moderate]
+  Rank IC:             0.0523
+  IC Decay:            0.0372  [Unstable - possible overfit]
+
+  TRADING PERFORMANCE (after costs)
+  ---------------------------------
+  Sharpe Ratio:        -0.021  [Poor]
+  Sortino Ratio:       -0.024
+  Max Drawdown:        100.0%  [High Risk]
+  
+  Total Return:        62.70%
+  Annual Return:       1.16%
+  Win Rate:            50.4%
+  Profit Factor:       1.05
+
+  TRADING STATISTICS
+  ------------------
+  Number of Trades:    1139
+  Transaction Costs:   1.8945
+  Buy & Hold Return:   -96.47%
+  Excess Return:       159.18%  [Beat B&H]
+
+  REFERENCE METRICS (not for trading decisions)
+  ---------------------------------------------
+  MSE:                 0.000754
+  RMSE:                0.027467
+  MAE:                 0.016422
+
+--------------------------------------------------------------------------------
+Model: Informer_pl5_Informer_custom_ftMS_sl512_ll48_pl5_dm64_nh4_el2_dl1_df128_expand2_dc4_fc3_ebtimeF_dtTrue_ModelComparison_0
+Status: ✗ NOT RECOMMENDED
+--------------------------------------------------------------------------------
+
+  PREDICTION QUALITY
+  ------------------
+  Direction Accuracy:  53.60%  [Good]
+  Information Coef:    0.0307  [Moderate]
+  Rank IC:             0.0579
+  IC Decay:            0.0323  [Unstable - possible overfit]
+
+  TRADING PERFORMANCE (after costs)
+  ---------------------------------
+  Sharpe Ratio:        -0.025  [Poor]
+  Sortino Ratio:       -0.028
+  Max Drawdown:        100.0%  [High Risk]
+  
+  Total Return:        47.94%
+  Annual Return:       0.93%
+  Win Rate:            52.9%
+  Profit Factor:       1.05
+
+  TRADING STATISTICS
+  ------------------
+  Number of Trades:    256
+  Transaction Costs:   0.3855
+  Buy & Hold Return:   -96.47%
+  Excess Return:       144.42%  [Beat B&H]
+
+  REFERENCE METRICS (not for trading decisions)
+  ---------------------------------------------
+  MSE:                 0.000759
+  RMSE:                0.027545
+  MAE:                 0.016450
+
+--------------------------------------------------------------------------------
+Model: TimesNet_pl5_TimesNet_custom_ftMS_sl512_ll48_pl5_dm64_nh8_el2_dl1_df64_expand2_dc4_fc1_ebtimeF_dtTrue_ModelComparison_1
+Status: ✗ NOT RECOMMENDED
+--------------------------------------------------------------------------------
+
+  PREDICTION QUALITY
+  ------------------
+  Direction Accuracy:  52.78%  [Weak]
+  Information Coef:    0.0237  [Moderate]
+  Rank IC:             0.0269
+  IC Decay:            0.0282  [Stable]
+
+  TRADING PERFORMANCE (after costs)
+  ---------------------------------
+  Sharpe Ratio:        -0.309  [Poor]
+  Sortino Ratio:       -0.324
+  Max Drawdown:        100.0%  [High Risk]
+  
+  Total Return:        -98.21%
+  Annual Return:       -9.06%
+  Win Rate:            47.7%
+  Profit Factor:       0.98
+
+  TRADING STATISTICS
+  ------------------
+  Number of Trades:    1733
+  Transaction Costs:   2.6625
+  Buy & Hold Return:   -96.47%
+  Excess Return:       -1.73%  [Underperformed B&H]
+
+  REFERENCE METRICS (not for trading decisions)
+  ---------------------------------------------
+  MSE:                 0.000754
+  RMSE:                0.027457
+  MAE:                 0.016421
+
+--------------------------------------------------------------------------------
+Model: Crossformer_pl5_Crossformer_custom_ftMS_sl512_ll48_pl5_dm64_nh4_el2_dl1_df128_expand2_dc4_fc1_ebtimeF_dtTrue_ModelComparison_1
+Status: ✗ NOT RECOMMENDED
+--------------------------------------------------------------------------------
+
+  PREDICTION QUALITY
+  ------------------
+  Direction Accuracy:  50.00%  [Poor]
+  Information Coef:    -0.0017  [Weak]
+  Rank IC:             -0.0021
+  IC Decay:            -0.0395  [Unstable - possible overfit]
+
+  TRADING PERFORMANCE (after costs)
+  ---------------------------------
+  Sharpe Ratio:        -0.447  [Poor]
+  Sortino Ratio:       -0.126
+  Max Drawdown:        83.3%  [High Risk]
+  
+  Total Return:        -81.60%
+  Annual Return:       -3.92%
+  Win Rate:            26.2%
+  Profit Factor:       0.76
+
+  TRADING STATISTICS
+  ------------------
+  Number of Trades:    654
+  Transaction Costs:   1.0020
+  Buy & Hold Return:   -96.47%
+  Excess Return:       14.87%  [Beat B&H]
+
+  REFERENCE METRICS (not for trading decisions)
+  ---------------------------------------------
+  MSE:                 0.000751
+  RMSE:                0.027406
+  MAE:                 0.016452
+
+--------------------------------------------------------------------------------
+Model: Naive_pl5_Naive_custom_ftMS_sl512_ll48_pl5_dm512_nh8_el2_dl1_df2048_expand2_dc4_fc1_ebtimeF_dtTrue_ModelComparison_2
+Status: ✗ NOT RECOMMENDED
+--------------------------------------------------------------------------------
+
+  PREDICTION QUALITY
+  ------------------
+  Direction Accuracy:  49.71%  [Poor]
+  Information Coef:    0.0022  [Weak]
+  Rank IC:             -0.0155
+  IC Decay:            0.0275  [Stable]
+
+  TRADING PERFORMANCE (after costs)
+  ---------------------------------
+  Sharpe Ratio:        -0.463  [Poor]
+  Sortino Ratio:       -0.584
+  Max Drawdown:        100.0%  [High Risk]
+  
+  Total Return:        -99.97%
+  Annual Return:       -17.72%
+  Win Rate:            48.6%
+  Profit Factor:       0.95
+
+  TRADING STATISTICS
+  ------------------
+  Number of Trades:    1189
+  Transaction Costs:   3.2685
+  Buy & Hold Return:   -96.47%
+  Excess Return:       -3.50%  [Underperformed B&H]
+
+  REFERENCE METRICS (not for trading decisions)
+  ---------------------------------------------
+  MSE:                 0.001498
+  RMSE:                0.038710
+  MAE:                 0.023702
+
+--------------------------------------------------------------------------------
+Model: Naive_pl5_Naive_custom_ftMS_sl512_ll48_pl5_dm512_nh8_el2_dl1_df2048_expand2_dc4_fc1_ebtimeF_dtTrue_ModelComparison_1
+Status: ✗ NOT RECOMMENDED
+--------------------------------------------------------------------------------
+
+  PREDICTION QUALITY
+  ------------------
+  Direction Accuracy:  49.67%  [Poor]
+  Information Coef:    0.0023  [Weak]
+  Rank IC:             -0.0155
+  IC Decay:            0.0274  [Stable]
+
+  TRADING PERFORMANCE (after costs)
+  ---------------------------------
+  Sharpe Ratio:        -0.464  [Poor]
+  Sortino Ratio:       -0.586
+  Max Drawdown:        100.0%  [High Risk]
+  
+  Total Return:        -99.97%
+  Annual Return:       -17.76%
+  Win Rate:            48.6%
+  Profit Factor:       0.95
+
+  TRADING STATISTICS
+  ------------------
+  Number of Trades:    1190
+  Transaction Costs:   3.2685
+  Buy & Hold Return:   -96.47%
+  Excess Return:       -3.50%  [Underperformed B&H]
+
+  REFERENCE METRICS (not for trading decisions)
+  ---------------------------------------------
+  MSE:                 0.001498
+  RMSE:                0.038709
+  MAE:                 0.023702
+
+================================================================================
+SECTION 3: INTERPRETATION GUIDE
+================================================================================
+
+DIRECTION ACCURACY
+  > 55%:   Strong signal - rare but valuable
+  52-55%:  Moderate signal - potentially tradable with good risk management
+  50-52%:  Weak signal - barely better than random
+  < 50%:   No signal - model is useless or inverted
+
+INFORMATION COEFFICIENT (IC)
+  > 0.10:  Excellent - very rare in practice
+  0.05-0.10: Good - worth pursuing
+  0.02-0.05: Moderate - marginal, needs optimization
+  < 0.02:  Weak - likely noise
+
+SHARPE RATIO (after costs)
+  > 2.0:   Excellent strategy
+  1.0-2.0: Good strategy
+  0.5-1.0: Moderate - needs improvement
+  0-0.5:   Marginal - high risk of loss
+  < 0:     Losing strategy
+
+IC DECAY (first half - second half)
+  |decay| < 0.02: Stable model
+  |decay| 0.02-0.05: Some instability
+  |decay| > 0.05: Likely overfitting - use with caution
+
+================================================================================
+SECTION 4: RECOMMENDATIONS
+================================================================================
+
+NO MODEL IS RECOMMENDED FOR LIVE TRADING
+
+All tested models show insufficient predictive power for profitable trading.
+
+POSSIBLE REASONS:
+1. WTI returns may be largely unpredictable (Efficient Market Hypothesis)
+2. The features used don't capture relevant information
+3. The model architectures may not suit this data
+4. The prediction horizon may be too long
+
+SUGGESTED IMPROVEMENTS:
+1. Add more informative features:
+   - Sentiment data (news, social media)
+   - Macro indicators (interest rates, USD index)
+   - Inventory data (EIA reports)
+   - Futures curve structure (contango/backwardation)
+   
+2. Try different targets:
+   - Volatility prediction (often more predictable than returns)
+   - Direction classification (up/down) instead of return magnitude
+   - Regime prediction (trending/ranging)
+
+3. Reduce prediction horizon:
+   - Try pred_len=1 (next day) if current horizon is longer
+   - Shorter horizons are generally more predictable
+
+4. Feature engineering:
+   - Add technical indicators (RSI, MACD, Bollinger Bands)
+   - Include lagged returns at different intervals
+   - Consider cross-asset features (S&P 500, USD, Gold)
+
+================================================================================
+Report generated: 2025-11-28 23:43:33.914175
+================================================================================

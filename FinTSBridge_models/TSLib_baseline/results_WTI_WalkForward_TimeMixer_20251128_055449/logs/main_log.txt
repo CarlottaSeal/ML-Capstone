@@ -1,0 +1,282 @@
+==============================================================
+WALK-FORWARD VALIDATION FOR WTI TimeMixer
+==============================================================
+Started: Fri Nov 28 05:54:49 AM UTC 2025
+
+EXPERIMENT CONFIGURATION:
+  Experiment Name: WTI_WalkForward_TimeMixer_20251128_055449
+  Output Directory: ./results_WTI_WalkForward_TimeMixer_20251128_055449
+
+DATA SETTINGS:
+  Data File: ./dataset/FBD/WTI-log.csv
+  Target: daily_return
+  Channels: 6
+
+MODEL PARAMETERS (from best model):
+  Model: TimeMixer
+  seq_len: 512
+  label_len: 0
+  pred_len: 6
+  d_model: 16
+  d_ff: 32
+  e_layers: 2
+  n_heads: 8
+  dropout: 0.1
+  down_sampling_layers: 3
+  down_sampling_window: 2
+
+TRAINING SETTINGS:
+  epochs: 100
+  patience: 15
+  learning_rate: 0.001
+  batch_size: 64
+==============================================================
+
+Creating walk-forward data splits...
+Total data points: 10685
+Date range: 1983-03-31 00:00:00 to 2025-10-20 00:00:00
+
+Fold 0:
+  Train: 1983-03-31 to 2006-09-07 (5876 samples)
+  Val:   2006-09-08 to 2008-10-21 (535 samples)
+  Test:  2008-10-22 to 2013-01-22 (1068 samples)
+
+Fold 1:
+  Train: 1983-03-31 to 2010-12-06 (6945 samples)
+  Val:   2010-12-07 to 2013-01-22 (534 samples)
+  Test:  2013-01-23 to 2017-04-20 (1069 samples)
+
+Fold 2:
+  Train: 1983-03-31 to 2015-03-06 (8013 samples)
+  Val:   2015-03-09 to 2017-04-20 (535 samples)
+  Test:  2017-04-21 to 2021-07-20 (1068 samples)
+
+Fold 3:
+  Train: 1983-03-31 to 2019-06-04 (9082 samples)
+  Val:   2019-06-05 to 2021-07-20 (534 samples)
+  Test:  2021-07-21 to 2025-10-20 (1069 samples)
+
+==============================================================
+TRAINING ON EACH FOLD
+==============================================================
+
+--------------------------------------------------------------
+FOLD 0
+--------------------------------------------------------------
+Training TimeMixer on fold 0...
+  Fold directory: ./results_WTI_WalkForward_TimeMixer_20251128_055449/fold_0
+  Data file: WTI_fold0.csv
+  Model ID: WTI-log_TimeMixer_fold0
+  Log file: ./results_WTI_WalkForward_TimeMixer_20251128_055449/logs/fold_0_training.log
+Collecting results for fold 0...
+  Copied: ./results/long_term_forecast_WTI-log_TimeMixer_fold0_TimeMixer_custom_ftMS_sl512_ll0_pl6_dm16_nh8_el2_dl1_df32_expand2_dc4_fc1_ebtimeF_dtTrue_WalkForward_Fold0_0
+  Copied checkpoint: ./checkpoints/long_term_forecast_WTI-log_TimeMixer_fold0_TimeMixer_custom_ftMS_sl512_ll0_pl6_dm16_nh8_el2_dl1_df32_expand2_dc4_fc1_ebtimeF_dtTrue_WalkForward_Fold0_0
+Fold 0 complete.
+
+--------------------------------------------------------------
+FOLD 1
+--------------------------------------------------------------
+Training TimeMixer on fold 1...
+  Fold directory: ./results_WTI_WalkForward_TimeMixer_20251128_055449/fold_1
+  Data file: WTI_fold1.csv
+  Model ID: WTI-log_TimeMixer_fold1
+  Log file: ./results_WTI_WalkForward_TimeMixer_20251128_055449/logs/fold_1_training.log
+Collecting results for fold 1...
+  Copied: ./results/long_term_forecast_WTI-log_TimeMixer_fold1_TimeMixer_custom_ftMS_sl512_ll0_pl6_dm16_nh8_el2_dl1_df32_expand2_dc4_fc1_ebtimeF_dtTrue_WalkForward_Fold1_0
+  Copied checkpoint: ./checkpoints/long_term_forecast_WTI-log_TimeMixer_fold1_TimeMixer_custom_ftMS_sl512_ll0_pl6_dm16_nh8_el2_dl1_df32_expand2_dc4_fc1_ebtimeF_dtTrue_WalkForward_Fold1_0
+Fold 1 complete.
+
+--------------------------------------------------------------
+FOLD 2
+--------------------------------------------------------------
+Training TimeMixer on fold 2...
+  Fold directory: ./results_WTI_WalkForward_TimeMixer_20251128_055449/fold_2
+  Data file: WTI_fold2.csv
+  Model ID: WTI-log_TimeMixer_fold2
+  Log file: ./results_WTI_WalkForward_TimeMixer_20251128_055449/logs/fold_2_training.log
+Collecting results for fold 2...
+  Copied: ./results/long_term_forecast_WTI-log_TimeMixer_fold2_TimeMixer_custom_ftMS_sl512_ll0_pl6_dm16_nh8_el2_dl1_df32_expand2_dc4_fc1_ebtimeF_dtTrue_WalkForward_Fold2_0
+  Copied checkpoint: ./checkpoints/long_term_forecast_WTI-log_TimeMixer_fold2_TimeMixer_custom_ftMS_sl512_ll0_pl6_dm16_nh8_el2_dl1_df32_expand2_dc4_fc1_ebtimeF_dtTrue_WalkForward_Fold2_0
+Fold 2 complete.
+
+--------------------------------------------------------------
+FOLD 3
+--------------------------------------------------------------
+Training TimeMixer on fold 3...
+  Fold directory: ./results_WTI_WalkForward_TimeMixer_20251128_055449/fold_3
+  Data file: WTI_fold3.csv
+  Model ID: WTI-log_TimeMixer_fold3
+  Log file: ./results_WTI_WalkForward_TimeMixer_20251128_055449/logs/fold_3_training.log
+Collecting results for fold 3...
+  Copied: ./results/long_term_forecast_WTI-log_TimeMixer_fold3_TimeMixer_custom_ftMS_sl512_ll0_pl6_dm16_nh8_el2_dl1_df32_expand2_dc4_fc1_ebtimeF_dtTrue_WalkForward_Fold3_0
+  Copied checkpoint: ./checkpoints/long_term_forecast_WTI-log_TimeMixer_fold3_TimeMixer_custom_ftMS_sl512_ll0_pl6_dm16_nh8_el2_dl1_df32_expand2_dc4_fc1_ebtimeF_dtTrue_WalkForward_Fold3_0
+Fold 3 complete.
+
+==============================================================
+AGGREGATING RESULTS
+==============================================================
+Running analysis...
+================================================================================
+WALK-FORWARD VALIDATION RESULTS
+================================================================================
+Found 4 result directories
+
+Processing: long_term_forecast_WTI-log_TimeMixer_fold0_TimeMixer_custom_ftMS_sl512_ll0_pl6_dm16_nh8_el2_dl1_df32_expand2_dc4_fc1_ebtimeF_dtTrue_WalkForward_Fold0_0
+  Predictions shape: (1490, 6, 1)
+  True shape: (1490, 6, 1)
+
+Processing: long_term_forecast_WTI-log_TimeMixer_fold1_TimeMixer_custom_ftMS_sl512_ll0_pl6_dm16_nh8_el2_dl1_df32_expand2_dc4_fc1_ebtimeF_dtTrue_WalkForward_Fold1_0
+  Predictions shape: (1704, 6, 1)
+  True shape: (1704, 6, 1)
+
+Processing: long_term_forecast_WTI-log_TimeMixer_fold2_TimeMixer_custom_ftMS_sl512_ll0_pl6_dm16_nh8_el2_dl1_df32_expand2_dc4_fc1_ebtimeF_dtTrue_WalkForward_Fold2_0
+  Predictions shape: (1918, 6, 1)
+  True shape: (1918, 6, 1)
+
+Processing: long_term_forecast_WTI-log_TimeMixer_fold3_TimeMixer_custom_ftMS_sl512_ll0_pl6_dm16_nh8_el2_dl1_df32_expand2_dc4_fc1_ebtimeF_dtTrue_WalkForward_Fold3_0
+  Predictions shape: (2132, 6, 1)
+  True shape: (2132, 6, 1)
+
+================================================================================
+RESULTS BY FOLD
+================================================================================
+
+fold0:
+ horizon  n_samples      mse  correlation  direction_accuracy
+       0       1490 0.000703     0.007984            0.500000
+       1       1490 0.000722    -0.018162            0.473154
+       2       1490 0.000740    -0.059285            0.464430
+       3       1490 0.000703    -0.011423            0.493289
+       4       1490 0.000706    -0.018534            0.484564
+       5       1490 0.000740    -0.057794            0.489933
+
+fold1:
+ horizon  n_samples      mse  correlation  direction_accuracy
+       0       1704 0.000480    -0.030352            0.508216
+       1       1704 0.000475    -0.007853            0.511737
+       2       1704 0.000491    -0.026072            0.490610
+       3       1704 0.000478    -0.018259            0.512324
+       4       1704 0.000492    -0.051862            0.505282
+       5       1704 0.000477    -0.036846            0.518192
+
+fold2:
+ horizon  n_samples      mse  correlation  direction_accuracy
+       0       1918 0.000898    -0.026405            0.500521
+       1       1918 0.000899    -0.017743            0.508342
+       2       1918 0.000926    -0.064455            0.481752
+       3       1918 0.000897    -0.017602            0.507299
+       4       1918 0.000907     0.017627            0.515641
+       5       1918 0.000908    -0.028773            0.507821
+
+fold3:
+ horizon  n_samples      mse  correlation  direction_accuracy
+       0       2132 0.000776    -0.012260            0.506098
+       1       2132 0.000778     0.004591            0.519700
+       2       2132 0.000770     0.003480            0.509850
+       3       2132 0.000769     0.002404            0.514071
+       4       2132 0.000773    -0.012738            0.515009
+       5       2132 0.000771     0.005565            0.512664
+
+================================================================================
+AGGREGATED RESULTS (Mean ± Std across folds)
+================================================================================
+            mse             mae  ... direction_accuracy         n_samples
+           mean     std    mean  ...               mean     std       sum
+horizon                          ...                                     
+0        0.0007  0.0002  0.0174  ...             0.5037  0.0041      7244
+1        0.0007  0.0002  0.0175  ...             0.5032  0.0206      7244
+2        0.0007  0.0002  0.0178  ...             0.4867  0.0189      7244
+3        0.0007  0.0002  0.0174  ...             0.5067  0.0094      7244
+4        0.0007  0.0002  0.0176  ...             0.5051  0.0145      7244
+5        0.0007  0.0002  0.0176  ...             0.5072  0.0122      7244
+
+[6 rows x 9 columns]
+
+================================================================================
+HORIZON 0 (Next-Day) SUMMARY
+================================================================================
+  Number of folds: 4
+  Total samples: 7244
+  Direction Accuracy: 50.4% ± 0.4%
+  Correlation (IC):   -0.0153 ± 0.0173
+  MSE:                0.000714 ± 0.000176
+
+================================================================================
+STATISTICAL SIGNIFICANCE TESTS
+================================================================================
+
+Test 1: Direction Accuracy vs 50% (random)
+  Mean: 0.5037
+  t-statistic: 1.8181
+  p-value: 0.1666
+  ✗ NOT significant - Cannot reject that model is random
+
+Test 2: Correlation vs 0 (no predictive power)
+  Mean: -0.0153
+  t-statistic: -1.7607
+  p-value: 0.1765
+  ✗ NOT significant - Cannot reject that model has no predictive power
+
+Results saved to: ./results_WTI_WalkForward_TimeMixer_20251128_055449/walkforward_results.csv
+Summary saved to: ./results_WTI_WalkForward_TimeMixer_20251128_055449/walkforward_summary.txt
+
+==============================================================
+WALK-FORWARD VALIDATION COMPLETE
+==============================================================
+End Time: Fri Nov 28 05:56:15 AM UTC 2025
+
+OUTPUT STRUCTURE:
+  ./results_WTI_WalkForward_TimeMixer_20251128_055449/
+  ├── logs/
+  │   ├── main_log.txt              (this log)
+  │   ├── data_split_log.txt        (data splitting details)
+  │   ├── training_log.txt          (all training output)
+  │   ├── analysis_log.txt          (analysis output)
+  │   └── fold_*_training.log       (individual fold logs)
+  ├── predictions/                  (model predictions)
+  ├── checkpoints/                  (saved model weights)
+  ├── fold_*/                       (data splits for each fold)
+  ├── walkforward_results.csv       (detailed results)
+  ├── walkforward_summary.txt       (summary statistics)
+  └── split_info.csv                (fold split information)
+
+==============================================================
+
+Directory contents:
+total 24
+drwxr-xr-x 1 rguan users  296 Nov 28 05:56 .
+drwxr-xr-x 1 rguan users 1834 Nov 28 05:54 ..
+-rw-r--r-- 1 rguan users 7452 Nov 28 05:56 analyze_walkforward.py
+drwxr-xr-x 1 rguan users 1208 Nov 28 05:56 checkpoints
+-rw-r--r-- 1 rguan users 3850 Nov 28 05:54 create_splits.py
+drwxr-xr-x 1 rguan users   74 Nov 28 05:54 fold_0
+drwxr-xr-x 1 rguan users   74 Nov 28 05:54 fold_1
+drwxr-xr-x 1 rguan users   74 Nov 28 05:54 fold_2
+drwxr-xr-x 1 rguan users   74 Nov 28 05:54 fold_3
+drwxr-xr-x 1 rguan users  276 Nov 28 05:56 logs
+drwxr-xr-x 1 rguan users 1208 Nov 28 05:56 predictions
+-rw-r--r-- 1 rguan users  555 Nov 28 05:54 split_info.csv
+-rw-r--r-- 1 rguan users 2354 Nov 28 05:56 walkforward_results.csv
+-rw-r--r-- 1 rguan users  243 Nov 28 05:56 walkforward_summary.txt
+
+Logs:
+total 84
+drwxr-xr-x 1 rguan users   276 Nov 28 05:56 .
+drwxr-xr-x 1 rguan users   296 Nov 28 05:56 ..
+-rw-r--r-- 1 rguan users  5042 Nov 28 05:56 analysis_log.txt
+-rw-r--r-- 1 rguan users   700 Nov 28 05:54 data_split_log.txt
+-rw-r--r-- 1 rguan users  6345 Nov 28 05:55 fold_0_training.log
+-rw-r--r-- 1 rguan users  6584 Nov 28 05:55 fold_1_training.log
+-rw-r--r-- 1 rguan users  6346 Nov 28 05:55 fold_2_training.log
+-rw-r--r-- 1 rguan users  7773 Nov 28 05:56 fold_3_training.log
+-rw-r--r-- 1 rguan users 12012 Nov 28 05:56 main_log.txt
+-rw-r--r-- 1 rguan users 27048 Nov 28 05:56 training_log.txt
+
+Predictions:
+total 0
+drwxr-xr-x 1 rguan users 1208 Nov 28 05:56 .
+drwxr-xr-x 1 rguan users  296 Nov 28 05:56 ..
+drwxr-xr-x 1 rguan users  110 Nov 28 05:55 long_term_forecast_WTI-log_TimeMixer_fold0_TimeMixer_custom_ftMS_sl512_ll0_pl6_dm16_nh8_el2_dl1_df32_expand2_dc4_fc1_ebtimeF_dtTrue_WalkForward_Fold0_0
+drwxr-xr-x 1 rguan users  110 Nov 28 05:55 long_term_forecast_WTI-log_TimeMixer_fold1_TimeMixer_custom_ftMS_sl512_ll0_pl6_dm16_nh8_el2_dl1_df32_expand2_dc4_fc1_ebtimeF_dtTrue_WalkForward_Fold1_0
+drwxr-xr-x 1 rguan users  110 Nov 28 05:55 long_term_forecast_WTI-log_TimeMixer_fold2_TimeMixer_custom_ftMS_sl512_ll0_pl6_dm16_nh8_el2_dl1_df32_expand2_dc4_fc1_ebtimeF_dtTrue_WalkForward_Fold2_0
+drwxr-xr-x 1 rguan users  110 Nov 28 05:56 long_term_forecast_WTI-log_TimeMixer_fold3_TimeMixer_custom_ftMS_sl512_ll0_pl6_dm16_nh8_el2_dl1_df32_expand2_dc4_fc1_ebtimeF_dtTrue_WalkForward_Fold3_0

@@ -1,0 +1,125 @@
+Using GPU
+Args in experiment:
+[1mBasic Config[0m
+  Task Name:          long_term_forecast  Is Training:        1                   
+  Model ID:           WTI-log_TimeMixer_fold0Model:              TimeMixer           
+
+[1mData Loader[0m
+  Data:               custom              Root Path:          ./results_WTI_WalkForward_TimeMixer_20251128_055449/fold_0/
+  Data Path:          WTI_fold0.csv       Features:           MS                  
+  Target:             daily_return        Freq:               d                   
+  Checkpoints:        ./checkpoints/      
+
+[1mForecasting Task[0m
+  Seq Len:            512                 Label Len:          0                   
+  Pred Len:           6                   Seasonal Patterns:  Monthly             
+  Inverse:            0                   
+
+[1mModel Parameters[0m
+  Top k:              5                   Num Kernels:        6                   
+  Enc In:             6                   Dec In:             6                   
+  C Out:              1                   d model:            16                  
+  n heads:            8                   e layers:           2                   
+  d layers:           1                   d FF:               32                  
+  Moving Avg:         25                  Factor:             1                   
+  Distil:             1                   Dropout:            0.1                 
+  Embed:              timeF               Activation:         gelu                
+
+[1mRun Parameters[0m
+  Num Workers:        0                   Itr:                1                   
+  Train Epochs:       100                 Batch Size:         64                  
+  Patience:           15                  Learning Rate:      0.001               
+  Des:                WalkForward_Fold0   Loss:               MSE                 
+  Lradj:              type1               Use Amp:            0                   
+
+[1mGPU[0m
+  Use GPU:            1                   GPU:                0                   
+  Use Multi GPU:      0                   Devices:            0,1,2,3             
+
+[1mDe-stationary Projector Params[0m
+  P Hidden Dims:      128, 128            P Hidden Layers:    2                   
+
+Use GPU: cuda:0
+>>>>>>>start training : long_term_forecast_WTI-log_TimeMixer_fold0_TimeMixer_custom_ftMS_sl512_ll0_pl6_dm16_nh8_el2_dl1_df32_expand2_dc4_fc1_ebtimeF_dtTrue_WalkForward_Fold0_0>>>>>>>>>>>>>>>>>>>>>>>>>>
+train 4718
+val 744
+test 1490
+Epoch: 1 cost time: 0.9791793823242188
+Epoch: 1, Steps: 74 | Train Loss: 1.1969012 Vali Loss: 0.8330879 Test Loss: 1.2157924
+Validation loss decreased (inf --> 0.833088).  Saving model ...
+Updating learning rate to 0.001
+Epoch: 2 cost time: 0.6914689540863037
+Epoch: 2, Steps: 74 | Train Loss: 1.1200115 Vali Loss: 0.8219023 Test Loss: 1.2232394
+Validation loss decreased (0.833088 --> 0.821902).  Saving model ...
+Updating learning rate to 0.0005
+Epoch: 3 cost time: 1.0141558647155762
+Epoch: 3, Steps: 74 | Train Loss: 1.0521617 Vali Loss: 0.8583695 Test Loss: 1.2484516
+EarlyStopping counter: 1 out of 15
+Updating learning rate to 0.00025
+Epoch: 4 cost time: 0.8083062171936035
+Epoch: 4, Steps: 74 | Train Loss: 0.9894826 Vali Loss: 0.8777878 Test Loss: 1.2667571
+EarlyStopping counter: 2 out of 15
+Updating learning rate to 0.000125
+Epoch: 5 cost time: 0.6639847755432129
+Epoch: 5, Steps: 74 | Train Loss: 0.9518758 Vali Loss: 0.8976860 Test Loss: 1.2919713
+EarlyStopping counter: 3 out of 15
+Updating learning rate to 6.25e-05
+Epoch: 6 cost time: 0.9226973056793213
+Epoch: 6, Steps: 74 | Train Loss: 0.9295372 Vali Loss: 0.9190649 Test Loss: 1.3029374
+EarlyStopping counter: 4 out of 15
+Updating learning rate to 3.125e-05
+Epoch: 7 cost time: 0.7035319805145264
+Epoch: 7, Steps: 74 | Train Loss: 0.9178584 Vali Loss: 0.9118157 Test Loss: 1.3057870
+EarlyStopping counter: 5 out of 15
+Updating learning rate to 1.5625e-05
+Epoch: 8 cost time: 0.7192492485046387
+Epoch: 8, Steps: 74 | Train Loss: 0.9101477 Vali Loss: 0.9100280 Test Loss: 1.3070856
+EarlyStopping counter: 6 out of 15
+Updating learning rate to 7.8125e-06
+Epoch: 9 cost time: 0.6914591789245605
+Epoch: 9, Steps: 74 | Train Loss: 0.9073694 Vali Loss: 0.9147272 Test Loss: 1.3083032
+EarlyStopping counter: 7 out of 15
+Updating learning rate to 3.90625e-06
+Epoch: 10 cost time: 0.8365826606750488
+Epoch: 10, Steps: 74 | Train Loss: 0.9058149 Vali Loss: 0.9171873 Test Loss: 1.3084947
+EarlyStopping counter: 8 out of 15
+Updating learning rate to 1.953125e-06
+Epoch: 11 cost time: 0.6765117645263672
+Epoch: 11, Steps: 74 | Train Loss: 0.9042490 Vali Loss: 0.9139671 Test Loss: 1.3087803
+EarlyStopping counter: 9 out of 15
+Updating learning rate to 9.765625e-07
+Epoch: 12 cost time: 0.6760194301605225
+Epoch: 12, Steps: 74 | Train Loss: 0.9056224 Vali Loss: 0.9175033 Test Loss: 1.3089905
+EarlyStopping counter: 10 out of 15
+Updating learning rate to 4.8828125e-07
+Epoch: 13 cost time: 0.6437616348266602
+Epoch: 13, Steps: 74 | Train Loss: 0.9089761 Vali Loss: 0.9102221 Test Loss: 1.3089825
+EarlyStopping counter: 11 out of 15
+Updating learning rate to 2.44140625e-07
+Epoch: 14 cost time: 0.6934680938720703
+Epoch: 14, Steps: 74 | Train Loss: 0.9067453 Vali Loss: 0.9206212 Test Loss: 1.3090280
+EarlyStopping counter: 12 out of 15
+Updating learning rate to 1.220703125e-07
+Epoch: 15 cost time: 0.6246418952941895
+Epoch: 15, Steps: 74 | Train Loss: 0.9030573 Vali Loss: 0.9135885 Test Loss: 1.3090500
+EarlyStopping counter: 13 out of 15
+Updating learning rate to 6.103515625e-08
+Epoch: 16 cost time: 0.867922306060791
+Epoch: 16, Steps: 74 | Train Loss: 0.9039257 Vali Loss: 0.9110056 Test Loss: 1.3090544
+EarlyStopping counter: 14 out of 15
+Updating learning rate to 3.0517578125e-08
+Epoch: 17 cost time: 0.877051830291748
+Epoch: 17, Steps: 74 | Train Loss: 0.9035108 Vali Loss: 0.9113303 Test Loss: 1.3090608
+EarlyStopping counter: 15 out of 15
+Early stopping
+>>>>>>>testing : long_term_forecast_WTI-log_TimeMixer_fold0_TimeMixer_custom_ftMS_sl512_ll0_pl6_dm16_nh8_el2_dl1_df32_expand2_dc4_fc1_ebtimeF_dtTrue_WalkForward_Fold0_0<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+test 1490
+test shape: (1490, 6, 1) (1490, 6, 1)
+test shape: (1490, 6, 1) (1490, 6, 1)
+mse:1.2549, mae:0.7903, msIC:-0.0063, msIR:-0.0138
+Total Evaluation 
+
+MSE:1.2549±0.0000
+MAE:0.7903±0.0000
+msIC:-0.0063±0.0000
+msIR:-0.0138±0.0000

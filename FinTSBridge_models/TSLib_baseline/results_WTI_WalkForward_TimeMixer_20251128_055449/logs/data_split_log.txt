@@ -1,0 +1,22 @@
+Total data points: 10685
+Date range: 1983-03-31 00:00:00 to 2025-10-20 00:00:00
+
+Fold 0:
+  Train: 1983-03-31 to 2006-09-07 (5876 samples)
+  Val:   2006-09-08 to 2008-10-21 (535 samples)
+  Test:  2008-10-22 to 2013-01-22 (1068 samples)
+
+Fold 1:
+  Train: 1983-03-31 to 2010-12-06 (6945 samples)
+  Val:   2010-12-07 to 2013-01-22 (534 samples)
+  Test:  2013-01-23 to 2017-04-20 (1069 samples)
+
+Fold 2:
+  Train: 1983-03-31 to 2015-03-06 (8013 samples)
+  Val:   2015-03-09 to 2017-04-20 (535 samples)
+  Test:  2017-04-21 to 2021-07-20 (1068 samples)
+
+Fold 3:
+  Train: 1983-03-31 to 2019-06-04 (9082 samples)
+  Val:   2019-06-05 to 2021-07-20 (534 samples)
+  Test:  2021-07-21 to 2025-10-20 (1069 samples)

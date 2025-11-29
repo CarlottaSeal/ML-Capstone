@@ -1,0 +1,108 @@
+long_term_forecast_WTI-log_512_6_TimeMixer_TimeMixer_custom_ftMS_sl512_ll0_pl6_dm16_nh8_el2_dl1_df32_expand2_dc4_fc1_ebtimeF_dtTrue_Exp_0  
+mse:1.1391165256500244, mae:0.6283587217330933, dtw:Not calculated
+
+Multiple_run_Results:long_term_forecast_WTI-log_512_6_TimeMixer_TimeMixer_custom_ftMS_sl512_ll0_pl6_dm16_nh8_el2_dl1_df32_expand2_dc4_fc1_ebtimeF_dtTrue_Exp_0  
+MSE:1.1391±0.0000, MAE:0.6284±0.0000,                    msIC:0.3476±0.0000, msIR:0.9016±0.0000
+
+long_term_forecast_WTI-log_TimeMixer_pl5_TimeMixer_custom_ftMS_sl512_ll0_pl5_dm32_nh8_el2_dl1_df64_expand2_dc4_fc1_ebtimeF_dtTrue_ModelComparison_0  
+mse:1.321938157081604, mae:0.6915622353553772, dtw:Not calculated
+
+long_term_forecast_WTI-log_TimeMixer_pl5_TimeMixer_custom_ftMS_sl512_ll0_pl5_dm32_nh8_el2_dl1_df64_expand2_dc4_fc1_ebtimeF_dtTrue_ModelComparison_1  
+mse:1.323810338973999, mae:0.6946775913238525, dtw:Not calculated
+
+long_term_forecast_WTI-log_TimeMixer_pl5_TimeMixer_custom_ftMS_sl512_ll0_pl5_dm32_nh8_el2_dl1_df64_expand2_dc4_fc1_ebtimeF_dtTrue_ModelComparison_0  
+mse:1.3219380378723145, mae:0.6915621757507324, dtw:Not calculated
+
+long_term_forecast_WTI-log_TimeMixer_pl5_TimeMixer_custom_ftMS_sl512_ll0_pl5_dm32_nh8_el2_dl1_df64_expand2_dc4_fc1_ebtimeF_dtTrue_ModelComparison_1  
+mse:1.323810338973999, mae:0.6946775913238525, dtw:Not calculated
+
+long_term_forecast_WTI-log_TimeMixer_pl5_TimeMixer_custom_ftMS_sl512_ll0_pl5_dm32_nh8_el2_dl1_df64_expand2_dc4_fc1_ebtimeF_dtTrue_ModelComparison_2  
+mse:1.3524532318115234, mae:0.7053012251853943, dtw:Not calculated
+
+Multiple_run_Results:long_term_forecast_WTI-log_TimeMixer_pl5_TimeMixer_custom_ftMS_sl512_ll0_pl5_dm32_nh8_el2_dl1_df64_expand2_dc4_fc1_ebtimeF_dtTrue_ModelComparison_2  
+MSE:1.3327±0.0140, MAE:0.6972±0.0059,                    msIC:-0.0018±0.0125, msIR:-0.0035±0.0247
+
+long_term_forecast_WTI-log_TimeMixer_fold0_TimeMixer_custom_ftMS_sl512_ll0_pl6_dm16_nh8_el2_dl1_df32_expand2_dc4_fc1_ebtimeF_dtTrue_WalkForward_Fold0_0  
+mse:1.2549347877502441, mae:0.7903065085411072, dtw:Not calculated
+
+Multiple_run_Results:long_term_forecast_WTI-log_TimeMixer_fold0_TimeMixer_custom_ftMS_sl512_ll0_pl6_dm16_nh8_el2_dl1_df32_expand2_dc4_fc1_ebtimeF_dtTrue_WalkForward_Fold0_0  
+MSE:1.2549±0.0000, MAE:0.7903±0.0000,                    msIC:-0.0063±0.0000, msIR:-0.0138±0.0000
+
+long_term_forecast_WTI-log_TimeMixer_fold1_TimeMixer_custom_ftMS_sl512_ll0_pl6_dm16_nh8_el2_dl1_df32_expand2_dc4_fc1_ebtimeF_dtTrue_WalkForward_Fold1_0  
+mse:0.8618614673614502, mae:0.6738536953926086, dtw:Not calculated
+
+Multiple_run_Results:long_term_forecast_WTI-log_TimeMixer_fold1_TimeMixer_custom_ftMS_sl512_ll0_pl6_dm16_nh8_el2_dl1_df32_expand2_dc4_fc1_ebtimeF_dtTrue_WalkForward_Fold1_0  
+MSE:0.8619±0.0000, MAE:0.6739±0.0000,                    msIC:-0.0003±0.0000, msIR:-0.0007±0.0000
+
+long_term_forecast_WTI-log_TimeMixer_fold2_TimeMixer_custom_ftMS_sl512_ll0_pl6_dm16_nh8_el2_dl1_df32_expand2_dc4_fc1_ebtimeF_dtTrue_WalkForward_Fold2_0  
+mse:1.4857420921325684, mae:0.755523145198822, dtw:Not calculated
+
+Multiple_run_Results:long_term_forecast_WTI-log_TimeMixer_fold2_TimeMixer_custom_ftMS_sl512_ll0_pl6_dm16_nh8_el2_dl1_df32_expand2_dc4_fc1_ebtimeF_dtTrue_WalkForward_Fold2_0  
+MSE:1.4857±0.0000, MAE:0.7555±0.0000,                    msIC:-0.0014±0.0000, msIR:-0.0030±0.0000
+
+long_term_forecast_WTI-log_TimeMixer_fold3_TimeMixer_custom_ftMS_sl512_ll0_pl6_dm16_nh8_el2_dl1_df32_expand2_dc4_fc1_ebtimeF_dtTrue_WalkForward_Fold3_0  
+mse:1.3241589069366455, mae:0.6924315690994263, dtw:Not calculated
+
+Multiple_run_Results:long_term_forecast_WTI-log_TimeMixer_fold3_TimeMixer_custom_ftMS_sl512_ll0_pl6_dm16_nh8_el2_dl1_df32_expand2_dc4_fc1_ebtimeF_dtTrue_WalkForward_Fold3_0  
+MSE:1.3242±0.0000, MAE:0.6924±0.0000,                    msIC:0.0163±0.0000, msIR:0.0373±0.0000
+
+long_term_forecast_WTI-log_512_6_TimeMixer_Reproduce_TimeMixer_custom_ftMS_sl512_ll0_pl6_dm16_nh8_el2_dl1_df32_expand2_dc4_fc1_ebtimeF_dtTrue_Reproduce_0  
+mse:1.3241589069366455, mae:0.6924315690994263, dtw:Not calculated
+
+long_term_forecast_WTI-log_512_6_TimeMixer_Reproduce_TimeMixer_custom_ftMS_sl512_ll0_pl6_dm16_nh8_el2_dl1_df32_expand2_dc4_fc1_ebtimeF_dtTrue_Reproduce_1  
+mse:1.331027865409851, mae:0.695615828037262, dtw:Not calculated
+
+long_term_forecast_WTI-log_512_6_TimeMixer_Reproduce_TimeMixer_custom_ftMS_sl512_ll0_pl6_dm16_nh8_el2_dl1_df32_expand2_dc4_fc1_ebtimeF_dtTrue_Reproduce_2  
+mse:1.3386077880859375, mae:0.6939952373504639, dtw:Not calculated
+
+Multiple_run_Results:long_term_forecast_WTI-log_512_6_TimeMixer_Reproduce_TimeMixer_custom_ftMS_sl512_ll0_pl6_dm16_nh8_el2_dl1_df32_expand2_dc4_fc1_ebtimeF_dtTrue_Reproduce_2  
+MSE:1.3313±0.0059, MAE:0.6940±0.0013,                    msIC:0.0105±0.0055, msIR:0.0239±0.0126
+
+long_term_forecast_WTI-log_512_5_TimeMixer_BadParams_TimeMixer_custom_ftMS_sl512_ll0_pl5_dm32_nh8_el2_dl1_df64_expand2_dc4_fc1_ebtimeF_dtTrue_BadParams_0  
+mse:1.3224687576293945, mae:0.6920586824417114, dtw:Not calculated
+
+long_term_forecast_WTI-log_512_5_TimeMixer_BadParams_TimeMixer_custom_ftMS_sl512_ll0_pl5_dm32_nh8_el2_dl1_df64_expand2_dc4_fc1_ebtimeF_dtTrue_BadParams_1  
+mse:1.3338450193405151, mae:0.6951980590820312, dtw:Not calculated
+
+long_term_forecast_WTI-log_512_5_TimeMixer_BadParams_TimeMixer_custom_ftMS_sl512_ll0_pl5_dm32_nh8_el2_dl1_df64_expand2_dc4_fc1_ebtimeF_dtTrue_BadParams_2  
+mse:1.3709975481033325, mae:0.7153887748718262, dtw:Not calculated
+
+Multiple_run_Results:long_term_forecast_WTI-log_512_5_TimeMixer_BadParams_TimeMixer_custom_ftMS_sl512_ll0_pl5_dm32_nh8_el2_dl1_df64_expand2_dc4_fc1_ebtimeF_dtTrue_BadParams_2  
+MSE:1.3424±0.0207, MAE:0.7009±0.0103,                    msIC:0.0013±0.0150, msIR:0.0026±0.0295
+
+long_term_forecast_WTI-log_TimeMixer_pl5_TimeMixer_custom_ftMS_sl512_ll0_pl5_dm32_nh8_el2_dl1_df64_expand2_dc4_fc1_ebtimeF_dtTrue_ModelComparison_0  
+mse:1.3219380378723145, mae:0.6915622353553772, dtw:Not calculated
+
+long_term_forecast_WTI-log_TimeMixer_pl5_TimeMixer_custom_ftMS_sl512_ll0_pl5_dm32_nh8_el2_dl1_df64_expand2_dc4_fc1_ebtimeF_dtTrue_ModelComparison_1  
+mse:1.323810338973999, mae:0.6946775913238525, dtw:Not calculated
+
+long_term_forecast_WTI-log_TimeMixer_pl5_TimeMixer_custom_ftMS_sl512_ll0_pl5_dm32_nh8_el2_dl1_df64_expand2_dc4_fc1_ebtimeF_dtTrue_ModelComparison_2  
+mse:1.3524532318115234, mae:0.7053012251853943, dtw:Not calculated
+
+Multiple_run_Results:long_term_forecast_WTI-log_TimeMixer_pl5_TimeMixer_custom_ftMS_sl512_ll0_pl5_dm32_nh8_el2_dl1_df64_expand2_dc4_fc1_ebtimeF_dtTrue_ModelComparison_2  
+MSE:1.3327±0.0140, MAE:0.6972±0.0059,                    msIC:-0.0018±0.0125, msIR:-0.0035±0.0247
+
+long_term_forecast_WTI-log_TimeMixer_pl5_TimeMixer_custom_ftMS_sl512_ll0_pl5_dm32_nh8_el2_dl1_df64_expand2_dc4_fc1_ebtimeF_dtTrue_ModelComparison_0  
+mse:1.3219380378723145, mae:0.6915621757507324, dtw:Not calculated
+
+long_term_forecast_WTI-log_TimeMixer_pl5_TimeMixer_custom_ftMS_sl512_ll0_pl5_dm32_nh8_el2_dl1_df64_expand2_dc4_fc1_ebtimeF_dtTrue_ModelComparison_1  
+mse:1.323810338973999, mae:0.6946775913238525, dtw:Not calculated
+
+long_term_forecast_WTI-log_TimeMixer_pl5_TimeMixer_custom_ftMS_sl512_ll0_pl5_dm32_nh8_el2_dl1_df64_expand2_dc4_fc1_ebtimeF_dtTrue_ModelComparison_2  
+mse:1.3524532318115234, mae:0.7053012847900391, dtw:Not calculated
+
+Multiple_run_Results:long_term_forecast_WTI-log_TimeMixer_pl5_TimeMixer_custom_ftMS_sl512_ll0_pl5_dm32_nh8_el2_dl1_df64_expand2_dc4_fc1_ebtimeF_dtTrue_ModelComparison_2  
+MSE:1.3327±0.0140, MAE:0.6972±0.0059,                    msIC:-0.0018±0.0125, msIR:-0.0035±0.0247
+
+long_term_forecast_WTI-log_TimeMixer_pl5_TimeMixer_custom_ftMS_sl512_ll0_pl5_dm32_nh8_el2_dl1_df64_expand2_dc4_fc1_ebtimeF_dtTrue_ModelComparison_0  
+mse:1.3219380378723145, mae:0.6915622353553772, dtw:Not calculated
+
+long_term_forecast_WTI-log_TimeMixer_pl5_TimeMixer_custom_ftMS_sl512_ll0_pl5_dm32_nh8_el2_dl1_df64_expand2_dc4_fc1_ebtimeF_dtTrue_ModelComparison_1  
+mse:1.323810338973999, mae:0.6946775913238525, dtw:Not calculated
+
+long_term_forecast_WTI-log_TimeMixer_pl5_TimeMixer_custom_ftMS_sl512_ll0_pl5_dm32_nh8_el2_dl1_df64_expand2_dc4_fc1_ebtimeF_dtTrue_ModelComparison_2  
+mse:1.3524532318115234, mae:0.7053012251853943, dtw:Not calculated
+
+Multiple_run_Results:long_term_forecast_WTI-log_TimeMixer_pl5_TimeMixer_custom_ftMS_sl512_ll0_pl5_dm32_nh8_el2_dl1_df64_expand2_dc4_fc1_ebtimeF_dtTrue_ModelComparison_2  
+MSE:1.3327±0.0140, MAE:0.6972±0.0059,                    msIC:-0.0018±0.0125, msIR:-0.0035±0.0247
+

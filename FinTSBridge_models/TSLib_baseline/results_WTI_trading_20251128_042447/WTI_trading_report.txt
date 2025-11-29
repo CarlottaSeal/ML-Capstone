@@ -1,0 +1,545 @@
+
+================================================================================
+                    WTI TRADING STRATEGY ANALYSIS REPORT
+================================================================================
+
+EVALUATION PHILOSOPHY
+---------------------
+This report evaluates models from a TRADING perspective, NOT just prediction accuracy.
+
+Key Principle: Low MSE ≠ Good Trading Strategy
+
+What we actually evaluate:
+1. Direction Accuracy - Can the model predict if price goes UP or DOWN?
+2. Information Coefficient - Is there a correlation between predictions and outcomes?
+3. Risk-Adjusted Returns - Can we make money AFTER transaction costs?
+4. Stability - Is the predictive power consistent over time?
+
+================================================================================
+
+================================================================================
+SECTION 1: MODEL RANKINGS (by Sharpe Ratio)
+================================================================================
+
+Rank  Model                                           Sharpe  Dir.Acc       IC    MaxDD
+--------------------------------------------------------------------------------
+1     long_term_forecast_WTI-log_512_6_TimeMixer_      3.647   61.4%   0.3629   95.3%
+2     long_term_forecast_WTI-log_512_6_Transforme     -0.186   54.4%   0.0231  100.0%
+3     long_term_forecast_WTI_512_6_TiDE_TiDE_cust     -0.351   49.2%  -0.0249  121.6%
+4     long_term_forecast_WTI_512_5_PatchTST_custo     -0.367   48.9%  -0.0061  124.8%
+5     long_term_forecast_WTI_512_6_TiDE_TiDE_cust     -0.382   49.6%  -0.0216  100.6%
+6     long_term_forecast_WTI_512_5_PatchTST_custo     -0.400   48.8%   0.0087  104.4%
+7     long_term_forecast_WTI_512_5_PatchTST_custo     -0.433   49.5%   0.0013  105.8%
+8     long_term_forecast_WTI_512_6_TiDE_TiDE_cust     -0.443   49.1%  -0.0194  100.3%
+9     long_term_forecast_WTI_512_6_TiDE_TiDE_cust     -0.444   49.8%  -0.0222  100.5%
+10    long_term_forecast_WTI-log_Naive_pl5_Naive_     -0.463   49.7%   0.0022  100.0%
+11    long_term_forecast_WTI-log_Naive_pl5_Naive_     -0.464   49.7%   0.0023  100.0%
+12    long_term_forecast_WTI-log_Naive_pl5_Naive_     -0.464   49.7%   0.0022  100.0%
+13    long_term_forecast_WTI-log_DLinear_horizon1     -0.623   51.7%   0.0309   89.8%
+14    long_term_forecast_WTI-log_HP_seqlen128_DLi     -0.656   50.4%   0.0222  100.0%
+15    long_term_forecast_WTI-log_HP_seqlen128_DLi     -0.679   51.3%   0.0263  100.0%
+16    long_term_forecast_WTI-log_HP_seqlen128_DLi     -0.699   50.5%   0.0132  100.0%
+17    long_term_forecast_WTI-log_512_6_TiDE_TiDE_     -0.709   51.5%   0.0234  100.0%
+18    long_term_forecast_WTI-log_TimeMixer_pl5_Ti     -0.765   50.7%   0.0017  100.0%
+19    long_term_forecast_WTI-log_HP_lr0.0001_DLin     -0.782   50.9%   0.0074  100.0%
+20    long_term_forecast_WTI-log_HP_dmodel128_Pat     -0.787   51.2%  -0.0071  100.0%
+21    long_term_forecast_WTI-log_HP_lr0.0005_DLin     -0.791   50.9%   0.0087  100.0%
+22    long_term_forecast_WTI-log_512_6_TSMixer_TS     -0.793   51.7%   0.0127  100.0%
+23    long_term_forecast_WTI-log_HP_lr0.0005_DLin     -0.806   51.4%   0.0158  100.0%
+24    long_term_forecast_WTI-log_HP_dropout0.4_Pa     -0.819   51.4%  -0.0244  100.0%
+25    long_term_forecast_WTI-log_DLinear_horizon5     -0.822   51.6%   0.0123  100.0%
+26    long_term_forecast_WTI-log_DLinear_pl5_DLin     -0.822   51.6%   0.0123  100.0%
+27    long_term_forecast_WTI-log_HP_lr0.001_DLine     -0.822   51.6%   0.0123  100.0%
+28    long_term_forecast_WTI-log_HP_seqlen512_DLi     -0.822   51.6%   0.0123  100.0%
+29    long_term_forecast_WTI-log_HP_lr0.0001_DLin     -0.825   50.8%   0.0080  100.0%
+30    long_term_forecast_WTI-log_HP_dmodel32_Patc     -0.835   51.8%   0.0008  100.0%
+31    long_term_forecast_WTI-log_512_6_TiDE_TiDE_     -0.842   50.7%   0.0059  100.0%
+32    long_term_forecast_WTI-log_HP_dmodel128_Pat     -0.846   50.9%   0.0099  100.0%
+33    long_term_forecast_WTI-log_HP_dropout0.4_Pa     -0.846   51.1%  -0.0111  100.0%
+34    long_term_forecast_WTI-log_HP_dropout0.5_Pa     -0.849   50.6%  -0.0211  100.0%
+35    long_term_forecast_WTI-log_HP_dmodel32_Patc     -0.856   51.1%  -0.0043  100.0%
+36    long_term_forecast_WTI-log_iTransformer_pl5     -0.859   51.3%   0.0139  100.0%
+37    long_term_forecast_WTI-log_512_6_TiDE_TiDE_     -0.873   51.4%   0.0130  100.0%
+38    long_term_forecast_WTI-log_HP_lr0.0001_DLin     -0.874   50.9%   0.0087  100.0%
+39    long_term_forecast_WTI-log_HP_dropout0.5_Pa     -0.880   50.7%  -0.0362  100.0%
+40    long_term_forecast_WTI-log_HP_dropout0.2_Pa     -0.884   51.1%  -0.0241  100.0%
+41    long_term_forecast_WTI-log_TimeMixer_pl5_Ti     -0.885   50.2%  -0.0046  100.0%
+42    long_term_forecast_WTI-log_512_6_TiDE_TiDE_     -0.888   51.0%   0.0078  100.0%
+43    long_term_forecast_WTI-log_iTransformer_pl5     -0.894   51.5%   0.0166  100.0%
+44    long_term_forecast_WTI-log_HP_dropout0.2_Pa     -0.899   52.2%   0.0077  100.0%
+45    long_term_forecast_WTI-log_DLinear_horizon1     -0.901   51.4%   0.0111  100.0%
+46    long_term_forecast_WTI-log_TimeMixer_pl5_Ti     -0.911   51.1%  -0.0155  100.0%
+47    long_term_forecast_WTI-log_HP_lr0.005_DLine     -0.911   51.9%   0.0202  100.0%
+48    long_term_forecast_WTI-log_DLinear_horizon1     -0.912   51.2%   0.0077  100.0%
+49    long_term_forecast_WTI-log_512_6_TSMixer_bi     -0.915   50.7%   0.0057  100.0%
+50    long_term_forecast_WTI-log_DLinear_horizon1     -0.916   51.4%   0.0145  100.0%
+51    long_term_forecast_WTI-log_512_6_TiDE_TiDE_     -0.919   51.3%   0.0077  100.0%
+52    long_term_forecast_WTI-log_HP_dropout0.5_Pa     -0.919   50.4%  -0.0385  100.0%
+53    long_term_forecast_WTI-log_HP_dmodel128_Pat     -0.920   50.9%  -0.0118  100.0%
+54    long_term_forecast_WTI-log_DLinear_horizon1     -0.920   51.8%   0.0257   97.9%
+55    long_term_forecast_WTI-log_HP_seqlen256_DLi     -0.925   49.7%   0.0153  100.0%
+56    long_term_forecast_WTI-log_DLinear_horizon3     -0.930   51.1%   0.0151  100.0%
+57    long_term_forecast_WTI-log_DLinear_horizon1     -0.932   50.5%   0.0239   97.6%
+58    long_term_forecast_WTI-log_HP_lr0.0005_DLin     -0.932   51.3%   0.0118  100.0%
+59    long_term_forecast_WTI-log_HP_lr0.005_DLine     -0.937   51.6%   0.0219  100.0%
+60    long_term_forecast_WTI-log_512_6_PatchTST_P     -0.938   51.8%   0.0146  100.0%
+61    long_term_forecast_WTI-log_HP_dmodel64_Patc     -0.941   51.1%  -0.0029  100.0%
+62    long_term_forecast_WTI-log_PatchTST_pl5_Pat     -0.941   51.1%  -0.0029  100.0%
+63    long_term_forecast_WTI-log_HP_dropout0.3_Pa     -0.941   51.1%  -0.0029  100.0%
+64    long_term_forecast_WTI-log_HP_seqlen512_DLi     -0.941   51.8%   0.0238  100.0%
+65    long_term_forecast_WTI-log_DLinear_horizon5     -0.941   51.8%   0.0238  100.0%
+66    long_term_forecast_WTI-log_DLinear_pl5_DLin     -0.941   51.8%   0.0238  100.0%
+67    long_term_forecast_WTI-log_HP_lr0.001_DLine     -0.941   51.8%   0.0238  100.0%
+68    long_term_forecast_WTI-log_HP_lr0.001_DLine     -0.944   52.0%   0.0208  100.0%
+69    long_term_forecast_WTI-log_DLinear_horizon5     -0.944   52.0%   0.0208  100.0%
+70    long_term_forecast_WTI-log_HP_seqlen512_DLi     -0.944   52.0%   0.0208  100.0%
+71    long_term_forecast_WTI-log_DLinear_pl5_DLin     -0.944   52.0%   0.0208  100.0%
+72    long_term_forecast_WTI-log_HP_lr0.005_DLine     -0.946   51.4%   0.0198  100.0%
+73    long_term_forecast_WTI-log_DLinear_horizon3     -0.948   51.8%   0.0247  100.0%
+74    long_term_forecast_WTI-log_HP_dropout0.4_Pa     -0.957   51.1%  -0.0152  100.0%
+75    long_term_forecast_WTI-log_HP_dropout0.1_Pa     -0.962   50.2%  -0.0041  100.0%
+76    long_term_forecast_WTI-log_HP_seqlen256_DLi     -0.964   50.5%   0.0159  100.0%
+77    long_term_forecast_WTI-log_PatchTST_pl5_Pat     -0.974   50.4%  -0.0196  100.0%
+78    long_term_forecast_WTI-log_HP_dropout0.3_Pa     -0.974   50.4%  -0.0196  100.0%
+79    long_term_forecast_WTI-log_HP_dmodel64_Patc     -0.974   50.4%  -0.0196  100.0%
+80    long_term_forecast_WTI-log_HP_dropout0.3_Pa     -0.991   51.0%  -0.0376  100.0%
+81    long_term_forecast_WTI-log_PatchTST_pl5_Pat     -0.991   51.0%  -0.0376  100.0%
+82    long_term_forecast_WTI-log_HP_dmodel64_Patc     -0.991   51.0%  -0.0376  100.0%
+83    long_term_forecast_WTI-log_DLinear_horizon3     -0.999   50.6%   0.0080  100.0%
+84    long_term_forecast_WTI-log_HP_dropout0.2_Pa     -1.003   50.7%  -0.0133  100.0%
+85    long_term_forecast_WTI-log_HP_seqlen256_DLi     -1.005   50.2%   0.0077  100.0%
+86    long_term_forecast_WTI-log_HP_dmodel32_Patc     -1.009   50.3%  -0.0148  100.0%
+87    long_term_forecast_WTI-log_HP_dropout0.1_Pa     -1.036   49.8%   0.0036  100.0%
+88    long_term_forecast_WTI-log_iTransformer_pl5     -1.052   50.0%   0.0107  100.0%
+89    long_term_forecast_WTI-log_HP_dropout0.1_Pa     -1.093   50.5%  -0.0017  100.0%
+90    long_term_forecast_WTI-log_DLinear_horizon2     -2.488   51.2%   0.0173  100.0%
+91    long_term_forecast_WTI-log_DLinear_horizon2     -2.492   51.3%   0.0141  100.0%
+92    long_term_forecast_WTI-log_DLinear_horizon2     -2.502   51.1%   0.0110  100.0%
+93    long_term_forecast_WTI_512_5_PatchTST_custo        nan   52.1%   0.0149  162.3%
+94    long_term_forecast_WTI_512_5_PatchTST_custo        nan   48.6%  -0.0193  121.3%
+95    long_term_forecast_WTI_512_6_PatchTST_custo        nan   49.7%   0.0097  106.4%
+96    long_term_forecast_WTI_512_6_PatchTST_Patch        nan   50.2%  -0.0050  151.9%
+97    long_term_forecast_WTI_512_6_TiDE_TiDE_cust        nan   49.7%  -0.0175  101.8%
+98    long_term_forecast_WTI_512_6_TimeMixer_Time        nan   62.0%   0.1447 107046066645526.5%
+99    long_term_forecast_WTI_L512_P5_dm128_el2_dl        nan   50.7%   0.0138  102.7%
+100   long_term_forecast_WTI_L512_P5_dm128_el2_dl        nan   50.7%   0.0138  102.7%
+101   long_term_forecast_WTI_L512_P5_dm128_el2_dl        nan   50.7%   0.0138  102.7%
+
+================================================================================
+SECTION 2: DETAILED MODEL ANALYSIS
+================================================================================
+
+--------------------------------------------------------------------------------
+Model: long_term_forecast_WTI-log_512_6_TimeMixer_TimeMixer_custom_ftMS_sl512_ll0_pl6_dm16_nh8_el2_dl1_df32_expand2_dc4_fc1_ebtimeF_dtTrue_Exp_0
+Status: ✓ POTENTIALLY TRADABLE
+--------------------------------------------------------------------------------
+
+  PREDICTION QUALITY
+  ------------------
+  Direction Accuracy:  61.40%  [Good]
+  Information Coef:    0.3629  [Strong]
+  Rank IC:             0.3494
+  IC Decay:            -0.0988  [Unstable - possible overfit]
+
+  TRADING PERFORMANCE (after costs)
+  ---------------------------------
+  Sharpe Ratio:        3.647  [Good]
+  Sortino Ratio:       4.439
+  Max Drawdown:        95.3%  [High Risk]
+  
+  Total Return:        22778948883268446978048.00%
+  Annual Return:       151.90%
+  Win Rate:            54.6%
+  Profit Factor:       1.74
+
+  TRADING STATISTICS
+  ------------------
+  Number of Trades:    6092
+  Transaction Costs:   14.6295
+  Buy & Hold Return:   -98.13%
+  Excess Return:       22778948883268446978048.00%  [Beat B&H]
+
+  REFERENCE METRICS (not for trading decisions)
+  ---------------------------------------------
+  MSE:                 0.000665
+  RMSE:                0.025788
+  MAE:                 0.015182
+
+--------------------------------------------------------------------------------
+Model: long_term_forecast_WTI-log_512_6_Transformer_Transformer_custom_ftMS_sl512_ll48_pl6_dm512_nh8_el2_dl1_df2048_expand2_dc4_fc1_ebtimeF_dtTrue_Exp_0
+Status: ✗ NOT RECOMMENDED
+--------------------------------------------------------------------------------
+
+  PREDICTION QUALITY
+  ------------------
+  Direction Accuracy:  54.44%  [Good]
+  Information Coef:    0.0231  [Moderate]
+  Rank IC:             0.0513
+  IC Decay:            -0.0559  [Unstable - possible overfit]
+
+  TRADING PERFORMANCE (after costs)
+  ---------------------------------
+  Sharpe Ratio:        -0.186  [Poor]
+  Sortino Ratio:       -0.172
+  Max Drawdown:        100.0%  [High Risk]
+  
+  Total Return:        -93.94%
+  Annual Return:       -5.38%
+  Win Rate:            49.0%
+  Profit Factor:       1.02
+
+  TRADING STATISTICS
+  ------------------
+  Number of Trades:    2022
+  Transaction Costs:   3.0690
+  Buy & Hold Return:   -98.13%
+  Excess Return:       4.19%  [Beat B&H]
+
+  REFERENCE METRICS (not for trading decisions)
+  ---------------------------------------------
+  MSE:                 0.000755
+  RMSE:                0.027481
+  MAE:                 0.016362
+
+--------------------------------------------------------------------------------
+Model: long_term_forecast_WTI_512_6_TiDE_TiDE_custom_ftMS_sl512_ll48_pl6_dm256_nh8_el2_dl2_df256_expand2_dc4_fc1_ebtimeF_dtTrue_Exp_4
+Status: ✗ NOT RECOMMENDED
+--------------------------------------------------------------------------------
+
+  PREDICTION QUALITY
+  ------------------
+  Direction Accuracy:  49.20%  [Poor]
+  Information Coef:    -0.0249  [Weak]
+  Rank IC:             -0.0328
+  IC Decay:            0.0605  [Unstable - possible overfit]
+
+  TRADING PERFORMANCE (after costs)
+  ---------------------------------
+  Sharpe Ratio:        -0.351  [Poor]
+  Sortino Ratio:       -0.288
+  Max Drawdown:        121.6%  [High Risk]
+  
+  Total Return:        -100.00%
+  Annual Return:       -39.76%
+  Win Rate:            41.0%
+  Profit Factor:       0.67
+
+  TRADING STATISTICS
+  ------------------
+  Number of Trades:    7400
+  Transaction Costs:   18.2655
+  Buy & Hold Return:   180.52%
+  Excess Return:       -280.52%  [Underperformed B&H]
+
+  REFERENCE METRICS (not for trading decisions)
+  ---------------------------------------------
+  MSE:                 0.006400
+  RMSE:                0.080000
+  MAE:                 0.023838
+
+--------------------------------------------------------------------------------
+Model: long_term_forecast_WTI_512_5_PatchTST_custom_ftMS_sl512_ll48_pl5_dm512_nh8_el2_dl1_df2048_expand2_dc4_fc3_ebtimeF_dtTrue_Exp_3
+Status: ✗ NOT RECOMMENDED
+--------------------------------------------------------------------------------
+
+  PREDICTION QUALITY
+  ------------------
+  Direction Accuracy:  48.91%  [Poor]
+  Information Coef:    -0.0061  [Weak]
+  Rank IC:             -0.0387
+  IC Decay:            0.0420  [Unstable - possible overfit]
+
+  TRADING PERFORMANCE (after costs)
+  ---------------------------------
+  Sharpe Ratio:        -0.367  [Poor]
+  Sortino Ratio:       -0.440
+  Max Drawdown:        124.8%  [High Risk]
+  
+  Total Return:        -100.00%
+  Annual Return:       -41.88%
+  Win Rate:            38.1%
+  Profit Factor:       0.78
+
+  TRADING STATISTICS
+  ------------------
+  Number of Trades:    6559
+  Transaction Costs:   14.8845
+  Buy & Hold Return:   127.07%
+  Excess Return:       -227.07%  [Underperformed B&H]
+
+  REFERENCE METRICS (not for trading decisions)
+  ---------------------------------------------
+  MSE:                 0.006031
+  RMSE:                0.077659
+  MAE:                 0.020536
+
+--------------------------------------------------------------------------------
+Model: long_term_forecast_WTI_512_6_TiDE_TiDE_custom_ftMS_sl512_ll48_pl6_dm256_nh8_el2_dl2_df256_expand2_dc4_fc1_ebtimeF_dtTrue_Exp_2
+Status: ✗ NOT RECOMMENDED
+--------------------------------------------------------------------------------
+
+  PREDICTION QUALITY
+  ------------------
+  Direction Accuracy:  49.59%  [Poor]
+  Information Coef:    -0.0216  [Weak]
+  Rank IC:             -0.0285
+  IC Decay:            0.0481  [Unstable - possible overfit]
+
+  TRADING PERFORMANCE (after costs)
+  ---------------------------------
+  Sharpe Ratio:        -0.382  [Poor]
+  Sortino Ratio:       -0.332
+  Max Drawdown:        100.6%  [High Risk]
+  
+  Total Return:        -100.00%
+  Annual Return:       -44.41%
+  Win Rate:            41.0%
+  Profit Factor:       0.68
+
+  TRADING STATISTICS
+  ------------------
+  Number of Trades:    7345
+  Transaction Costs:   18.0585
+  Buy & Hold Return:   180.52%
+  Excess Return:       -280.52%  [Underperformed B&H]
+
+  REFERENCE METRICS (not for trading decisions)
+  ---------------------------------------------
+  MSE:                 0.006414
+  RMSE:                0.080090
+  MAE:                 0.023946
+
+--------------------------------------------------------------------------------
+Model: long_term_forecast_WTI_512_5_PatchTST_custom_ftMS_sl512_ll48_pl5_dm512_nh8_el2_dl1_df2048_expand2_dc4_fc3_ebtimeF_dtTrue_Exp_0
+Status: ✗ NOT RECOMMENDED
+--------------------------------------------------------------------------------
+
+  PREDICTION QUALITY
+  ------------------
+  Direction Accuracy:  48.84%  [Poor]
+  Information Coef:    0.0087  [Weak]
+  Rank IC:             -0.0447
+  IC Decay:            0.0753  [Unstable - possible overfit]
+
+  TRADING PERFORMANCE (after costs)
+  ---------------------------------
+  Sharpe Ratio:        -0.400  [Poor]
+  Sortino Ratio:       -0.444
+  Max Drawdown:        104.4%  [High Risk]
+  
+  Total Return:        -100.00%
+  Annual Return:       -41.87%
+  Win Rate:            38.3%
+  Profit Factor:       0.76
+
+  TRADING STATISTICS
+  ------------------
+  Number of Trades:    6256
+  Transaction Costs:   14.2155
+  Buy & Hold Return:   127.07%
+  Excess Return:       -227.07%  [Underperformed B&H]
+
+  REFERENCE METRICS (not for trading decisions)
+  ---------------------------------------------
+  MSE:                 0.006025
+  RMSE:                0.077621
+  MAE:                 0.020720
+
+--------------------------------------------------------------------------------
+Model: long_term_forecast_WTI_512_5_PatchTST_custom_ftMS_sl512_ll48_pl5_dm512_nh8_el2_dl1_df2048_expand2_dc4_fc3_ebtimeF_dtTrue_Exp_2
+Status: ✗ NOT RECOMMENDED
+--------------------------------------------------------------------------------
+
+  PREDICTION QUALITY
+  ------------------
+  Direction Accuracy:  49.47%  [Poor]
+  Information Coef:    0.0013  [Weak]
+  Rank IC:             -0.0355
+  IC Decay:            0.0583  [Unstable - possible overfit]
+
+  TRADING PERFORMANCE (after costs)
+  ---------------------------------
+  Sharpe Ratio:        -0.433  [Poor]
+  Sortino Ratio:       -0.479
+  Max Drawdown:        105.8%  [High Risk]
+  
+  Total Return:        -100.00%
+  Annual Return:       -45.67%
+  Win Rate:            38.8%
+  Profit Factor:       0.74
+
+  TRADING STATISTICS
+  ------------------
+  Number of Trades:    7128
+  Transaction Costs:   17.1180
+  Buy & Hold Return:   127.07%
+  Excess Return:       -227.07%  [Underperformed B&H]
+
+  REFERENCE METRICS (not for trading decisions)
+  ---------------------------------------------
+  MSE:                 0.006110
+  RMSE:                0.078167
+  MAE:                 0.021381
+
+--------------------------------------------------------------------------------
+Model: long_term_forecast_WTI_512_6_TiDE_TiDE_custom_ftMS_sl512_ll48_pl6_dm256_nh8_el2_dl2_df256_expand2_dc4_fc1_ebtimeF_dtTrue_Exp_3
+Status: ✗ NOT RECOMMENDED
+--------------------------------------------------------------------------------
+
+  PREDICTION QUALITY
+  ------------------
+  Direction Accuracy:  49.12%  [Poor]
+  Information Coef:    -0.0194  [Weak]
+  Rank IC:             -0.0313
+  IC Decay:            0.0522  [Unstable - possible overfit]
+
+  TRADING PERFORMANCE (after costs)
+  ---------------------------------
+  Sharpe Ratio:        -0.443  [Poor]
+  Sortino Ratio:       -0.385
+  Max Drawdown:        100.3%  [High Risk]
+  
+  Total Return:        -100.00%
+  Annual Return:       -48.21%
+  Win Rate:            41.0%
+  Profit Factor:       0.67
+
+  TRADING STATISTICS
+  ------------------
+  Number of Trades:    7267
+  Transaction Costs:   17.8575
+  Buy & Hold Return:   180.52%
+  Excess Return:       -280.52%  [Underperformed B&H]
+
+  REFERENCE METRICS (not for trading decisions)
+  ---------------------------------------------
+  MSE:                 0.006387
+  RMSE:                0.079917
+  MAE:                 0.023769
+
+--------------------------------------------------------------------------------
+Model: long_term_forecast_WTI_512_6_TiDE_TiDE_custom_ftMS_sl512_ll48_pl6_dm256_nh8_el2_dl2_df256_expand2_dc4_fc1_ebtimeF_dtTrue_Exp_1
+Status: ✗ NOT RECOMMENDED
+--------------------------------------------------------------------------------
+
+  PREDICTION QUALITY
+  ------------------
+  Direction Accuracy:  49.83%  [Poor]
+  Information Coef:    -0.0222  [Weak]
+  Rank IC:             -0.0242
+  IC Decay:            0.0565  [Unstable - possible overfit]
+
+  TRADING PERFORMANCE (after costs)
+  ---------------------------------
+  Sharpe Ratio:        -0.444  [Poor]
+  Sortino Ratio:       -0.398
+  Max Drawdown:        100.5%  [High Risk]
+  
+  Total Return:        -100.00%
+  Annual Return:       -44.07%
+  Win Rate:            41.5%
+  Profit Factor:       0.72
+
+  TRADING STATISTICS
+  ------------------
+  Number of Trades:    7338
+  Transaction Costs:   18.1260
+  Buy & Hold Return:   180.52%
+  Excess Return:       -280.52%  [Underperformed B&H]
+
+  REFERENCE METRICS (not for trading decisions)
+  ---------------------------------------------
+  MSE:                 0.006387
+  RMSE:                0.079917
+  MAE:                 0.023762
+
+--------------------------------------------------------------------------------
+Model: long_term_forecast_WTI-log_Naive_pl5_Naive_custom_ftMS_sl512_ll48_pl5_dm512_nh8_el2_dl1_df2048_expand2_dc4_fc1_ebtimeF_dtTrue_ModelComparison_2
+Status: ✗ NOT RECOMMENDED
+--------------------------------------------------------------------------------
+
+  PREDICTION QUALITY
+  ------------------
+  Direction Accuracy:  49.71%  [Poor]
+  Information Coef:    0.0022  [Weak]
+  Rank IC:             -0.0155
+  IC Decay:            0.0275  [Stable]
+
+  TRADING PERFORMANCE (after costs)
+  ---------------------------------
+  Sharpe Ratio:        -0.463  [Poor]
+  Sortino Ratio:       -0.584
+  Max Drawdown:        100.0%  [High Risk]
+  
+  Total Return:        -99.97%
+  Annual Return:       -17.72%
+  Win Rate:            48.6%
+  Profit Factor:       0.95
+
+  TRADING STATISTICS
+  ------------------
+  Number of Trades:    1189
+  Transaction Costs:   3.2685
+  Buy & Hold Return:   -96.47%
+  Excess Return:       -3.50%  [Underperformed B&H]
+
+  REFERENCE METRICS (not for trading decisions)
+  ---------------------------------------------
+  MSE:                 0.001498
+  RMSE:                0.038710
+  MAE:                 0.023702
+
+================================================================================
+SECTION 3: INTERPRETATION GUIDE
+================================================================================
+
+DIRECTION ACCURACY
+  > 55%:   Strong signal - rare but valuable
+  52-55%:  Moderate signal - potentially tradable with good risk management
+  50-52%:  Weak signal - barely better than random
+  < 50%:   No signal - model is useless or inverted
+
+INFORMATION COEFFICIENT (IC)
+  > 0.10:  Excellent - very rare in practice
+  0.05-0.10: Good - worth pursuing
+  0.02-0.05: Moderate - marginal, needs optimization
+  < 0.02:  Weak - likely noise
+
+SHARPE RATIO (after costs)
+  > 2.0:   Excellent strategy
+  1.0-2.0: Good strategy
+  0.5-1.0: Moderate - needs improvement
+  0-0.5:   Marginal - high risk of loss
+  < 0:     Losing strategy
+
+IC DECAY (first half - second half)
+  |decay| < 0.02: Stable model
+  |decay| 0.02-0.05: Some instability
+  |decay| > 0.05: Likely overfitting - use with caution
+
+================================================================================
+SECTION 4: RECOMMENDATIONS
+================================================================================
+
+RECOMMENDED MODEL: long_term_forecast_WTI-log_512_6_TimeMixer_TimeMixer_custom_ftMS_sl512_ll0_pl6_dm16_nh8_el2_dl1_df32_expand2_dc4_fc1_ebtimeF_dtTrue_Exp_0
+
+This model shows promising characteristics:
+- Direction Accuracy: 61.4%
+- Sharpe Ratio: 3.65
+- IC: 0.3629
+
+NEXT STEPS:
+1. Validate on completely out-of-sample data (e.g., recent months)
+2. Test robustness across different market conditions
+3. Implement proper position sizing based on prediction confidence
+4. Set stop-loss and maximum drawdown limits
+5. Paper trade before live trading
+
+WARNINGS:
+- Past performance does not guarantee future results
+- The IC decay of -0.0988 suggests potential instability
+- Transaction costs assumed: 0.15% per round trip
+
+================================================================================
+Report generated: 2025-11-28 04:57:25.962100
+================================================================================

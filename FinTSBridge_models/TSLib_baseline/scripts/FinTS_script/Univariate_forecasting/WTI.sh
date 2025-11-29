@@ -11,9 +11,10 @@ export MKL_NUM_THREADS=1
 # =========================
 # Dataset & common configs
 # =========================
-data=WTI
+data=WTI-log
 pred_len=6
 target=daily_return
+channel_num=5
 
 # 说明：由于 Loader 将 target 也当作输入特征，实际输入通道=6
 # （open/high/low/volume/close + daily_return）
@@ -26,132 +27,232 @@ seq_len=512
 
 echo "[INFO] data=${data} pred_len=${pred_len} target=${target} enc/dec=${encdec_ch} c_out=${c_out} freq=${freq}"
 
-# =========================
-# TimeMixer  (多变量输入 -> 单变量输出)
-# =========================
-python -u run.py \
-  --task_name long_term_forecast \
-  --is_training 1 \
-  --root_path ./dataset/FBD/ \
-  --data_path ${data}.csv \
-  --model_id ${data}_${seq_len}_${pred_len}_TimeMixer \
-  --model TimeMixer \
-  --data custom \
-  --features MS \
-  --seq_len ${seq_len} \
-  --label_len 0 \
-  --pred_len ${pred_len} \
-  --e_layers 2 \
-  --enc_in ${encdec_ch} \
-  --dec_in ${encdec_ch} \
-  --c_out ${c_out} \
-  --freq ${freq} \
-  --des 'Exp' \
-  --target ${target} \
-  --itr 1 \
-  --num_workers 0 \
-  --d_model 16 \
-  --d_ff 32 \
-  --learning_rate 0.001 \
-  --train_epochs 50 \
-  --patience 10 \
-  --batch_size 64 \
-  --down_sampling_layers 3 \
-  --down_sampling_method avg \
-  --down_sampling_window 2 \
-  --channel_independence 0
+# # =========================
+# # TimeMixer  (多变量输入 -> 单变量输出)
+# # =========================
+# python -u run.py \
+#   --task_name long_term_forecast \
+#   --is_training 1 \
+#   --root_path ./dataset/FBD/ \
+#   --data_path ${data}.csv \
+#   --model_id ${data}_${seq_len}_${pred_len}_TimeMixer \
+#   --model TimeMixer \
+#   --data custom \
+#   --features MS \
+#   --seq_len ${seq_len} \
+#   --label_len 0 \
+#   --pred_len ${pred_len} \
+#   --e_layers 2 \
+#   --enc_in ${encdec_ch} \
+#   --dec_in ${encdec_ch} \
+#   --c_out ${c_out} \
+#   --freq ${freq} \
+#   --des 'Exp' \
+#   --target ${target} \
+#   --itr 1 \
+#   --num_workers 0 \
+#   --d_model 16 \
+#   --d_ff 32 \
+#   --learning_rate 0.001 \
+#   --train_epochs 50 \
+#   --patience 10 \
+#   --batch_size 64 \
+#   --down_sampling_layers 3 \
+#   --down_sampling_method avg \
+#   --down_sampling_window 2 \
+#   --channel_independence 0
 
-# =========================
-# PatchTST  (多变量输入 -> 单变量输出)
-# =========================
-python -u run.py \
-  --task_name long_term_forecast \
-  --is_training 1 \
-  --root_path ./dataset/FBD/ \
-  --data_path ${data}.csv \
-  --model_id ${data}_${seq_len}_${pred_len}_PatchTST \
-  --model PatchTST \
-  --data custom \
-  --features MS \
-  --seq_len ${seq_len} \
-  --label_len 48 \
-  --pred_len ${pred_len} \
-  --e_layers 2 \
-  --d_layers 1 \
-  --factor 3 \
-  --enc_in ${encdec_ch} \
-  --dec_in ${encdec_ch} \
-  --c_out ${c_out} \
-  --freq ${freq} \
-  --des 'Exp' \
-  --target ${target} \
-  --itr 1 \
-  --num_workers 0 \
-  --d_model 128 \
-  --d_ff 256 \
-  --dropout 0.1 \
-  --batch_size 64 \
-  --learning_rate 0.0005
+# # =========================
+# # PatchTST  (多变量输入 -> 单变量输出)
+# # =========================
+# python -u run.py \
+#   --task_name long_term_forecast \
+#   --is_training 1 \
+#   --root_path ./dataset/FBD/ \
+#   --data_path ${data}.csv \
+#   --model_id ${data}_${seq_len}_${pred_len}_PatchTST \
+#   --model PatchTST \
+#   --data custom \
+#   --features MS \
+#   --seq_len ${seq_len} \
+#   --label_len 48 \
+#   --pred_len ${pred_len} \
+#   --e_layers 2 \
+#   --d_layers 1 \
+#   --factor 3 \
+#   --enc_in ${encdec_ch} \
+#   --dec_in ${encdec_ch} \
+#   --c_out ${c_out} \
+#   --freq ${freq} \
+#   --des 'Exp' \
+#   --target ${target} \
+#   --itr 1 \
+#   --num_workers 0 \
+#   --d_model 128 \
+#   --d_ff 256 \
+#   --dropout 0.1 \
+#   --batch_size 64 \
+#   --learning_rate 0.0005
 
-# =========================
-# TiDE  (multivariate inputs -> single target)
-# =========================
-python -u run.py \
-  --task_name long_term_forecast \
-  --is_training 1 \
-  --root_path ./dataset/FBD/ \
-  --data_path ${data}.csv \
-  --model_id ${data}_512_${pred_len}_TiDE \
-  --model TiDE \
-  --data custom \
-  --features MS \
-  --seq_len 512 \
-  --label_len 48 \
-  --pred_len ${pred_len} \
-  --e_layers 2 \
-  --d_layers 2 \
-  --enc_in ${channel_num} \
-  --dec_in ${channel_num} \
-  --c_out 1 \
-  --freq d \
-  --des 'Exp' \
-  --d_model 256 \
-  --d_ff 256 \
-  --dropout 0.3 \
-  --batch_size 128 \
-  --learning_rate 0.001 \
-  --target ${target} \
-  --itr 5 \
-  --num_workers 0
+# # =========================
+# # TiDE  (multivariate inputs -> single target)
+# # =========================
+# python -u run.py \
+#   --task_name long_term_forecast \
+#   --is_training 1 \
+#   --root_path ./dataset/FBD/ \
+#   --data_path ${data}.csv \
+#   --model_id ${data}_512_${pred_len}_TiDE \
+#   --model TiDE \
+#   --data custom \
+#   --features MS \
+#   --seq_len 512 \
+#   --label_len 48 \
+#   --pred_len ${pred_len} \
+#   --e_layers 2 \
+#   --d_layers 2 \
+#   --enc_in ${channel_num} \
+#   --dec_in ${channel_num} \
+#   --c_out 1 \
+#   --freq d \
+#   --des 'Exp' \
+#   --d_model 256 \
+#   --d_ff 256 \
+#   --dropout 0.3 \
+#   --batch_size 128 \
+#   --learning_rate 0.001 \
+#   --target ${target} \
+#   --itr 5 \
+#   --num_workers 0
 
 
 # =========================
 # PSformer (TSLib version, if registered)
 # =========================
-python -u run.py \
+# python -u run.py \
+#   --task_name long_term_forecast \
+#   --is_training 1 \
+#   --root_path ./dataset/FBD/ \
+#   --data_path ${data}.csv \
+#   --model_id ${data}_512_${pred_len}_PSformer \
+#   --model PSformer \
+#   --data custom \
+#   --features MS \
+#   --seq_len 512 \
+#   --label_len 48 \
+#   --pred_len ${pred_len} \
+#   --e_layers 2 \
+#   --d_layers 1 \
+#   --enc_in ${channel_num} \
+#   --dec_in ${channel_num} \
+#   --c_out 1 \
+#   --freq d \
+#   --des 'Exp' \
+#   --d_model 128 \
+#   --d_ff 256 \
+#   --dropout 0.1 \
+#   --batch_size 128 \
+#   --learning_rate 0.001 \
+#   --target ${target} \
+#   --itr 5 \
+#   --num_workers 0
+
+
+
+# # =========================
+# # Transformer  (多变量输入 -> 单变量输出)
+# # =========================
+# python -u run.py \
+#   --task_name long_term_forecast \
+#   --is_training 1 \
+#   --root_path ./dataset/FBD/ \
+#   --data_path "${data}.csv" \
+#   --model_id "${data}_${seq_len}_${pred_len}_Transformer" \
+#   --model Transformer \
+#   --data custom \
+#   --features MS \
+#   --seq_len ${seq_len} \
+#   --label_len 48 \
+#   --pred_len ${pred_len} \
+#   --e_layers 2 \
+#   --d_layers 1 \
+#   --enc_in ${encdec_ch} \
+#   --dec_in ${encdec_ch} \
+#   --c_out ${c_out} \
+#   --freq ${freq} \
+#   --des "Exp" \
+#   --target "${target}" \
+#   --itr 1 \
+#   --num_workers 0 \
+#   --d_model 512 \
+#   --n_heads 8 \
+#   --d_ff 2048 \
+#   --dropout 0.1 \
+#   --batch_size 128 \
+#   --learning_rate 0.0005
+
+# =========================
+# TSMixer  (多变量输入 -> 单变量输出，加大模型复杂度)
+# =========================
+# python -u run.py \
+#   --task_name long_term_forecast \
+#   --is_training 1 \
+#   --root_path ./dataset/FBD/ \
+#   --data_path "${data}.csv" \
+#   --model_id "${data}_${seq_len}_${pred_len}_TSMixer_big" \
+#   --model TSMixer \
+#   --data custom \
+#   --features MS \
+#   --seq_len ${seq_len} \
+#   --label_len 48 \
+#   --pred_len ${pred_len} \
+#   --e_layers 4 \
+#   --d_layers 2 \
+#   --factor 3 \
+#   --enc_in ${encdec_ch} \
+#   --dec_in ${encdec_ch} \
+#   --c_out ${c_out} \
+#   --freq ${freq} \
+#   --des "Exp_big" \
+#   --target ${target} \
+#   --itr 1 \
+#   --num_workers 0 \
+#   --d_model 256 \
+#   --d_ff 512 \
+#   --dropout 0.2 \
+#   --batch_size 64 \
+#   --learning_rate 0.0005 \
+#   --train_epochs 150 \
+#   --patience 20
+
+# TSMixer - 3
+  python -u run.py \
   --task_name long_term_forecast \
   --is_training 1 \
   --root_path ./dataset/FBD/ \
-  --data_path ${data}.csv \
-  --model_id ${data}_512_${pred_len}_PSformer \
-  --model PSformer \
+  --data_path "${data}.csv" \
+  --model_id "${data}_${seq_len}_${pred_len}_TSMixer_big" \
+  --model TSMixer \
   --data custom \
   --features MS \
-  --seq_len 512 \
+  --seq_len ${seq_len} \
   --label_len 48 \
   --pred_len ${pred_len} \
-  --e_layers 2 \
-  --d_layers 1 \
-  --enc_in ${channel_num} \
-  --dec_in ${channel_num} \
-  --c_out 1 \
-  --freq d \
-  --des 'Exp' \
-  --d_model 128 \
-  --d_ff 256 \
-  --dropout 0.1 \
-  --batch_size 128 \
-  --learning_rate 0.001 \
+  --e_layers 4 \
+  --d_layers 2 \
+  --factor 3 \
+  --enc_in ${encdec_ch} \
+  --dec_in ${encdec_ch} \
+  --c_out ${c_out} \
+  --freq ${freq} \
+  --des "Exp_big" \
   --target ${target} \
-  --itr 5 \
-  --num_workers 0
+  --itr 1 \
+  --num_workers 0 \
+  --d_model 256 \
+  --d_ff 512 \
+  --dropout 0.2 \
+  --batch_size 64 \
+  --learning_rate 0.0005 \
+  --train_epochs 150 \
+  --patience 20
