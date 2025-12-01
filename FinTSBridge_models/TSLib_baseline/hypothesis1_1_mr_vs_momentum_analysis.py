@@ -50,7 +50,7 @@ warnings.filterwarnings('ignore')
 # =============================================================================
 
 # 结果文件夹路径 - 请根据实际情况修改
-RESULTS_DIR = "./results_WTI_trading_extend_20251128_183138"
+RESULTS_DIR = "./results_WTI_trading_extend_20251129_061059"
 
 # 过去收益计算窗口 (用于判断过去是涨还是跌)
 PAST_WINDOW = 15  # 过去15天的累计收益
@@ -347,6 +347,8 @@ def find_prediction_files(results_dir):
             for pattern in ['*pred*.csv', '*prediction*.csv', '*results*.csv']:
                 files = glob.glob(os.path.join(folder_path, pattern))
                 for f in files:
+                    if 'ModelComparison' not in f:
+                        continue  # 跳过所有不是 ModelComparison 文件
                     prediction_files.append({
                         'folder': folder,
                         'file': f,
@@ -357,12 +359,13 @@ def find_prediction_files(results_dir):
             if not any(pf['folder'] == folder for pf in prediction_files):
                 csv_files = glob.glob(os.path.join(folder_path, '*.csv'))
                 for f in csv_files:
+                    if 'ModelComparison' not in f:
+                        continue  # 跳过所有不是 ModelComparison 文件
                     prediction_files.append({
                         'folder': folder,
                         'file': f,
                         'model_type': extract_model_info(folder)
                     })
-    
     return prediction_files
 
 
