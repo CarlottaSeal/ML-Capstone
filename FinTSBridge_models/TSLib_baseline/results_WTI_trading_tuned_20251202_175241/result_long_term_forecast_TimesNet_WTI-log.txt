@@ -1,0 +1,72 @@
+long_term_forecast_WTI-log_TimesNet_pl5_TimesNet_custom_ftMS_sl512_ll48_pl5_dm64_nh8_el2_dl1_df64_expand2_dc4_fc1_ebtimeF_dtTrue_ModelComparison_0  
+mse:1.2997957468032837, mae:0.6880346536636353, dtw:Not calculated
+
+long_term_forecast_WTI-log_TimesNet_pl5_TimesNet_custom_ftMS_sl512_ll48_pl5_dm64_nh8_el2_dl1_df64_expand2_dc4_fc1_ebtimeF_dtTrue_ModelComparison_1  
+mse:1.291941523551941, mae:0.6798068284988403, dtw:Not calculated
+
+long_term_forecast_WTI-log_TimesNet_pl5_TimesNet_custom_ftMS_sl512_ll48_pl5_dm64_nh8_el2_dl1_df64_expand2_dc4_fc1_ebtimeF_dtTrue_ModelComparison_2  
+mse:1.3090779781341553, mae:0.6941646337509155, dtw:Not calculated
+
+Multiple_run_Results:long_term_forecast_WTI-log_TimesNet_pl5_TimesNet_custom_ftMS_sl512_ll48_pl5_dm64_nh8_el2_dl1_df64_expand2_dc4_fc1_ebtimeF_dtTrue_ModelComparison_2  
+MSE:1.3003±0.0070, MAE:0.6873±0.0059,                    msIC:0.0010±0.0022, msIR:0.0021±0.0044
+
+long_term_forecast_WTI-log_TimesNet_pl5_TimesNet_custom_ftMS_sl512_ll48_pl5_dm64_nh8_el2_dl1_df64_expand2_dc4_fc1_ebtimeF_dtTrue_ModelComparison_0  
+mse:1.2997957468032837, mae:0.6880346536636353, dtw:Not calculated
+
+long_term_forecast_WTI-log_TimesNet_pl5_TimesNet_custom_ftMS_sl512_ll48_pl5_dm64_nh8_el2_dl1_df64_expand2_dc4_fc1_ebtimeF_dtTrue_ModelComparison_1  
+mse:1.291941523551941, mae:0.6798068284988403, dtw:Not calculated
+
+long_term_forecast_WTI-log_TimesNet_pl5_TimesNet_custom_ftMS_sl512_ll48_pl5_dm64_nh8_el2_dl1_df64_expand2_dc4_fc1_ebtimeF_dtTrue_ModelComparison_2  
+mse:1.3090779781341553, mae:0.6941646337509155, dtw:Not calculated
+
+Multiple_run_Results:long_term_forecast_WTI-log_TimesNet_pl5_TimesNet_custom_ftMS_sl512_ll48_pl5_dm64_nh8_el2_dl1_df64_expand2_dc4_fc1_ebtimeF_dtTrue_ModelComparison_2  
+MSE:1.3003±0.0070, MAE:0.6873±0.0059,                    msIC:0.0010±0.0022, msIR:0.0021±0.0044
+
+long_term_forecast_WTI-log_TimesNet_pl5_TimesNet_custom_ftMS_sl512_ll48_pl5_dm64_nh8_el2_dl1_df64_expand2_dc4_fc1_ebtimeF_dtTrue_ModelComparison_0  
+mse:1.2997957468032837, mae:0.6880346536636353, dtw:Not calculated
+
+long_term_forecast_WTI-log_TimesNet_pl5_TimesNet_custom_ftMS_sl512_ll48_pl5_dm64_nh8_el2_dl1_df64_expand2_dc4_fc1_ebtimeF_dtTrue_ModelComparison_1  
+mse:1.291941523551941, mae:0.6798068284988403, dtw:Not calculated
+
+long_term_forecast_WTI-log_TimesNet_pl5_TimesNet_custom_ftMS_sl512_ll48_pl5_dm64_nh8_el2_dl1_df64_expand2_dc4_fc1_ebtimeF_dtTrue_ModelComparison_2  
+mse:1.3090779781341553, mae:0.6941646337509155, dtw:Not calculated
+
+Multiple_run_Results:long_term_forecast_WTI-log_TimesNet_pl5_TimesNet_custom_ftMS_sl512_ll48_pl5_dm64_nh8_el2_dl1_df64_expand2_dc4_fc1_ebtimeF_dtTrue_ModelComparison_2  
+MSE:1.3003±0.0070, MAE:0.6873±0.0059,                    msIC:0.0010±0.0022, msIR:0.0021±0.0044
+
+long_term_forecast_WTI-log_TimesNet_pl5_TimesNet_custom_ftMS_sl512_ll48_pl5_dm64_nh8_el2_dl1_df64_expand2_dc4_fc1_ebtimeF_dtTrue_ModelComparison_0  
+mse:1.3033794164657593, mae:0.6887917518615723, dtw:Not calculated
+
+long_term_forecast_WTI-log_TimesNet_pl5_TimesNet_custom_ftMS_sl512_ll48_pl5_dm64_nh8_el2_dl1_df64_expand2_dc4_fc1_ebtimeF_dtTrue_ModelComparison_1  
+mse:1.2927671670913696, mae:0.6802568435668945, dtw:Not calculated
+
+long_term_forecast_WTI-log_TimesNet_pl5_TimesNet_custom_ftMS_sl512_ll48_pl5_dm64_nh8_el2_dl1_df64_expand2_dc4_fc1_ebtimeF_dtTrue_ModelComparison_2  
+mse:1.327813982963562, mae:0.7027604579925537, dtw:Not calculated
+
+Multiple_run_Results:long_term_forecast_WTI-log_TimesNet_pl5_TimesNet_custom_ftMS_sl512_ll48_pl5_dm64_nh8_el2_dl1_df64_expand2_dc4_fc1_ebtimeF_dtTrue_ModelComparison_2  
+MSE:1.3080±0.0147, MAE:0.6906±0.0093,                    msIC:-0.0004±0.0003, msIR:-0.0007±0.0006
+
+long_term_forecast_WTI-log_TimesNet_pl5_TimesNet_custom_ftMS_sl512_ll48_pl5_dm64_nh8_el2_dl1_df64_expand2_dc4_fc1_ebtimeF_dtTrue_ModelComparison_0  
+mse:1.3033794164657593, mae:0.6887917518615723, dtw:Not calculated
+
+long_term_forecast_WTI-log_TimesNet_pl5_TimesNet_custom_ftMS_sl512_ll48_pl5_dm64_nh8_el2_dl1_df64_expand2_dc4_fc1_ebtimeF_dtTrue_ModelComparison_1  
+mse:1.2927671670913696, mae:0.6802568435668945, dtw:Not calculated
+
+long_term_forecast_WTI-log_TimesNet_pl5_TimesNet_custom_ftMS_sl512_ll48_pl5_dm64_nh8_el2_dl1_df64_expand2_dc4_fc1_ebtimeF_dtTrue_ModelComparison_2  
+mse:1.327813982963562, mae:0.7027604579925537, dtw:Not calculated
+
+Multiple_run_Results:long_term_forecast_WTI-log_TimesNet_pl5_TimesNet_custom_ftMS_sl512_ll48_pl5_dm64_nh8_el2_dl1_df64_expand2_dc4_fc1_ebtimeF_dtTrue_ModelComparison_2  
+MSE:1.3080±0.0147, MAE:0.6906±0.0093,                    msIC:-0.0004±0.0003, msIR:-0.0007±0.0006
+
+long_term_forecast_WTI-log_TimesNet_pl5_TimesNet_custom_ftMS_sl512_ll48_pl5_dm64_nh8_el2_dl1_df64_expand2_dc4_fc1_ebtimeF_dtTrue_ModelComparison_0  
+mse:1.298045039176941, mae:0.6857553720474243, dtw:Not calculated
+
+long_term_forecast_WTI-log_TimesNet_pl5_TimesNet_custom_ftMS_sl512_ll48_pl5_dm64_nh8_el2_dl1_df64_expand2_dc4_fc1_ebtimeF_dtTrue_ModelComparison_1  
+mse:1.296704649925232, mae:0.6821781992912292, dtw:Not calculated
+
+long_term_forecast_WTI-log_TimesNet_pl5_TimesNet_custom_ftMS_sl512_ll48_pl5_dm64_nh8_el2_dl1_df64_expand2_dc4_fc1_ebtimeF_dtTrue_ModelComparison_2  
+mse:1.3013947010040283, mae:0.6896250247955322, dtw:Not calculated
+
+Multiple_run_Results:long_term_forecast_WTI-log_TimesNet_pl5_TimesNet_custom_ftMS_sl512_ll48_pl5_dm64_nh8_el2_dl1_df64_expand2_dc4_fc1_ebtimeF_dtTrue_ModelComparison_2  
+MSE:1.2987±0.0020, MAE:0.6859±0.0030,                    msIC:0.0010±0.0074, msIR:0.0020±0.0147
+

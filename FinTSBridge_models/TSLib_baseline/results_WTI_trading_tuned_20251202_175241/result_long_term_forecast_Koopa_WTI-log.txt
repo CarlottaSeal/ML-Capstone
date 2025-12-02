@@ -1,0 +1,12 @@
+long_term_forecast_WTI-log_Koopa_pl5_Koopa_custom_ftMS_sl512_ll48_pl5_dm512_nh8_el2_dl1_df2048_expand2_dc4_fc3_ebtimeF_dtTrue_ModelComparison_0  
+mse:1.3746049404144287, mae:0.7151261568069458, dtw:Not calculated
+
+long_term_forecast_WTI-log_Koopa_pl5_Koopa_custom_ftMS_sl512_ll48_pl5_dm512_nh8_el2_dl1_df2048_expand2_dc4_fc3_ebtimeF_dtTrue_ModelComparison_1  
+mse:1.3477869033813477, mae:0.7042666673660278, dtw:Not calculated
+
+long_term_forecast_WTI-log_Koopa_pl5_Koopa_custom_ftMS_sl512_ll48_pl5_dm512_nh8_el2_dl1_df2048_expand2_dc4_fc3_ebtimeF_dtTrue_ModelComparison_2  
+mse:1.3677196502685547, mae:0.7061209678649902, dtw:Not calculated
+
+Multiple_run_Results:long_term_forecast_WTI-log_Koopa_pl5_Koopa_custom_ftMS_sl512_ll48_pl5_dm512_nh8_el2_dl1_df2048_expand2_dc4_fc3_ebtimeF_dtTrue_ModelComparison_2  
+MSE:1.3634±0.0114, MAE:0.7085±0.0047,                    msIC:-0.0006±0.0047, msIR:-0.0012±0.0095
+

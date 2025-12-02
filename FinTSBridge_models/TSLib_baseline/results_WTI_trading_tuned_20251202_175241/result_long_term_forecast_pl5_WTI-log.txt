@@ -1,0 +1,12 @@
+long_term_forecast_WTI-log_Nonstationary_Transformer_pl5_Nonstationary_Transformer_custom_ftMS_sl512_ll48_pl5_dm128_nh4_el2_dl1_df128_expand2_dc4_fc3_ebtimeF_dtTrue_ModelComparison_0  
+mse:1.289280652999878, mae:0.6827244162559509, dtw:Not calculated
+
+long_term_forecast_WTI-log_Nonstationary_Transformer_pl5_Nonstationary_Transformer_custom_ftMS_sl512_ll48_pl5_dm128_nh4_el2_dl1_df128_expand2_dc4_fc3_ebtimeF_dtTrue_ModelComparison_1  
+mse:1.2880183458328247, mae:0.6785714626312256, dtw:Not calculated
+
+long_term_forecast_WTI-log_Nonstationary_Transformer_pl5_Nonstationary_Transformer_custom_ftMS_sl512_ll48_pl5_dm128_nh4_el2_dl1_df128_expand2_dc4_fc3_ebtimeF_dtTrue_ModelComparison_2  
+mse:1.2904255390167236, mae:0.6837338209152222, dtw:Not calculated
+
+Multiple_run_Results:long_term_forecast_WTI-log_Nonstationary_Transformer_pl5_Nonstationary_Transformer_custom_ftMS_sl512_ll48_pl5_dm128_nh4_el2_dl1_df128_expand2_dc4_fc3_ebtimeF_dtTrue_ModelComparison_2  
+MSE:1.2892±0.0010, MAE:0.6817±0.0022,                    msIC:-0.0066±0.0033, msIR:-0.0131±0.0064
+
