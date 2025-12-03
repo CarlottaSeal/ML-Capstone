@@ -1,540 +1,527 @@
 
 ================================================================================
-                    WTI TRADING STRATEGY ANALYSIS REPORT
+          WTI TRADING STRATEGY ANALYSIS REPORT V2 (with msIC/msIR)
 ================================================================================
 
 EVALUATION PHILOSOPHY
 ---------------------
-This report evaluates models from a TRADING perspective, NOT just prediction accuracy.
+This report evaluates models using msIC and msIR metrics from the FinTSBridge 
+paper (ICLR 2025 Workshop), which have been shown to correlate much better with 
+actual trading performance than traditional metrics like MSE.
 
-Key Principle: Low MSE ≠ Good Trading Strategy
+METRIC CORRELATION WITH ACTUAL BACKTEST PERFORMANCE:
+----------------------------------------------------
+  msIC                 0.45  ✓ BEST predictor
+  Direction Accuracy   0.44  ✓ 
+  IC                   0.44  ✓
+  Rank IC              0.41  ✓
+  Composite Score      0.39  ✓
+  msIR                 0.38  ✓
+  MSE                 -0.27  ✗ NEGATIVE correlation!
+  Report Sharpe        0.18  ✗ Too weak
 
-What we actually evaluate:
-1. Direction Accuracy - Can the model predict if price goes UP or DOWN?
-2. Information Coefficient - Is there a correlation between predictions and outcomes?
-3. Risk-Adjusted Returns - Can we make money AFTER transaction costs?
-4. Stability - Is the predictive power consistent over time?
-
-================================================================================
-
-================================================================================
-SECTION 1: MODEL RANKINGS (by Sharpe Ratio)
-================================================================================
-
-Rank  Model                                                Sharpe  Dir.Acc       IC    MaxDD
--------------------------------------------------------------------------------------
-1     POST_COVID_Koopa_pl5_Koopa_custom_ftMS_sl128_ll4      0.117   52.6%   0.1098   51.6%
-2     POST_COVID_Koopa_pl5_Koopa_custom_ftMS_sl128_ll4     -0.175   51.3%   0.0777   46.2%
-3     POST_COVID_TimeMixer_pl5_TimeMixer_custom_ftMS_s     -0.270   50.7%   0.0358   51.5%
-4     POST_COVID_TimeMixer_pl5_TimeMixer_custom_ftMS_s     -0.344   50.8%   0.0359   52.1%
-5     RECENT10_TimeMixer_pl5_TimeMixer_custom_ftMS_sl2     -0.468   49.9%  -0.0154   75.8%
-6     POST_COVID_TimeMixer_pl5_TimeMixer_custom_ftMS_s     -0.478   52.0%   0.0296   46.1%
-7     RECENT10_FEDformer_pl5_FEDformer_custom_ftMS_sl2     -0.497   49.2%  -0.0280   70.9%
-8     POST_COVID_Autoformer_pl5_Autoformer_custom_ftMS     -0.536   51.1%   0.0174   70.1%
-9     RECENT10_FEDformer_pl5_FEDformer_custom_ftMS_sl2     -0.616   49.9%  -0.0125   76.9%
-10    POST_COVID_iTransformer_pl5_iTransformer_custom_     -0.675   53.4%   0.0614   66.5%
-11    RECENT10_Nonstationary_Transformer_pl5_Nonstatio     -0.689   51.6%   0.0208   79.6%
-12    RECENT10_Nonstationary_Transformer_pl5_Nonstatio     -0.708   51.4%   0.0320   72.6%
-13    RECENT10_Transformer_pl5_Transformer_custom_ftMS     -0.715   50.1%   0.0242   86.6%
-14    RECENT10_Transformer_pl5_Transformer_custom_ftMS     -0.811   50.1%   0.0019   88.8%
-15    RECENT10_Crossformer_pl5_Crossformer_custom_ftMS     -0.885   50.4%   0.0046   70.2%
-16    RECENT10_TimesNet_pl5_TimesNet_custom_ftMS_sl256     -0.900   50.2%   0.0188   90.4%
-17    RECENT10_Naive_pl5_Naive_custom_ftMS_sl256_ll48_     -0.910   49.1%  -0.0343   91.4%
-18    RECENT10_Naive_pl5_Naive_custom_ftMS_sl256_ll48_     -0.910   49.1%  -0.0342   91.4%
-19    RECENT10_Naive_pl5_Naive_custom_ftMS_sl256_ll48_     -0.918   49.1%  -0.0343   91.6%
-20    POST_COVID_TimesNet_pl5_TimesNet_custom_ftMS_sl1     -0.948   50.8%   0.0639   64.8%
-21    POST_COVID_FEDformer_pl5_FEDformer_custom_ftMS_s     -1.018   51.1%   0.0161   77.0%
-22    RECENT10_Crossformer_pl5_Crossformer_custom_ftMS     -1.046   49.2%  -0.0059   65.8%
-23    POST_COVID_iTransformer_pl5_iTransformer_custom_     -1.048   52.1%   0.0435   77.1%
-24    RECENT10_PatchTST_pl5_PatchTST_custom_ftMS_sl256     -1.065   51.8%   0.0451   90.4%
-25    POST_COVID_Naive_pl5_Naive_custom_ftMS_sl128_ll4     -1.080   49.5%  -0.0266   81.5%
-26    POST_COVID_Naive_pl5_Naive_custom_ftMS_sl128_ll4     -1.085   49.5%  -0.0266   81.6%
-27    POST_COVID_Naive_pl5_Naive_custom_ftMS_sl128_ll4     -1.085   49.5%  -0.0266   81.6%
-28    RECENT10_Transformer_pl5_Transformer_custom_ftMS     -1.099   50.1%   0.0122   94.0%
-29    POST_COVID_Autoformer_pl5_Autoformer_custom_ftMS     -1.110   50.7%  -0.0290   79.6%
-30    POST_COVID_Koopa_pl5_Koopa_custom_ftMS_sl128_ll4     -1.111   50.2%   0.0177   75.8%
-31    POST_COVID_TimesNet_pl5_TimesNet_custom_ftMS_sl1     -1.115   51.6%   0.0400   74.5%
-32    RECENT10_TimesNet_pl5_TimesNet_custom_ftMS_sl256     -1.141   49.9%   0.0277   93.6%
-33    POST_COVID_FEDformer_pl5_FEDformer_custom_ftMS_s     -1.147   53.6%   0.0093   81.4%
-34    POST_COVID_TiDE_pl5_TiDE_custom_ftMS_sl128_ll48_     -1.156   52.0%   0.0167   83.0%
-35    RECENT10_DLinear_pl5_DLinear_custom_ftMS_sl256_l     -1.166   49.7%   0.0243   90.6%
-36    POST_COVID_DLinear_pl5_DLinear_custom_ftMS_sl128     -1.174   49.0%   0.0353   82.2%
-37    RECENT10_TimeMixer_pl5_TimeMixer_custom_ftMS_sl2     -1.181   50.7%  -0.0032   89.2%
-38    POST_COVID_Transformer_pl5_Transformer_custom_ft     -1.189   50.7%   0.0241   70.9%
-39    RECENT10_iTransformer_pl5_iTransformer_custom_ft     -1.197   50.6%   0.0322   93.9%
-40    RECENT10_Autoformer_pl5_Autoformer_custom_ftMS_s     -1.201   50.3%  -0.0197   94.2%
-41    RECENT10_Autoformer_pl5_Autoformer_custom_ftMS_s     -1.206   48.5%  -0.0286   94.5%
-42    RECENT10_iTransformer_pl5_iTransformer_custom_ft     -1.211   49.9%   0.0187   94.4%
-43    RECENT10_iTransformer_pl5_iTransformer_custom_ft     -1.220   49.2%   0.0291   93.8%
-44    RECENT10_Koopa_pl5_Koopa_custom_ftMS_sl256_ll48_     -1.244   51.4%   0.0267   94.5%
-45    RECENT10_Crossformer_pl5_Crossformer_custom_ftMS     -1.254   50.4%  -0.0040   59.2%
-46    POST_COVID_Nonstationary_Transformer_pl5_Nonstat     -1.274   50.8%  -0.0062   65.1%
-47    POST_COVID_TiDE_pl5_TiDE_custom_ftMS_sl128_ll48_     -1.287   49.5%   0.0190   83.5%
-48    POST_COVID_Transformer_pl5_Transformer_custom_ft     -1.294   50.4%   0.0061   80.0%
-49    POST_COVID_Transformer_pl5_Transformer_custom_ft     -1.338   49.0%  -0.0082   80.7%
-50    RECENT10_Nonstationary_Transformer_pl5_Nonstatio     -1.348   46.9%  -0.0227   90.4%
-51    POST_COVID_Autoformer_pl5_Autoformer_custom_ftMS     -1.361   47.1%  -0.0096   84.4%
-52    POST_COVID_PatchTST_pl5_PatchTST_custom_ftMS_sl1     -1.364   52.7%   0.0183   83.2%
-53    RECENT10_TSMixer_pl5_TSMixer_custom_ftMS_sl256_l     -1.392   50.4%   0.0279   96.2%
-54    POST_COVID_TSMixer_pl5_TSMixer_custom_ftMS_sl128     -1.401   50.7%   0.0077   86.5%
-55    RECENT10_Koopa_pl5_Koopa_custom_ftMS_sl256_ll48_     -1.414   51.6%   0.0449   96.8%
-56    RECENT10_TSMixer_pl5_TSMixer_custom_ftMS_sl256_l     -1.422   50.6%   0.0059   97.2%
-57    POST_COVID_DLinear_pl5_DLinear_custom_ftMS_sl128     -1.429   50.3%   0.0339   84.9%
-58    POST_COVID_Nonstationary_Transformer_pl5_Nonstat     -1.448   47.8%  -0.0210   71.9%
-59    RECENT10_TiDE_pl5_TiDE_custom_ftMS_sl256_ll48_pl     -1.450   48.6%   0.0192   97.1%
-60    POST_COVID_iTransformer_pl5_iTransformer_custom_     -1.457   50.4%   0.0127   87.2%
-61    RECENT10_PatchTST_pl5_PatchTST_custom_ftMS_sl256     -1.502   48.8%  -0.0122   97.5%
-62    POST_COVID_Nonstationary_Transformer_pl5_Nonstat     -1.511   50.5%   0.0091   73.2%
-63    RECENT10_TimeMixer_pl5_TimeMixer_custom_ftMS_sl2     -1.539   49.4%  -0.0362   96.6%
-64    RECENT10_Koopa_pl5_Koopa_custom_ftMS_sl256_ll48_     -1.573   50.4%  -0.0222   97.9%
-65    RECENT10_TSMixer_pl5_TSMixer_custom_ftMS_sl256_l     -1.574   50.5%   0.0031   98.0%
-66    RECENT10_TiDE_pl5_TiDE_custom_ftMS_sl256_ll48_pl     -1.574   48.8%  -0.0029   98.1%
-67    POST_COVID_DLinear_pl5_DLinear_custom_ftMS_sl128     -1.575   48.2%   0.0391   86.8%
-68    POST_COVID_TimesNet_pl5_TimesNet_custom_ftMS_sl1     -1.600   52.1%   0.0325   88.0%
-69    RECENT10_TiDE_pl5_TiDE_custom_ftMS_sl256_ll48_pl     -1.604   49.2%   0.0065   98.5%
-70    RECENT10_PatchTST_pl5_PatchTST_custom_ftMS_sl256     -1.663   49.7%  -0.0007   98.2%
-71    POST_COVID_Crossformer_pl5_Crossformer_custom_ft     -1.669   50.5%   0.0152   82.9%
-72    RECENT10_DLinear_pl5_DLinear_custom_ftMS_sl256_l     -1.675   49.5%   0.0090   97.2%
-73    RECENT10_Autoformer_pl5_Autoformer_custom_ftMS_s     -1.676   48.2%  -0.0470   98.6%
-74    RECENT10_TimesNet_pl5_TimesNet_custom_ftMS_sl256     -1.715   49.3%   0.0036   98.1%
-75    POST_COVID_TSMixer_pl5_TSMixer_custom_ftMS_sl128     -1.735   50.9%  -0.0194   91.8%
-76    RECENT10_DLinear_pl5_DLinear_custom_ftMS_sl256_l     -1.742   49.4%  -0.0002   97.9%
-77    POST_COVID_PatchTST_pl5_PatchTST_custom_ftMS_sl1     -1.769   49.5%  -0.0212   92.3%
-78    POST_COVID_FEDformer_pl5_FEDformer_custom_ftMS_s     -1.784   48.8%  -0.0044   93.2%
-79    POST_COVID_TiDE_pl5_TiDE_custom_ftMS_sl128_ll48_     -1.784   48.2%  -0.0196   93.8%
-80    POST_COVID_Crossformer_pl5_Crossformer_custom_ft     -1.865   51.6%   0.0154   73.4%
-81    RECENT10_FEDformer_pl5_FEDformer_custom_ftMS_sl2     -1.878   48.2%  -0.0301   98.9%
-82    POST_COVID_PatchTST_pl5_PatchTST_custom_ftMS_sl1     -1.916   49.6%  -0.0267   93.5%
-83    POST_COVID_TSMixer_pl5_TSMixer_custom_ftMS_sl128     -1.952   47.9%  -0.0198   94.4%
-84    POST_COVID_Crossformer_pl5_Crossformer_custom_ft     -2.052   50.9%   0.0046   70.6%
+KEY INSIGHT: MSE is a TRAP metric for trading!
+- Naive model has LOW MSE but msIC ≈ 0 (no predictive power)
+- Lower MSE does NOT mean better trading performance
 
 ================================================================================
-SECTION 2: DETAILED MODEL ANALYSIS
-================================================================================
+
+==========================================================================================
+SECTION 1: MODEL RANKINGS (by Composite Trading Score)
+==========================================================================================
+
+Rank  Model                                            Score     msIC   DirAcc   Sharpe
+------------------------------------------------------------------------------------------
+1     POST_COVID_Koopa_pl5_Koopa_custom_ftMS_sl12     0.3654   0.0481   52.6%    0.117
+2     POST_COVID_iTransformer_pl5_iTransformer_cu     0.3363   0.0531   53.4%   -0.675
+3     POST_COVID_TimesNet_pl5_TimesNet_custom_ftM     0.3274   0.0658   52.1%   -1.600
+4     POST_COVID_TimeMixer_pl5_TimeMixer_custom_f     0.2494   0.0485   50.8%   -0.344
+5     RECENT10_Koopa_pl5_Koopa_custom_ftMS_sl256_     0.2445   0.0414   51.6%   -1.414
+6     POST_COVID_TimeMixer_pl5_TimeMixer_custom_f     0.2426   0.0445   50.7%   -0.270
+7     RECENT10_PatchTST_pl5_PatchTST_custom_ftMS_     0.2412   0.0375   51.8%   -1.065
+8     POST_COVID_TimeMixer_pl5_TimeMixer_custom_f     0.2236   0.0385   52.0%   -0.478
+9     POST_COVID_iTransformer_pl5_iTransformer_cu     0.2210   0.0358   52.1%   -1.048
+10    POST_COVID_FEDformer_pl5_FEDformer_custom_f     0.1993   0.0273   53.6%   -1.147
+11    POST_COVID_Koopa_pl5_Koopa_custom_ftMS_sl12     0.1986   0.0168   51.3%   -0.175
+12    RECENT10_Nonstationary_Transformer_pl5_Nons     0.1891   0.0307   51.4%   -0.708
+13    POST_COVID_TimesNet_pl5_TimesNet_custom_ftM     0.1870   0.0221   50.8%   -0.948
+14    RECENT10_Transformer_pl5_Transformer_custom     0.1851   0.0350   50.1%   -0.715
+15    POST_COVID_TimesNet_pl5_TimesNet_custom_ftM     0.1587   0.0202   51.6%   -1.115
+16    RECENT10_iTransformer_pl5_iTransformer_cust     0.1580   0.0239   49.2%   -1.220
+17    RECENT10_Koopa_pl5_Koopa_custom_ftMS_sl256_     0.1401   0.0236   51.4%   -1.244
+18    POST_COVID_Autoformer_pl5_Autoformer_custom     0.1330   0.0212   51.1%   -0.536
+19    RECENT10_Transformer_pl5_Transformer_custom     0.1250   0.0271   50.1%   -1.099
+20    POST_COVID_Nonstationary_Transformer_pl5_No     0.1236   0.0260   50.5%   -1.511
+21    RECENT10_iTransformer_pl5_iTransformer_cust     0.1204   0.0155   50.6%   -1.197
+22    RECENT10_TSMixer_pl5_TSMixer_custom_ftMS_sl     0.1139   0.0196   50.4%   -1.392
+23    POST_COVID_Nonstationary_Transformer_pl5_No     0.1094   0.0176   50.8%   -1.274
+24    POST_COVID_Koopa_pl5_Koopa_custom_ftMS_sl12     0.1061   0.0213   50.2%   -1.111
+25    RECENT10_TimesNet_pl5_TimesNet_custom_ftMS_     0.1028   0.0123   49.9%   -1.141
+26    RECENT10_iTransformer_pl5_iTransformer_cust     0.1000   0.0119   49.9%   -1.211
+27    POST_COVID_TiDE_pl5_TiDE_custom_ftMS_sl128_     0.0927   0.0124   52.0%   -1.156
+28    POST_COVID_Transformer_pl5_Transformer_cust     0.0923   0.0107   50.7%   -1.189
+29    RECENT10_Autoformer_pl5_Autoformer_custom_f     0.0896   0.0259   50.3%   -1.201
+30    RECENT10_Crossformer_pl5_Crossformer_custom     0.0864   0.0204   50.4%   -0.885
+31    POST_COVID_FEDformer_pl5_FEDformer_custom_f     0.0818   0.0273   48.8%   -1.784
+32    POST_COVID_PatchTST_pl5_PatchTST_custom_ftM     0.0788   0.0064   52.7%   -1.364
+33    POST_COVID_Crossformer_pl5_Crossformer_cust     0.0695   0.0117   51.6%   -1.865
+34    POST_COVID_Autoformer_pl5_Autoformer_custom     0.0645   0.0403   47.1%   -1.361
+35    POST_COVID_iTransformer_pl5_iTransformer_cu     0.0585   0.0075   50.4%   -1.457
+36    POST_COVID_Crossformer_pl5_Crossformer_cust     0.0511   0.0105   50.5%   -1.669
+37    POST_COVID_Transformer_pl5_Transformer_cust     0.0500   0.0119   50.4%   -1.294
+38    RECENT10_FEDformer_pl5_FEDformer_custom_ftM     0.0460   0.0152   49.9%   -0.616
+39    RECENT10_TiDE_pl5_TiDE_custom_ftMS_sl256_ll     0.0445   0.0099   48.6%   -1.450
+40    RECENT10_DLinear_pl5_DLinear_custom_ftMS_sl     0.0421  -0.0030   49.7%   -1.166
+41    RECENT10_TiDE_pl5_TiDE_custom_ftMS_sl256_ll     0.0414   0.0112   48.8%   -1.574
+42    RECENT10_DLinear_pl5_DLinear_custom_ftMS_sl     0.0305   0.0008   49.5%   -1.675
+43    RECENT10_TimesNet_pl5_TimesNet_custom_ftMS_     0.0303  -0.0002   50.2%   -0.900
+44    RECENT10_TSMixer_pl5_TSMixer_custom_ftMS_sl     0.0273   0.0017   50.5%   -1.574
+45    RECENT10_TSMixer_pl5_TSMixer_custom_ftMS_sl     0.0249  -0.0010   50.6%   -1.422
+46    POST_COVID_TSMixer_pl5_TSMixer_custom_ftMS_     0.0245  -0.0016   50.7%   -1.401
+47    POST_COVID_Crossformer_pl5_Crossformer_cust     0.0214   0.0002   50.9%   -2.052
+48    POST_COVID_FEDformer_pl5_FEDformer_custom_f     0.0197  -0.0075   51.1%   -1.018
+49    RECENT10_Nonstationary_Transformer_pl5_Nons     0.0110   0.0182   46.9%   -1.348
+50    RECENT10_TiDE_pl5_TiDE_custom_ftMS_sl256_ll     0.0042   0.0025   49.2%   -1.604
+51    RECENT10_PatchTST_pl5_PatchTST_custom_ftMS_     0.0027   0.0009   49.7%   -1.663
+52    RECENT10_Nonstationary_Transformer_pl5_Nons    -0.0040  -0.0147   51.6%   -0.689
+53    RECENT10_Crossformer_pl5_Crossformer_custom    -0.0044   0.0014   50.4%   -1.254
+54    POST_COVID_TSMixer_pl5_TSMixer_custom_ftMS_    -0.0127   0.0013   50.9%   -1.735
+55    POST_COVID_DLinear_pl5_DLinear_custom_ftMS_    -0.0141  -0.0157   50.3%   -1.429
+56    RECENT10_Transformer_pl5_Transformer_custom    -0.0248  -0.0086   50.1%   -0.811
+57    POST_COVID_DLinear_pl5_DLinear_custom_ftMS_    -0.0311  -0.0163   48.2%   -1.575
+58    RECENT10_TimesNet_pl5_TimesNet_custom_ftMS_    -0.0363  -0.0114   49.3%   -1.715
+59    RECENT10_DLinear_pl5_DLinear_custom_ftMS_sl    -0.0369  -0.0148   49.4%   -1.742
+60    RECENT10_Crossformer_pl5_Crossformer_custom    -0.0405   0.0011   49.2%   -1.046
+61    RECENT10_TimeMixer_pl5_TimeMixer_custom_ftM    -0.0478  -0.0057   49.9%   -0.468
+62    RECENT10_PatchTST_pl5_PatchTST_custom_ftMS_    -0.0514  -0.0052   48.8%   -1.502
+63    RECENT10_Koopa_pl5_Koopa_custom_ftMS_sl256_    -0.0606  -0.0090   50.4%   -1.573
+64    POST_COVID_TiDE_pl5_TiDE_custom_ftMS_sl128_    -0.0690  -0.0187   49.5%   -1.287
+65    POST_COVID_DLinear_pl5_DLinear_custom_ftMS_    -0.0702  -0.0272   49.0%   -1.174
+66    RECENT10_TimeMixer_pl5_TimeMixer_custom_ftM    -0.0876  -0.0296   50.7%   -1.181
+67    RECENT10_FEDformer_pl5_FEDformer_custom_ftM    -0.1115  -0.0167   49.2%   -0.497
+68    POST_COVID_TSMixer_pl5_TSMixer_custom_ftMS_    -0.1331  -0.0208   47.9%   -1.952
+69    RECENT10_Autoformer_pl5_Autoformer_custom_f    -0.1402  -0.0343   48.5%   -1.206
+70    POST_COVID_PatchTST_pl5_PatchTST_custom_ftM    -0.1519  -0.0278   49.5%   -1.769
+71    RECENT10_FEDformer_pl5_FEDformer_custom_ftM    -0.1585  -0.0248   48.2%   -1.878
+72    POST_COVID_Nonstationary_Transformer_pl5_No    -0.1740  -0.0386   47.8%   -1.448
+73    RECENT10_TimeMixer_pl5_TimeMixer_custom_ftM    -0.1796  -0.0399   49.4%   -1.539
+74    POST_COVID_Transformer_pl5_Transformer_cust    -0.1801  -0.0395   49.0%   -1.338
+75    POST_COVID_Autoformer_pl5_Autoformer_custom    -0.1980  -0.0455   50.7%   -1.110
+76    POST_COVID_PatchTST_pl5_PatchTST_custom_ftM    -0.2275  -0.0521   49.6%   -1.916
+77    RECENT10_Autoformer_pl5_Autoformer_custom_f    -0.2553  -0.0481   48.2%   -1.676
+78    POST_COVID_TiDE_pl5_TiDE_custom_ftMS_sl128_    -0.2662  -0.0567   48.2%   -1.784
+79    POST_COVID_Naive_pl5_Naive_custom_ftMS_sl12    -0.3232  -0.0800   49.5%   -1.085
+80    RECENT10_Naive_pl5_Naive_custom_ftMS_sl256_    -0.3271  -0.0756   49.1%   -0.910
+81    POST_COVID_Naive_pl5_Naive_custom_ftMS_sl12    -0.3358  -0.0836   49.5%   -1.085
+82    POST_COVID_Naive_pl5_Naive_custom_ftMS_sl12    -0.3428  -0.0856   49.5%   -1.080
+83    RECENT10_Naive_pl5_Naive_custom_ftMS_sl256_    -0.3522  -0.0827   49.1%   -0.918
+84    RECENT10_Naive_pl5_Naive_custom_ftMS_sl256_    -0.3648  -0.0863   49.1%   -0.910
+
+==========================================================================================
+SECTION 2: DETAILED MODEL ANALYSIS (Top 10)
+==========================================================================================
 
 --------------------------------------------------------------------------------
 Model: POST_COVID_Koopa_pl5_Koopa_custom_ftMS_sl128_ll48_pl5_dm512_nh8_el2_dl1_df2048_expand2_dc4_fc3_ebtimeF_dtTrue_POST_COVID_1
-Status: ✗ NOT RECOMMENDED
+Status: ✓ POTENTIALLY TRADABLE
 --------------------------------------------------------------------------------
 
-  PREDICTION QUALITY
-  ------------------
-  Direction Accuracy:  52.61%  [Weak]
-  Information Coef:    0.1098  [Strong]
-  Rank IC:             0.1053
-  IC Decay:            -0.0329  [Unstable - possible overfit]
-
-  TRADING PERFORMANCE (after costs)
-  ---------------------------------
-  Sharpe Ratio:        0.117  [Poor]
-  Sortino Ratio:       0.174
-  Max Drawdown:        51.6%  [High Risk]
+  PRIMARY METRICS (use these for model selection)
+  -----------------------------------------------
+  Composite Score:     0.3654
+  msIC:                0.0481  [Good]
+  msIR:                0.167  [Moderate]
+  Direction Accuracy:  52.61%  [Moderate]
   
+  IC ANALYSIS
+  -----------
+  Global IC:           0.1098
+  Rank IC:             0.1053
+  IC First Half:       0.0919
+  IC Second Half:      0.1247  [Good]
+  IC Decay:            -0.0329  [Unstable]
+  IC Positive Ratio:   60.3%
+
+  BACKTEST RESULTS (after costs)
+  ------------------------------
+  Sharpe Ratio:        0.117
+  Sortino Ratio:       0.174
+  Max Drawdown:        51.6%
   Total Return:        27.98%
-  Annual Return:       4.43%
   Win Rate:            41.9%
-  Profit Factor:       1.06
 
-  TRADING STATISTICS
-  ------------------
-  Number of Trades:    695
-  Transaction Costs:   1.3485
-  Buy & Hold Return:   -68.18%
-  Excess Return:       96.15%  [Beat B&H]
-
-  REFERENCE METRICS (not for trading decisions)
-  ---------------------------------------------
-  MSE:                 0.000220
-  RMSE:                0.014821
+  REFERENCE ONLY (DO NOT use for model selection)
+  -----------------------------------------------
+  MSE:                 0.000220  [WARNING: Negative correlation with performance!]
   MAE:                 0.011193
 
 --------------------------------------------------------------------------------
-Model: POST_COVID_Koopa_pl5_Koopa_custom_ftMS_sl128_ll48_pl5_dm512_nh8_el2_dl1_df2048_expand2_dc4_fc3_ebtimeF_dtTrue_POST_COVID_2
-Status: ✗ NOT RECOMMENDED
+Model: POST_COVID_iTransformer_pl5_iTransformer_custom_ftMS_sl128_ll48_pl5_dm32_nh4_el2_dl1_df64_expand2_dc4_fc3_ebtimeF_dtTrue_POST_COVID_1
+Status: ✓ POTENTIALLY TRADABLE
 --------------------------------------------------------------------------------
 
-  PREDICTION QUALITY
-  ------------------
-  Direction Accuracy:  51.29%  [Weak]
-  Information Coef:    0.0777  [Strong]
-  Rank IC:             0.0779
-  IC Decay:            -0.0409  [Unstable - possible overfit]
-
-  TRADING PERFORMANCE (after costs)
-  ---------------------------------
-  Sharpe Ratio:        -0.175  [Poor]
-  Sortino Ratio:       -0.262
-  Max Drawdown:        46.2%  [High Risk]
+  PRIMARY METRICS (use these for model selection)
+  -----------------------------------------------
+  Composite Score:     0.3363
+  msIC:                0.0531  [Good]
+  msIR:                0.226  [Stable]
+  Direction Accuracy:  53.45%  [Good]
   
-  Total Return:        -8.65%
-  Annual Return:       -1.58%
-  Win Rate:            40.9%
-  Profit Factor:       1.00
+  IC ANALYSIS
+  -----------
+  Global IC:           0.0614
+  Rank IC:             0.0697
+  IC First Half:       0.0350
+  IC Second Half:      0.0836  [Good]
+  IC Decay:            -0.0486  [Unstable]
+  IC Positive Ratio:   55.9%
 
-  TRADING STATISTICS
-  ------------------
-  Number of Trades:    682
-  Transaction Costs:   1.3515
-  Buy & Hold Return:   -68.18%
-  Excess Return:       59.53%  [Beat B&H]
+  BACKTEST RESULTS (after costs)
+  ------------------------------
+  Sharpe Ratio:        -0.675
+  Sortino Ratio:       -0.977
+  Max Drawdown:        66.5%
+  Total Return:        -52.40%
+  Win Rate:            41.4%
 
-  REFERENCE METRICS (not for trading decisions)
-  ---------------------------------------------
-  MSE:                 0.000223
-  RMSE:                0.014944
-  MAE:                 0.011258
+  REFERENCE ONLY (DO NOT use for model selection)
+  -----------------------------------------------
+  MSE:                 0.000229  [WARNING: Negative correlation with performance!]
+  MAE:                 0.011471
 
 --------------------------------------------------------------------------------
-Model: POST_COVID_TimeMixer_pl5_TimeMixer_custom_ftMS_sl128_ll0_pl5_dm16_nh8_el2_dl1_df32_expand2_dc4_fc1_ebtimeF_dtTrue_POST_COVID_0
-Status: ✗ NOT RECOMMENDED
+Model: POST_COVID_TimesNet_pl5_TimesNet_custom_ftMS_sl128_ll48_pl5_dm32_nh8_el2_dl1_df32_expand2_dc4_fc1_ebtimeF_dtTrue_POST_COVID_2
+Status: ✓ POTENTIALLY TRADABLE
 --------------------------------------------------------------------------------
 
-  PREDICTION QUALITY
-  ------------------
-  Direction Accuracy:  50.73%  [Poor]
-  Information Coef:    0.0358  [Moderate]
-  Rank IC:             0.0443
-  IC Decay:            -0.0677  [Unstable - possible overfit]
-
-  TRADING PERFORMANCE (after costs)
-  ---------------------------------
-  Sharpe Ratio:        -0.270  [Poor]
-  Sortino Ratio:       -0.370
-  Max Drawdown:        51.5%  [High Risk]
+  PRIMARY METRICS (use these for model selection)
+  -----------------------------------------------
+  Composite Score:     0.3274
+  msIC:                0.0658  [Good]
+  msIR:                0.315  [Stable]
+  Direction Accuracy:  52.06%  [Moderate]
   
-  Total Return:        -16.30%
-  Annual Return:       -3.08%
-  Win Rate:            38.2%
-  Profit Factor:       0.98
+  IC ANALYSIS
+  -----------
+  Global IC:           0.0325
+  Rank IC:             0.0530
+  IC First Half:       0.0299
+  IC Second Half:      0.0344  [Good]
+  IC Decay:            -0.0046  [Stable]
+  IC Positive Ratio:   64.7%
 
-  TRADING STATISTICS
-  ------------------
-  Number of Trades:    488
-  Transaction Costs:   0.7680
-  Buy & Hold Return:   -68.18%
-  Excess Return:       51.88%  [Beat B&H]
+  BACKTEST RESULTS (after costs)
+  ------------------------------
+  Sharpe Ratio:        -1.600
+  Sortino Ratio:       -1.959
+  Max Drawdown:        88.0%
+  Total Return:        -86.02%
+  Win Rate:            37.0%
 
-  REFERENCE METRICS (not for trading decisions)
-  ---------------------------------------------
-  MSE:                 0.000217
-  RMSE:                0.014733
-  MAE:                 0.011121
+  REFERENCE ONLY (DO NOT use for model selection)
+  -----------------------------------------------
+  MSE:                 0.000223  [WARNING: Negative correlation with performance!]
+  MAE:                 0.011081
 
 --------------------------------------------------------------------------------
 Model: POST_COVID_TimeMixer_pl5_TimeMixer_custom_ftMS_sl128_ll0_pl5_dm16_nh8_el2_dl1_df32_expand2_dc4_fc1_ebtimeF_dtTrue_POST_COVID_1
 Status: ✗ NOT RECOMMENDED
 --------------------------------------------------------------------------------
 
-  PREDICTION QUALITY
-  ------------------
-  Direction Accuracy:  50.80%  [Poor]
-  Information Coef:    0.0359  [Moderate]
-  Rank IC:             0.0359
-  IC Decay:            -0.0664  [Unstable - possible overfit]
-
-  TRADING PERFORMANCE (after costs)
-  ---------------------------------
-  Sharpe Ratio:        -0.344  [Poor]
-  Sortino Ratio:       -0.474
-  Max Drawdown:        52.1%  [High Risk]
+  PRIMARY METRICS (use these for model selection)
+  -----------------------------------------------
+  Composite Score:     0.2494
+  msIC:                0.0485  [Good]
+  msIR:                0.181  [Moderate]
+  Direction Accuracy:  50.80%  [Weak]
   
+  IC ANALYSIS
+  -----------
+  Global IC:           0.0359
+  Rank IC:             0.0359
+  IC First Half:       -0.0026
+  IC Second Half:      0.0638  [Good]
+  IC Decay:            -0.0664  [Unstable]
+  IC Positive Ratio:   55.9%
+
+  BACKTEST RESULTS (after costs)
+  ------------------------------
+  Sharpe Ratio:        -0.344
+  Sortino Ratio:       -0.474
+  Max Drawdown:        52.1%
   Total Return:        -23.24%
-  Annual Return:       -4.54%
   Win Rate:            37.2%
-  Profit Factor:       0.97
 
-  TRADING STATISTICS
-  ------------------
-  Number of Trades:    528
-  Transaction Costs:   0.8340
-  Buy & Hold Return:   -68.18%
-  Excess Return:       44.94%  [Beat B&H]
-
-  REFERENCE METRICS (not for trading decisions)
-  ---------------------------------------------
-  MSE:                 0.000217
-  RMSE:                0.014718
+  REFERENCE ONLY (DO NOT use for model selection)
+  -----------------------------------------------
+  MSE:                 0.000217  [WARNING: Negative correlation with performance!]
   MAE:                 0.011110
 
 --------------------------------------------------------------------------------
-Model: RECENT10_TimeMixer_pl5_TimeMixer_custom_ftMS_sl256_ll0_pl5_dm16_nh8_el2_dl1_df32_expand2_dc4_fc1_ebtimeF_dtTrue_RECENT10_1
+Model: RECENT10_Koopa_pl5_Koopa_custom_ftMS_sl256_ll48_pl5_dm512_nh8_el2_dl1_df2048_expand2_dc4_fc3_ebtimeF_dtTrue_RECENT10_1
+Status: ✓ POTENTIALLY TRADABLE
+--------------------------------------------------------------------------------
+
+  PRIMARY METRICS (use these for model selection)
+  -----------------------------------------------
+  Composite Score:     0.2445
+  msIC:                0.0414  [Good]
+  msIR:                0.200  [Stable]
+  Direction Accuracy:  51.58%  [Moderate]
+  
+  IC ANALYSIS
+  -----------
+  Global IC:           0.0449
+  Rank IC:             0.0426
+  IC First Half:       0.0026
+  IC Second Half:      0.0747  [Good]
+  IC Decay:            -0.0721  [Unstable]
+  IC Positive Ratio:   50.8%
+
+  BACKTEST RESULTS (after costs)
+  ------------------------------
+  Sharpe Ratio:        -1.414
+  Sortino Ratio:       -1.920
+  Max Drawdown:        96.8%
+  Total Return:        -96.39%
+  Win Rate:            38.7%
+
+  REFERENCE ONLY (DO NOT use for model selection)
+  -----------------------------------------------
+  MSE:                 0.000211  [WARNING: Negative correlation with performance!]
+  MAE:                 0.010977
+
+--------------------------------------------------------------------------------
+Model: POST_COVID_TimeMixer_pl5_TimeMixer_custom_ftMS_sl128_ll0_pl5_dm16_nh8_el2_dl1_df32_expand2_dc4_fc1_ebtimeF_dtTrue_POST_COVID_0
 Status: ✗ NOT RECOMMENDED
 --------------------------------------------------------------------------------
 
-  PREDICTION QUALITY
-  ------------------
-  Direction Accuracy:  49.94%  [Poor]
-  Information Coef:    -0.0154  [Weak]
-  Rank IC:             -0.0097
-  IC Decay:            0.0373  [Unstable - possible overfit]
-
-  TRADING PERFORMANCE (after costs)
-  ---------------------------------
-  Sharpe Ratio:        -0.468  [Poor]
-  Sortino Ratio:       -0.750
-  Max Drawdown:        75.8%  [High Risk]
+  PRIMARY METRICS (use these for model selection)
+  -----------------------------------------------
+  Composite Score:     0.2426
+  msIC:                0.0445  [Good]
+  msIR:                0.167  [Moderate]
+  Direction Accuracy:  50.73%  [Weak]
   
-  Total Return:        -60.37%
-  Annual Return:       -8.29%
-  Win Rate:            46.0%
-  Profit Factor:       0.95
+  IC ANALYSIS
+  -----------
+  Global IC:           0.0358
+  Rank IC:             0.0443
+  IC First Half:       -0.0042
+  IC Second Half:      0.0635  [Good]
+  IC Decay:            -0.0677  [Unstable]
+  IC Positive Ratio:   54.4%
 
-  TRADING STATISTICS
-  ------------------
-  Number of Trades:    661
-  Transaction Costs:   1.5795
-  Buy & Hold Return:   -80.06%
-  Excess Return:       19.69%  [Beat B&H]
+  BACKTEST RESULTS (after costs)
+  ------------------------------
+  Sharpe Ratio:        -0.270
+  Sortino Ratio:       -0.370
+  Max Drawdown:        51.5%
+  Total Return:        -16.30%
+  Win Rate:            38.2%
 
-  REFERENCE METRICS (not for trading decisions)
-  ---------------------------------------------
-  MSE:                 0.000302
-  RMSE:                0.017381
-  MAE:                 0.013473
+  REFERENCE ONLY (DO NOT use for model selection)
+  -----------------------------------------------
+  MSE:                 0.000217  [WARNING: Negative correlation with performance!]
+  MAE:                 0.011121
+
+--------------------------------------------------------------------------------
+Model: RECENT10_PatchTST_pl5_PatchTST_custom_ftMS_sl256_ll48_pl5_dm64_nh4_el2_dl1_df128_expand2_dc4_fc3_ebtimeF_dtTrue_RECENT10_0
+Status: ✓ POTENTIALLY TRADABLE
+--------------------------------------------------------------------------------
+
+  PRIMARY METRICS (use these for model selection)
+  -----------------------------------------------
+  Composite Score:     0.2412
+  msIC:                0.0375  [Moderate]
+  msIR:                0.127  [Moderate]
+  Direction Accuracy:  51.80%  [Moderate]
+  
+  IC ANALYSIS
+  -----------
+  Global IC:           0.0451
+  Rank IC:             0.0434
+  IC First Half:       0.0020
+  IC Second Half:      0.0921  [Good]
+  IC Decay:            -0.0902  [Unstable]
+  IC Positive Ratio:   57.8%
+
+  BACKTEST RESULTS (after costs)
+  ------------------------------
+  Sharpe Ratio:        -1.065
+  Sortino Ratio:       -1.497
+  Max Drawdown:        90.4%
+  Total Return:        -89.58%
+  Win Rate:            39.1%
+
+  REFERENCE ONLY (DO NOT use for model selection)
+  -----------------------------------------------
+  MSE:                 0.000207  [WARNING: Negative correlation with performance!]
+  MAE:                 0.010969
 
 --------------------------------------------------------------------------------
 Model: POST_COVID_TimeMixer_pl5_TimeMixer_custom_ftMS_sl128_ll0_pl5_dm16_nh8_el2_dl1_df32_expand2_dc4_fc1_ebtimeF_dtTrue_POST_COVID_2
-Status: ✗ NOT RECOMMENDED
+Status: ✓ POTENTIALLY TRADABLE
 --------------------------------------------------------------------------------
 
-  PREDICTION QUALITY
-  ------------------
-  Direction Accuracy:  51.99%  [Weak]
-  Information Coef:    0.0296  [Moderate]
-  Rank IC:             0.0395
-  IC Decay:            -0.0546  [Unstable - possible overfit]
-
-  TRADING PERFORMANCE (after costs)
-  ---------------------------------
-  Sharpe Ratio:        -0.478  [Poor]
-  Sortino Ratio:       -0.639
-  Max Drawdown:        46.1%  [High Risk]
+  PRIMARY METRICS (use these for model selection)
+  -----------------------------------------------
+  Composite Score:     0.2236
+  msIC:                0.0385  [Moderate]
+  msIR:                0.147  [Moderate]
+  Direction Accuracy:  51.99%  [Moderate]
   
+  IC ANALYSIS
+  -----------
+  Global IC:           0.0296
+  Rank IC:             0.0395
+  IC First Half:       -0.0014
+  IC Second Half:      0.0533  [Good]
+  IC Decay:            -0.0546  [Unstable]
+  IC Positive Ratio:   55.9%
+
+  BACKTEST RESULTS (after costs)
+  ------------------------------
+  Sharpe Ratio:        -0.478
+  Sortino Ratio:       -0.639
+  Max Drawdown:        46.1%
   Total Return:        -32.85%
-  Annual Return:       -6.75%
   Win Rate:            36.4%
-  Profit Factor:       0.94
 
-  TRADING STATISTICS
-  ------------------
-  Number of Trades:    544
-  Transaction Costs:   0.8610
-  Buy & Hold Return:   -68.18%
-  Excess Return:       35.33%  [Beat B&H]
-
-  REFERENCE METRICS (not for trading decisions)
-  ---------------------------------------------
-  MSE:                 0.000217
-  RMSE:                0.014735
+  REFERENCE ONLY (DO NOT use for model selection)
+  -----------------------------------------------
+  MSE:                 0.000217  [WARNING: Negative correlation with performance!]
   MAE:                 0.011106
 
 --------------------------------------------------------------------------------
-Model: RECENT10_FEDformer_pl5_FEDformer_custom_ftMS_sl256_ll48_pl5_dm64_nh4_el2_dl1_df128_expand2_dc4_fc3_ebtimeF_dtTrue_RECENT10_1
-Status: ✗ NOT RECOMMENDED
+Model: POST_COVID_iTransformer_pl5_iTransformer_custom_ftMS_sl128_ll48_pl5_dm32_nh4_el2_dl1_df64_expand2_dc4_fc3_ebtimeF_dtTrue_POST_COVID_0
+Status: ✓ POTENTIALLY TRADABLE
 --------------------------------------------------------------------------------
 
-  PREDICTION QUALITY
-  ------------------
-  Direction Accuracy:  49.20%  [Poor]
-  Information Coef:    -0.0280  [Weak]
-  Rank IC:             -0.0314
-  IC Decay:            -0.0021  [Stable]
-
-  TRADING PERFORMANCE (after costs)
-  ---------------------------------
-  Sharpe Ratio:        -0.497  [Poor]
-  Sortino Ratio:       -0.818
-  Max Drawdown:        70.9%  [High Risk]
+  PRIMARY METRICS (use these for model selection)
+  -----------------------------------------------
+  Composite Score:     0.2210
+  msIC:                0.0358  [Moderate]
+  msIR:                0.153  [Moderate]
+  Direction Accuracy:  52.13%  [Moderate]
   
-  Total Return:        -60.81%
-  Annual Return:       -8.39%
-  Win Rate:            42.6%
-  Profit Factor:       0.95
+  IC ANALYSIS
+  -----------
+  Global IC:           0.0435
+  Rank IC:             0.0525
+  IC First Half:       0.0506
+  IC Second Half:      0.0377  [Good]
+  IC Decay:            0.0129  [Stable]
+  IC Positive Ratio:   54.4%
 
-  TRADING STATISTICS
-  ------------------
-  Number of Trades:    797
-  Transaction Costs:   1.5015
-  Buy & Hold Return:   -80.06%
-  Excess Return:       19.25%  [Beat B&H]
+  BACKTEST RESULTS (after costs)
+  ------------------------------
+  Sharpe Ratio:        -1.048
+  Sortino Ratio:       -1.440
+  Max Drawdown:        77.1%
+  Total Return:        -71.80%
+  Win Rate:            41.6%
 
-  REFERENCE METRICS (not for trading decisions)
-  ---------------------------------------------
-  MSE:                 0.000218
-  RMSE:                0.014772
-  MAE:                 0.011414
+  REFERENCE ONLY (DO NOT use for model selection)
+  -----------------------------------------------
+  MSE:                 0.000229  [WARNING: Negative correlation with performance!]
+  MAE:                 0.011389
 
 --------------------------------------------------------------------------------
-Model: POST_COVID_Autoformer_pl5_Autoformer_custom_ftMS_sl128_ll48_pl5_dm32_nh4_el2_dl1_df64_expand2_dc4_fc3_ebtimeF_dtTrue_POST_COVID_2
-Status: ✗ NOT RECOMMENDED
+Model: POST_COVID_FEDformer_pl5_FEDformer_custom_ftMS_sl128_ll48_pl5_dm32_nh4_el2_dl1_df64_expand2_dc4_fc3_ebtimeF_dtTrue_POST_COVID_0
+Status: ✓ POTENTIALLY TRADABLE
 --------------------------------------------------------------------------------
 
-  PREDICTION QUALITY
-  ------------------
-  Direction Accuracy:  51.08%  [Weak]
-  Information Coef:    0.0174  [Weak]
-  Rank IC:             0.0332
-  IC Decay:            -0.0227  [Stable]
-
-  TRADING PERFORMANCE (after costs)
-  ---------------------------------
-  Sharpe Ratio:        -0.536  [Poor]
-  Sortino Ratio:       -0.767
-  Max Drawdown:        70.1%  [High Risk]
+  PRIMARY METRICS (use these for model selection)
+  -----------------------------------------------
+  Composite Score:     0.1993
+  msIC:                0.0273  [Moderate]
+  msIR:                0.128  [Moderate]
+  Direction Accuracy:  53.59%  [Good]
   
-  Total Return:        -43.67%
-  Annual Return:       -9.59%
-  Win Rate:            42.5%
-  Profit Factor:       0.94
+  IC ANALYSIS
+  -----------
+  Global IC:           0.0093
+  Rank IC:             0.0412
+  IC First Half:       -0.0325
+  IC Second Half:      0.0482  [Good]
+  IC Decay:            -0.0807  [Unstable]
+  IC Positive Ratio:   52.9%
 
-  TRADING STATISTICS
-  ------------------
-  Number of Trades:    578
-  Transaction Costs:   1.2315
-  Buy & Hold Return:   -68.18%
-  Excess Return:       24.51%  [Beat B&H]
+  BACKTEST RESULTS (after costs)
+  ------------------------------
+  Sharpe Ratio:        -1.147
+  Sortino Ratio:       -1.424
+  Max Drawdown:        81.4%
+  Total Return:        -76.90%
+  Win Rate:            44.1%
 
-  REFERENCE METRICS (not for trading decisions)
-  ---------------------------------------------
-  MSE:                 0.000234
-  RMSE:                0.015307
-  MAE:                 0.011613
-
---------------------------------------------------------------------------------
-Model: RECENT10_FEDformer_pl5_FEDformer_custom_ftMS_sl256_ll48_pl5_dm64_nh4_el2_dl1_df128_expand2_dc4_fc3_ebtimeF_dtTrue_RECENT10_2
-Status: ✗ NOT RECOMMENDED
---------------------------------------------------------------------------------
-
-  PREDICTION QUALITY
-  ------------------
-  Direction Accuracy:  49.91%  [Poor]
-  Information Coef:    -0.0125  [Weak]
-  Rank IC:             -0.0162
-  IC Decay:            -0.0631  [Unstable - possible overfit]
-
-  TRADING PERFORMANCE (after costs)
-  ---------------------------------
-  Sharpe Ratio:        -0.616  [Poor]
-  Sortino Ratio:       -0.987
-  Max Drawdown:        76.9%  [High Risk]
-  
-  Total Return:        -70.49%
-  Annual Return:       -10.79%
-  Win Rate:            43.4%
-  Profit Factor:       0.93
-
-  TRADING STATISTICS
-  ------------------
-  Number of Trades:    854
-  Transaction Costs:   1.7715
-  Buy & Hold Return:   -80.06%
-  Excess Return:       9.56%  [Beat B&H]
-
-  REFERENCE METRICS (not for trading decisions)
-  ---------------------------------------------
-  MSE:                 0.000217
-  RMSE:                0.014729
-  MAE:                 0.011334
-
---------------------------------------------------------------------------------
-Model: POST_COVID_iTransformer_pl5_iTransformer_custom_ftMS_sl128_ll48_pl5_dm32_nh4_el2_dl1_df64_expand2_dc4_fc3_ebtimeF_dtTrue_POST_COVID_1
-Status: ✗ NOT RECOMMENDED
---------------------------------------------------------------------------------
-
-  PREDICTION QUALITY
-  ------------------
-  Direction Accuracy:  53.45%  [Good]
-  Information Coef:    0.0614  [Strong]
-  Rank IC:             0.0697
-  IC Decay:            -0.0486  [Unstable - possible overfit]
-
-  TRADING PERFORMANCE (after costs)
-  ---------------------------------
-  Sharpe Ratio:        -0.675  [Poor]
-  Sortino Ratio:       -0.977
-  Max Drawdown:        66.5%  [High Risk]
-  
-  Total Return:        -52.40%
-  Annual Return:       -12.22%
-  Win Rate:            41.4%
-  Profit Factor:       0.91
-
-  TRADING STATISTICS
-  ------------------
-  Number of Trades:    845
-  Transaction Costs:   1.8780
-  Buy & Hold Return:   -68.18%
-  Excess Return:       15.78%  [Beat B&H]
-
-  REFERENCE METRICS (not for trading decisions)
-  ---------------------------------------------
-  MSE:                 0.000229
-  RMSE:                0.015132
-  MAE:                 0.011471
+  REFERENCE ONLY (DO NOT use for model selection)
+  -----------------------------------------------
+  MSE:                 0.000242  [WARNING: Negative correlation with performance!]
+  MAE:                 0.011721
 
 ================================================================================
-SECTION 3: INTERPRETATION GUIDE
+SECTION 3: MODEL SELECTION GUIDE
 ================================================================================
 
-DIRECTION ACCURACY
-  > 55%:   Strong signal - rare but valuable
-  52-55%:  Moderate signal - potentially tradable with good risk management
-  50-52%:  Weak signal - barely better than random
-  < 50%:   No signal - model is useless or inverted
+RECOMMENDED SELECTION CRITERIA
+------------------------------
+For LIVE TRADING:
+  ✓ Composite Score > 0.3
+  ✓ msIC > 0.03
+  ✓ msIR > 0.15
+  ✓ Direction Accuracy > 52%
+  ✓ IC Second Half > 0.02 (no severe degradation)
 
-INFORMATION COEFFICIENT (IC)
-  > 0.10:  Excellent - very rare in practice
-  0.05-0.10: Good - worth pursuing
-  0.02-0.05: Moderate - marginal, needs optimization
-  < 0.02:  Weak - likely noise
+For PAPER TRADING / RESEARCH:
+  ✓ Composite Score > 0.15
+  ✓ msIC > 0.02
+  ✓ msIR > 0.10
+  ✓ Direction Accuracy > 51%
 
-SHARPE RATIO (after costs)
-  > 2.0:   Excellent strategy
-  1.0-2.0: Good strategy
-  0.5-1.0: Moderate - needs improvement
-  0-0.5:   Marginal - high risk of loss
-  < 0:     Losing strategy
+METRIC INTERPRETATION
+---------------------
+msIC (Mean Sequential IC):
+  > 0.08:    Excellent - strong predictive power
+  0.04-0.08: Good - significant edge
+  0.02-0.04: Moderate - marginal edge
+  < 0.02:    Weak - likely noise
 
-IC DECAY (first half - second half)
-  |decay| < 0.02: Stable model
-  |decay| 0.02-0.05: Some instability
-  |decay| > 0.05: Likely overfitting - use with caution
+msIR (IC Stability Ratio):
+  > 0.5:     Very stable predictions
+  0.2-0.5:   Stable - good for trading
+  0.1-0.2:   Moderate stability
+  < 0.1:     Unstable - unreliable
 
-================================================================================
-SECTION 4: RECOMMENDATIONS
-================================================================================
-
-NO MODEL IS RECOMMENDED FOR LIVE TRADING
-
-All tested models show insufficient predictive power for profitable trading.
-
-POSSIBLE REASONS:
-1. WTI returns may be largely unpredictable (Efficient Market Hypothesis)
-2. The features used don't capture relevant information
-3. The model architectures may not suit this data
-4. The prediction horizon may be too long
-
-SUGGESTED IMPROVEMENTS:
-1. Add more informative features:
-   - Sentiment data (news, social media)
-   - Macro indicators (interest rates, USD index)
-   - Inventory data (EIA reports)
-   - Futures curve structure (contango/backwardation)
-   
-2. Try different targets:
-   - Volatility prediction (often more predictable than returns)
-   - Direction classification (up/down) instead of return magnitude
-   - Regime prediction (trending/ranging)
-
-3. Reduce prediction horizon:
-   - Try pred_len=1 (next day) if current horizon is longer
-   - Shorter horizons are generally more predictable
-
-4. Feature engineering:
-   - Add technical indicators (RSI, MACD, Bollinger Bands)
-   - Include lagged returns at different intervals
-   - Consider cross-asset features (S&P 500, USD, Gold)
+Direction Accuracy:
+  > 55%:     Strong signal (rare)
+  52-55%:    Moderate - tradable
+  50-52%:    Weak
+  < 50%:     No signal
 
 ================================================================================
-Report generated: 2025-12-03 01:19:17.029915
+WHY msIC/msIR ARE BETTER THAN MSE
 ================================================================================
+
+THE NAIVE MODEL PARADOX:
+                    MSE        msIC      Trading Value
+Naive Model:        VERY LOW   ≈ 0       ZERO
+Good Model:         HIGHER     > 0       POSITIVE
+
+Why Naive has low MSE but zero msIC:
+- Naive predicts: tomorrow = today
+- Price changes are small → low MSE
+- But NO directional prediction → msIC ≈ 0 → useless for trading!
+
+EMPIRICAL EVIDENCE:
+- MSE correlation with backtest Sharpe: -0.27 (NEGATIVE!)
+- msIC correlation with backtest Sharpe: +0.45 (POSITIVE!)
+
+CONCLUSION: Use msIC/Direction Accuracy/Composite Score for model selection,
+            NOT MSE/MAE!
+
+================================================================================
+
+Report generated: 2025-12-03 05:19:06.753864
+==========================================================================================
