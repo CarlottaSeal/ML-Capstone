@@ -1,0 +1,3 @@
+period,best_model,msIC,msIR,direction_accuracy
+POST_COVID,iTransformer,0.0275,0.0544,0.5199
+RECENT10,PatchTST,0.016,0.0319,0.501

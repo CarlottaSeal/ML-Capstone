@@ -1,0 +1,12 @@
+long_term_forecast_RECENT10_PatchTST_pl5_PatchTST_custom_ftMS_sl256_ll48_pl5_dm64_nh4_el2_dl1_df128_expand2_dc4_fc3_ebtimeF_dtTrue_RECENT10_0  
+mse:0.21165414154529572, mae:0.35033008456230164, dtw:Not calculated
+
+long_term_forecast_RECENT10_PatchTST_pl5_PatchTST_custom_ftMS_sl256_ll48_pl5_dm64_nh4_el2_dl1_df128_expand2_dc4_fc3_ebtimeF_dtTrue_RECENT10_1  
+mse:0.22564378380775452, mae:0.3664216995239258, dtw:Not calculated
+
+long_term_forecast_RECENT10_PatchTST_pl5_PatchTST_custom_ftMS_sl256_ll48_pl5_dm64_nh4_el2_dl1_df128_expand2_dc4_fc3_ebtimeF_dtTrue_RECENT10_2  
+mse:0.22087211906909943, mae:0.3606317639350891, dtw:Not calculated
+
+Multiple_run_Results:long_term_forecast_RECENT10_PatchTST_pl5_PatchTST_custom_ftMS_sl256_ll48_pl5_dm64_nh4_el2_dl1_df128_expand2_dc4_fc3_ebtimeF_dtTrue_RECENT10_2  
+MSE:0.2194±0.0058, MAE:0.3591±0.0067,                    msIC:0.0129±0.0219, msIR:0.0257±0.0443
+

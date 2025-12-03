@@ -1,0 +1,442 @@
+==============================================================
+MULTI-PERIOD COMPARISON EXPERIMENT
+Started: Tue Dec  2 11:38:51 PM UTC 2025
+==============================================================
+
+[STEP 1] Preparing period-specific datasets...
+Datasets prepared.
+
+==============================================================
+PERIOD: RECENT10
+Data: WTI-log-2015.csv | SeqLen: 256 | D_Model: 64
+==============================================================
+
+[RECENT10] Model: Naive
+  Training Naive...
+Using GPU
+Args in experiment:
+[1mBasic Config[0m
+  Task Name:          long_term_forecast  Is Training:        1                   
+  Model ID:           RECENT10_Naive_pl5  Model:              Naive               
+
+[1mData Loader[0m
+  Data:               custom              Root Path:          ./dataset/FBD/      
+  Data Path:          WTI-log-2015.csv    Features:           MS                  
+  Target:             daily_return        Freq:               d                   
+  Checkpoints:        ./checkpoints/      
+
+[1mForecasting Task[0m
+  Seq Len:            256                 Label Len:          48                  
+  Pred Len:           5                   Seasonal Patterns:  Monthly             
+  Inverse:            0                   
+
+[1mModel Parameters[0m
+  Top k:              5                   Num Kernels:        6                   
+  Enc In:             6                   Dec In:             6                   
+  C Out:              1                   d model:            512                 
+  n heads:            8                   e layers:           2                   
+  d layers:           1                   d FF:               2048                
+  Moving Avg:         25                  Factor:             1                   
+  Distil:             1                   Dropout:            0.1                 
+  Embed:              timeF               Activation:         gelu                
+
+[1mRun Parameters[0m
+  Num Workers:        0                   Itr:                3                   
+  Train Epochs:       1                   Batch Size:         32                  
+  Patience:           7                   Learning Rate:      0.0002              
+  Des:                RECENT10            Loss:               MSE                 
+  Lradj:              type1               Use Amp:            0                   
+
+[1mGPU[0m
+  Use GPU:            1                   GPU:                0                   
+  Use Multi GPU:      0                   Devices:            0,1,2,3             
+
+[1mDe-stationary Projector Params[0m
+  P Hidden Dims:      128, 128            P Hidden Layers:    2                   
+
+Use GPU: cuda:0
+>>>>>>>start training : long_term_forecast_RECENT10_Naive_pl5_Naive_custom_ftMS_sl256_ll48_pl5_dm512_nh8_el2_dl1_df2048_expand2_dc4_fc1_ebtimeF_dtTrue_RECENT10_0>>>>>>>>>>>>>>>>>>>>>>>>>>
+train 1641
+val 269
+test 539
+Epoch: 1 cost time: 0.12775444984436035
+Epoch: 1, Steps: 52 | Train Loss: 2.0054335 Vali Loss: 0.6885593 Test Loss: 0.4192746
+Validation loss decreased (inf --> 0.688559).  Saving model ...
+Updating learning rate to 0.0002
+>>>>>>>testing : long_term_forecast_RECENT10_Naive_pl5_Naive_custom_ftMS_sl256_ll48_pl5_dm512_nh8_el2_dl1_df2048_expand2_dc4_fc1_ebtimeF_dtTrue_RECENT10_0<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+test 539
+test shape: (539, 5, 1) (539, 5, 1)
+test shape: (539, 5, 1) (539, 5, 1)
+mse:0.4201, mae:0.4940, msIC:0.0166, msIR:0.0342
+Use GPU: cuda:0
+>>>>>>>start training : long_term_forecast_RECENT10_Naive_pl5_Naive_custom_ftMS_sl256_ll48_pl5_dm512_nh8_el2_dl1_df2048_expand2_dc4_fc1_ebtimeF_dtTrue_RECENT10_1>>>>>>>>>>>>>>>>>>>>>>>>>>
+train 1641
+val 269
+test 539
+Epoch: 1 cost time: 0.04682278633117676
+Epoch: 1, Steps: 52 | Train Loss: 2.0065825 Vali Loss: 0.7099130 Test Loss: 0.4192775
+Validation loss decreased (inf --> 0.709913).  Saving model ...
+Updating learning rate to 0.0002
+>>>>>>>testing : long_term_forecast_RECENT10_Naive_pl5_Naive_custom_ftMS_sl256_ll48_pl5_dm512_nh8_el2_dl1_df2048_expand2_dc4_fc1_ebtimeF_dtTrue_RECENT10_1<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+test 539
+test shape: (539, 5, 1) (539, 5, 1)
+test shape: (539, 5, 1) (539, 5, 1)
+mse:0.4201, mae:0.4940, msIC:-0.0099, msIR:-0.0196
+Use GPU: cuda:0
+>>>>>>>start training : long_term_forecast_RECENT10_Naive_pl5_Naive_custom_ftMS_sl256_ll48_pl5_dm512_nh8_el2_dl1_df2048_expand2_dc4_fc1_ebtimeF_dtTrue_RECENT10_2>>>>>>>>>>>>>>>>>>>>>>>>>>
+train 1641
+val 269
+test 539
+Epoch: 1 cost time: 0.05658555030822754
+Epoch: 1, Steps: 52 | Train Loss: 2.0033098 Vali Loss: 0.6810109 Test Loss: 0.4192828
+Validation loss decreased (inf --> 0.681011).  Saving model ...
+Updating learning rate to 0.0002
+>>>>>>>testing : long_term_forecast_RECENT10_Naive_pl5_Naive_custom_ftMS_sl256_ll48_pl5_dm512_nh8_el2_dl1_df2048_expand2_dc4_fc1_ebtimeF_dtTrue_RECENT10_2<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+test 539
+test shape: (539, 5, 1) (539, 5, 1)
+test shape: (539, 5, 1) (539, 5, 1)
+mse:0.4201, mae:0.4940, msIC:-0.0324, msIR:-0.0663
+Total Evaluation 
+
+MSE:0.4201±0.0000
+MAE:0.4940±0.0000
+msIC:-0.0086±0.0200
+msIR:-0.0172±0.0411
+  Evaluating Naive results...
+    [Iter 0] Not found
+    [Iter 1] Not found
+    [Iter 2] Not found
+
+[RECENT10] Model: DLinear
+  Training DLinear...
+Using GPU
+Args in experiment:
+[1mBasic Config[0m
+  Task Name:          long_term_forecast  Is Training:        1                   
+  Model ID:           RECENT10_DLinear_pl5Model:              DLinear             
+
+[1mData Loader[0m
+  Data:               custom              Root Path:          ./dataset/FBD/      
+  Data Path:          WTI-log-2015.csv    Features:           MS                  
+  Target:             daily_return        Freq:               d                   
+  Checkpoints:        ./checkpoints/      
+
+[1mForecasting Task[0m
+  Seq Len:            256                 Label Len:          48                  
+  Pred Len:           5                   Seasonal Patterns:  Monthly             
+  Inverse:            0                   
+
+[1mModel Parameters[0m
+  Top k:              5                   Num Kernels:        6                   
+  Enc In:             6                   Dec In:             6                   
+  C Out:              1                   d model:            64                  
+  n heads:            8                   e layers:           2                   
+  d layers:           1                   d FF:               64                  
+  Moving Avg:         25                  Factor:             1                   
+  Distil:             1                   Dropout:            0.1                 
+  Embed:              timeF               Activation:         gelu                
+
+[1mRun Parameters[0m
+  Num Workers:        0                   Itr:                3                   
+  Train Epochs:       100                 Batch Size:         32                  
+  Patience:           15                  Learning Rate:      0.001               
+  Des:                RECENT10            Loss:               MSE                 
+  Lradj:              type1               Use Amp:            0                   
+
+[1mGPU[0m
+  Use GPU:            1                   GPU:                0                   
+  Use Multi GPU:      0                   Devices:            0,1,2,3             
+
+[1mDe-stationary Projector Params[0m
+  P Hidden Dims:      128, 128            P Hidden Layers:    2                   
+
+Use GPU: cuda:0
+>>>>>>>start training : long_term_forecast_RECENT10_DLinear_pl5_DLinear_custom_ftMS_sl256_ll48_pl5_dm64_nh8_el2_dl1_df64_expand2_dc4_fc1_ebtimeF_dtTrue_RECENT10_0>>>>>>>>>>>>>>>>>>>>>>>>>>
+train 1641
+val 269
+test 539
+Epoch: 1 cost time: 0.11360287666320801
+Epoch: 1, Steps: 52 | Train Loss: 1.0324515 Vali Loss: 0.3371214 Test Loss: 0.2075360
+Validation loss decreased (inf --> 0.337121).  Saving model ...
+Updating learning rate to 0.001
+Epoch: 2 cost time: 0.05224752426147461
+Epoch: 2, Steps: 52 | Train Loss: 0.9756733 Vali Loss: 0.3520299 Test Loss: 0.2109922
+EarlyStopping counter: 1 out of 15
+Updating learning rate to 0.0005
+Epoch: 3 cost time: 0.07426023483276367
+Epoch: 3, Steps: 52 | Train Loss: 0.9231179 Vali Loss: 0.3588254 Test Loss: 0.2125056
+EarlyStopping counter: 2 out of 15
+Updating learning rate to 0.00025
+Epoch: 4 cost time: 0.05310797691345215
+Epoch: 4, Steps: 52 | Train Loss: 0.9074756 Vali Loss: 0.3690688 Test Loss: 0.2134101
+EarlyStopping counter: 3 out of 15
+Updating learning rate to 0.000125
+Epoch: 5 cost time: 0.04740095138549805
+Epoch: 5, Steps: 52 | Train Loss: 0.8995379 Vali Loss: 0.3586277 Test Loss: 0.2137769
+EarlyStopping counter: 4 out of 15
+Updating learning rate to 6.25e-05
+Epoch: 6 cost time: 0.04783368110656738
+Epoch: 6, Steps: 52 | Train Loss: 0.9026596 Vali Loss: 0.3684167 Test Loss: 0.2140322
+EarlyStopping counter: 5 out of 15
+Updating learning rate to 3.125e-05
+Epoch: 7 cost time: 0.045738935470581055
+Epoch: 7, Steps: 52 | Train Loss: 0.8982541 Vali Loss: 0.3701066 Test Loss: 0.2141536
+EarlyStopping counter: 6 out of 15
+Updating learning rate to 1.5625e-05
+Epoch: 8 cost time: 0.044213056564331055
+Epoch: 8, Steps: 52 | Train Loss: 0.8961631 Vali Loss: 0.3690762 Test Loss: 0.2141986
+EarlyStopping counter: 7 out of 15
+Updating learning rate to 7.8125e-06
+Epoch: 9 cost time: 0.043267250061035156
+Epoch: 9, Steps: 52 | Train Loss: 0.8921313 Vali Loss: 0.3684651 Test Loss: 0.2142206
+EarlyStopping counter: 8 out of 15
+Updating learning rate to 3.90625e-06
+Epoch: 10 cost time: 0.043550968170166016
+Epoch: 10, Steps: 52 | Train Loss: 0.9033987 Vali Loss: 0.3683907 Test Loss: 0.2142355
+EarlyStopping counter: 9 out of 15
+Updating learning rate to 1.953125e-06
+Epoch: 11 cost time: 0.04452395439147949
+Epoch: 11, Steps: 52 | Train Loss: 0.8949980 Vali Loss: 0.3733994 Test Loss: 0.2142425
+EarlyStopping counter: 10 out of 15
+Updating learning rate to 9.765625e-07
+Epoch: 12 cost time: 0.047740936279296875
+Epoch: 12, Steps: 52 | Train Loss: 0.8936223 Vali Loss: 0.3672739 Test Loss: 0.2142457
+EarlyStopping counter: 11 out of 15
+Updating learning rate to 4.8828125e-07
+Epoch: 13 cost time: 0.08260202407836914
+Epoch: 13, Steps: 52 | Train Loss: 0.8935817 Vali Loss: 0.3698165 Test Loss: 0.2142476
+EarlyStopping counter: 12 out of 15
+Updating learning rate to 2.44140625e-07
+Epoch: 14 cost time: 0.09716033935546875
+Epoch: 14, Steps: 52 | Train Loss: 0.8934089 Vali Loss: 0.3666110 Test Loss: 0.2142484
+EarlyStopping counter: 13 out of 15
+Updating learning rate to 1.220703125e-07
+Epoch: 15 cost time: 0.09656667709350586
+Epoch: 15, Steps: 52 | Train Loss: 0.8952668 Vali Loss: 0.3797022 Test Loss: 0.2142489
+EarlyStopping counter: 14 out of 15
+Updating learning rate to 6.103515625e-08
+Epoch: 16 cost time: 0.09639191627502441
+Epoch: 16, Steps: 52 | Train Loss: 0.8953146 Vali Loss: 0.3684849 Test Loss: 0.2142491
+EarlyStopping counter: 15 out of 15
+Early stopping
+>>>>>>>testing : long_term_forecast_RECENT10_DLinear_pl5_DLinear_custom_ftMS_sl256_ll48_pl5_dm64_nh8_el2_dl1_df64_expand2_dc4_fc1_ebtimeF_dtTrue_RECENT10_0<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+test 539
+test shape: (539, 5, 1) (539, 5, 1)
+test shape: (539, 5, 1) (539, 5, 1)
+mse:0.2079, mae:0.3467, msIC:0.0005, msIR:0.0011
+Use GPU: cuda:0
+>>>>>>>start training : long_term_forecast_RECENT10_DLinear_pl5_DLinear_custom_ftMS_sl256_ll48_pl5_dm64_nh8_el2_dl1_df64_expand2_dc4_fc1_ebtimeF_dtTrue_RECENT10_1>>>>>>>>>>>>>>>>>>>>>>>>>>
+train 1641
+val 269
+test 539
+Epoch: 1 cost time: 0.05768322944641113
+Epoch: 1, Steps: 52 | Train Loss: 1.0327877 Vali Loss: 0.3447053 Test Loss: 0.2080959
+Validation loss decreased (inf --> 0.344705).  Saving model ...
+Updating learning rate to 0.001
+Epoch: 2 cost time: 0.052434444427490234
+Epoch: 2, Steps: 52 | Train Loss: 0.9647090 Vali Loss: 0.3500503 Test Loss: 0.2118379
+EarlyStopping counter: 1 out of 15
+Updating learning rate to 0.0005
+Epoch: 3 cost time: 0.044409990310668945
+Epoch: 3, Steps: 52 | Train Loss: 0.9287809 Vali Loss: 0.3635114 Test Loss: 0.2133270
+EarlyStopping counter: 2 out of 15
+Updating learning rate to 0.00025
+Epoch: 4 cost time: 0.044614315032958984
+Epoch: 4, Steps: 52 | Train Loss: 0.9097052 Vali Loss: 0.3652869 Test Loss: 0.2141606
+EarlyStopping counter: 3 out of 15
+Updating learning rate to 0.000125
+Epoch: 5 cost time: 0.044381141662597656
+Epoch: 5, Steps: 52 | Train Loss: 0.9136485 Vali Loss: 0.3793703 Test Loss: 0.2145553
+EarlyStopping counter: 4 out of 15
+Updating learning rate to 6.25e-05
+Epoch: 6 cost time: 0.04439377784729004
+Epoch: 6, Steps: 52 | Train Loss: 0.8991422 Vali Loss: 0.3656915 Test Loss: 0.2147770
+EarlyStopping counter: 5 out of 15
+Updating learning rate to 3.125e-05
+Epoch: 7 cost time: 0.044713735580444336
+Epoch: 7, Steps: 52 | Train Loss: 0.9389358 Vali Loss: 0.3745767 Test Loss: 0.2148460
+EarlyStopping counter: 6 out of 15
+Updating learning rate to 1.5625e-05
+Epoch: 8 cost time: 0.044506072998046875
+Epoch: 8, Steps: 52 | Train Loss: 0.8999493 Vali Loss: 0.3756926 Test Loss: 0.2149161
+EarlyStopping counter: 7 out of 15
+Updating learning rate to 7.8125e-06
+Epoch: 9 cost time: 0.0447847843170166
+Epoch: 9, Steps: 52 | Train Loss: 0.8932028 Vali Loss: 0.3781756 Test Loss: 0.2149383
+EarlyStopping counter: 8 out of 15
+Updating learning rate to 3.90625e-06
+Epoch: 10 cost time: 0.04479503631591797
+Epoch: 10, Steps: 52 | Train Loss: 0.8950138 Vali Loss: 0.3715190 Test Loss: 0.2149514
+EarlyStopping counter: 9 out of 15
+Updating learning rate to 1.953125e-06
+Epoch: 11 cost time: 0.045487403869628906
+Epoch: 11, Steps: 52 | Train Loss: 0.8982190 Vali Loss: 0.3785391 Test Loss: 0.2149571
+EarlyStopping counter: 10 out of 15
+Updating learning rate to 9.765625e-07
+Epoch: 12 cost time: 0.04427146911621094
+Epoch: 12, Steps: 52 | Train Loss: 0.9023936 Vali Loss: 0.3790542 Test Loss: 0.2149608
+EarlyStopping counter: 11 out of 15
+Updating learning rate to 4.8828125e-07
+Epoch: 13 cost time: 0.043561697006225586
+Epoch: 13, Steps: 52 | Train Loss: 0.8976642 Vali Loss: 0.3659724 Test Loss: 0.2149624
+EarlyStopping counter: 12 out of 15
+Updating learning rate to 2.44140625e-07
+Epoch: 14 cost time: 0.04328441619873047
+Epoch: 14, Steps: 52 | Train Loss: 0.8990572 Vali Loss: 0.3698193 Test Loss: 0.2149630
+EarlyStopping counter: 13 out of 15
+Updating learning rate to 1.220703125e-07
+Epoch: 15 cost time: 0.043195247650146484
+Epoch: 15, Steps: 52 | Train Loss: 0.9056317 Vali Loss: 0.3664660 Test Loss: 0.2149633
+EarlyStopping counter: 14 out of 15
+Updating learning rate to 6.103515625e-08
+Epoch: 16 cost time: 0.043877601623535156
+Epoch: 16, Steps: 52 | Train Loss: 0.8931504 Vali Loss: 0.3704364 Test Loss: 0.2149636
+EarlyStopping counter: 15 out of 15
+Early stopping
+>>>>>>>testing : long_term_forecast_RECENT10_DLinear_pl5_DLinear_custom_ftMS_sl256_ll48_pl5_dm64_nh8_el2_dl1_df64_expand2_dc4_fc1_ebtimeF_dtTrue_RECENT10_1<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+test 539
+test shape: (539, 5, 1) (539, 5, 1)
+test shape: (539, 5, 1) (539, 5, 1)
+mse:0.2084, mae:0.3468, msIC:-0.0020, msIR:-0.0040
+Use GPU: cuda:0
+>>>>>>>start training : long_term_forecast_RECENT10_DLinear_pl5_DLinear_custom_ftMS_sl256_ll48_pl5_dm64_nh8_el2_dl1_df64_expand2_dc4_fc1_ebtimeF_dtTrue_RECENT10_2>>>>>>>>>>>>>>>>>>>>>>>>>>
+train 1641
+val 269
+test 539
+Epoch: 1 cost time: 0.05350899696350098
+Epoch: 1, Steps: 52 | Train Loss: 1.0317816 Vali Loss: 0.3387540 Test Loss: 0.2058286
+Validation loss decreased (inf --> 0.338754).  Saving model ...
+Updating learning rate to 0.001
+Epoch: 2 cost time: 0.042658329010009766
+Epoch: 2, Steps: 52 | Train Loss: 0.9681186 Vali Loss: 0.3504649 Test Loss: 0.2100866
+EarlyStopping counter: 1 out of 15
+Updating learning rate to 0.0005
+Epoch: 3 cost time: 0.043389320373535156
+Epoch: 3, Steps: 52 | Train Loss: 0.9335570 Vali Loss: 0.3592604 Test Loss: 0.2119707
+EarlyStopping counter: 2 out of 15
+Updating learning rate to 0.00025
+Epoch: 4 cost time: 0.0432286262512207
+Epoch: 4, Steps: 52 | Train Loss: 0.9068885 Vali Loss: 0.3663409 Test Loss: 0.2129543
+EarlyStopping counter: 3 out of 15
+Updating learning rate to 0.000125
+Epoch: 5 cost time: 0.04317593574523926
+Epoch: 5, Steps: 52 | Train Loss: 0.9049700 Vali Loss: 0.3627251 Test Loss: 0.2133975
+EarlyStopping counter: 4 out of 15
+Updating learning rate to 6.25e-05
+Epoch: 6 cost time: 0.04349470138549805
+Epoch: 6, Steps: 52 | Train Loss: 0.8966715 Vali Loss: 0.3688638 Test Loss: 0.2136173
+EarlyStopping counter: 5 out of 15
+Updating learning rate to 3.125e-05
+Epoch: 7 cost time: 0.04332256317138672
+Epoch: 7, Steps: 52 | Train Loss: 0.8975392 Vali Loss: 0.3649258 Test Loss: 0.2137185
+EarlyStopping counter: 6 out of 15
+Updating learning rate to 1.5625e-05
+Epoch: 8 cost time: 0.04436159133911133
+Epoch: 8, Steps: 52 | Train Loss: 0.8925212 Vali Loss: 0.3679181 Test Loss: 0.2137838
+EarlyStopping counter: 7 out of 15
+Updating learning rate to 7.8125e-06
+Epoch: 9 cost time: 0.07834696769714355
+Epoch: 9, Steps: 52 | Train Loss: 0.8961387 Vali Loss: 0.3674125 Test Loss: 0.2138114
+EarlyStopping counter: 8 out of 15
+Updating learning rate to 3.90625e-06
+Epoch: 10 cost time: 0.08114957809448242
+Epoch: 10, Steps: 52 | Train Loss: 0.9135031 Vali Loss: 0.3660969 Test Loss: 0.2138234
+EarlyStopping counter: 9 out of 15
+Updating learning rate to 1.953125e-06
+Epoch: 11 cost time: 0.06748199462890625
+Epoch: 11, Steps: 52 | Train Loss: 0.8921084 Vali Loss: 0.3733146 Test Loss: 0.2138311
+EarlyStopping counter: 10 out of 15
+Updating learning rate to 9.765625e-07
+Epoch: 12 cost time: 0.06658363342285156
+Epoch: 12, Steps: 52 | Train Loss: 0.8930591 Vali Loss: 0.3725765 Test Loss: 0.2138337
+EarlyStopping counter: 11 out of 15
+Updating learning rate to 4.8828125e-07
+Epoch: 13 cost time: 0.043921470642089844
+Epoch: 13, Steps: 52 | Train Loss: 0.9014516 Vali Loss: 0.3689874 Test Loss: 0.2138357
+EarlyStopping counter: 12 out of 15
+Updating learning rate to 2.44140625e-07
+Epoch: 14 cost time: 0.04412364959716797
+Epoch: 14, Steps: 52 | Train Loss: 0.8935485 Vali Loss: 0.3699940 Test Loss: 0.2138367
+EarlyStopping counter: 13 out of 15
+Updating learning rate to 1.220703125e-07
+Epoch: 15 cost time: 0.0473475456237793
+Epoch: 15, Steps: 52 | Train Loss: 0.8948413 Vali Loss: 0.3681001 Test Loss: 0.2138371
+EarlyStopping counter: 14 out of 15
+Updating learning rate to 6.103515625e-08
+Epoch: 16 cost time: 0.08234596252441406
+Epoch: 16, Steps: 52 | Train Loss: 0.9013867 Vali Loss: 0.3675324 Test Loss: 0.2138373
+EarlyStopping counter: 15 out of 15
+Early stopping
+>>>>>>>testing : long_term_forecast_RECENT10_DLinear_pl5_DLinear_custom_ftMS_sl256_ll48_pl5_dm64_nh8_el2_dl1_df64_expand2_dc4_fc1_ebtimeF_dtTrue_RECENT10_2<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+test 539
+test shape: (539, 5, 1) (539, 5, 1)
+test shape: (539, 5, 1) (539, 5, 1)
+mse:0.2062, mae:0.3457, msIC:-0.0015, msIR:-0.0029
+Total Evaluation 
+
+MSE:0.2075±0.0010
+MAE:0.3464±0.0005
+msIC:-0.0010±0.0011
+msIR:-0.0019±0.0022
+  Evaluating DLinear results...
+    [Iter 0] Not found
+    [Iter 1] Not found
+    [Iter 2] Not found
+
+[RECENT10] Model: NLinear
+  Training NLinear...
+Using GPU
+Args in experiment:
+[1mBasic Config[0m
+  Task Name:          long_term_forecast  Is Training:        1                   
+  Model ID:           RECENT10_NLinear_pl5Model:              NLinear             
+
+[1mData Loader[0m
+  Data:               custom              Root Path:          ./dataset/FBD/      
+  Data Path:          WTI-log-2015.csv    Features:           MS                  
+  Target:             daily_return        Freq:               d                   
+  Checkpoints:        ./checkpoints/      
+
+[1mForecasting Task[0m
+  Seq Len:            256                 Label Len:          48                  
+  Pred Len:           5                   Seasonal Patterns:  Monthly             
+  Inverse:            0                   
+
+[1mModel Parameters[0m
+  Top k:              5                   Num Kernels:        6                   
+  Enc In:             6                   Dec In:             6                   
+  C Out:              1                   d model:            64                  
+  n heads:            8                   e layers:           2                   
+  d layers:           1                   d FF:               64                  
+  Moving Avg:         25                  Factor:             1                   
+  Distil:             1                   Dropout:            0.1                 
+  Embed:              timeF               Activation:         gelu                
+
+[1mRun Parameters[0m
+  Num Workers:        0                   Itr:                3                   
+  Train Epochs:       100                 Batch Size:         32                  
+  Patience:           15                  Learning Rate:      0.001               
+  Des:                RECENT10            Loss:               MSE                 
+  Lradj:              type1               Use Amp:            0                   
+
+[1mGPU[0m
+  Use GPU:            1                   GPU:                0                   
+  Use Multi GPU:      0                   Devices:            0,1,2,3             
+
+[1mDe-stationary Projector Params[0m
+  P Hidden Dims:      128, 128            P Hidden Layers:    2                   
+
+Use GPU: cuda:0
+Traceback (most recent call last):
+  File "/home/rguan/project/ML-Capstone-Team-7/FinTSBridge_models/TSLib_baseline/run.py", line 184, in <module>
+    exp = Exp(args)  # set experiments
+          ^^^^^^^^^
+  File "/home/rguan/project/ML-Capstone-Team-7/FinTSBridge_models/TSLib_baseline/exp/exp_long_term_forecasting.py", line 22, in __init__
+    super(Exp_Long_Term_Forecast, self).__init__(args)
+  File "/home/rguan/project/ML-Capstone-Team-7/FinTSBridge_models/TSLib_baseline/exp/exp_basic.py", line 34, in __init__
+    self.model = self._build_model().to(self.device)
+                 ^^^^^^^^^^^^^^^^^^^
+  File "/home/rguan/project/ML-Capstone-Team-7/FinTSBridge_models/TSLib_baseline/exp/exp_long_term_forecasting.py", line 25, in _build_model
+    model = self.model_dict[self.args.model].Model(self.args).float()
+            ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+KeyError: 'NLinear'

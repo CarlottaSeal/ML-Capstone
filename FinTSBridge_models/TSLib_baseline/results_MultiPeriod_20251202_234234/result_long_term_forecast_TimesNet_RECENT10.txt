@@ -1,0 +1,12 @@
+long_term_forecast_RECENT10_TimesNet_pl5_TimesNet_custom_ftMS_sl256_ll48_pl5_dm64_nh8_el2_dl1_df64_expand2_dc4_fc1_ebtimeF_dtTrue_RECENT10_0  
+mse:0.21805359423160553, mae:0.35471898317337036, dtw:Not calculated
+
+long_term_forecast_RECENT10_TimesNet_pl5_TimesNet_custom_ftMS_sl256_ll48_pl5_dm64_nh8_el2_dl1_df64_expand2_dc4_fc1_ebtimeF_dtTrue_RECENT10_1  
+mse:0.20799560844898224, mae:0.3461276888847351, dtw:Not calculated
+
+long_term_forecast_RECENT10_TimesNet_pl5_TimesNet_custom_ftMS_sl256_ll48_pl5_dm64_nh8_el2_dl1_df64_expand2_dc4_fc1_ebtimeF_dtTrue_RECENT10_2  
+mse:0.21291173994541168, mae:0.34995582699775696, dtw:Not calculated
+
+Multiple_run_Results:long_term_forecast_RECENT10_TimesNet_pl5_TimesNet_custom_ftMS_sl256_ll48_pl5_dm64_nh8_el2_dl1_df64_expand2_dc4_fc1_ebtimeF_dtTrue_RECENT10_2  
+MSE:0.2130±0.0041, MAE:0.3503±0.0035,                    msIC:0.0051±0.0097, msIR:0.0104±0.0194
+

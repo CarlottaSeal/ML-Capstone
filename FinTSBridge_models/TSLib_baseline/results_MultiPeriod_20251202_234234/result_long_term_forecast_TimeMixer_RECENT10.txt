@@ -1,0 +1,12 @@
+long_term_forecast_RECENT10_TimeMixer_pl5_TimeMixer_custom_ftMS_sl256_ll0_pl5_dm16_nh8_el2_dl1_df32_expand2_dc4_fc1_ebtimeF_dtTrue_RECENT10_0  
+mse:0.20715397596359253, mae:0.34392353892326355, dtw:Not calculated
+
+long_term_forecast_RECENT10_TimeMixer_pl5_TimeMixer_custom_ftMS_sl256_ll0_pl5_dm16_nh8_el2_dl1_df32_expand2_dc4_fc1_ebtimeF_dtTrue_RECENT10_1  
+mse:0.30814632773399353, mae:0.43028515577316284, dtw:Not calculated
+
+long_term_forecast_RECENT10_TimeMixer_pl5_TimeMixer_custom_ftMS_sl256_ll0_pl5_dm16_nh8_el2_dl1_df32_expand2_dc4_fc1_ebtimeF_dtTrue_RECENT10_2  
+mse:0.21200785040855408, mae:0.34801506996154785, dtw:Not calculated
+
+Multiple_run_Results:long_term_forecast_RECENT10_TimeMixer_pl5_TimeMixer_custom_ftMS_sl256_ll0_pl5_dm16_nh8_el2_dl1_df32_expand2_dc4_fc1_ebtimeF_dtTrue_RECENT10_2  
+MSE:0.2424±0.0465, MAE:0.3741±0.0398,                    msIC:-0.0164±0.0173, msIR:-0.0328±0.0348
+

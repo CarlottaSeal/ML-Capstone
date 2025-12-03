@@ -1,0 +1,12 @@
+long_term_forecast_RECENT10_iTransformer_pl5_iTransformer_custom_ftMS_sl256_ll48_pl5_dm64_nh4_el2_dl1_df128_expand2_dc4_fc3_ebtimeF_dtTrue_RECENT10_0  
+mse:0.21510663628578186, mae:0.35288625955581665, dtw:Not calculated
+
+long_term_forecast_RECENT10_iTransformer_pl5_iTransformer_custom_ftMS_sl256_ll48_pl5_dm64_nh4_el2_dl1_df128_expand2_dc4_fc3_ebtimeF_dtTrue_RECENT10_1  
+mse:0.21900033950805664, mae:0.3560378849506378, dtw:Not calculated
+
+long_term_forecast_RECENT10_iTransformer_pl5_iTransformer_custom_ftMS_sl256_ll48_pl5_dm64_nh4_el2_dl1_df128_expand2_dc4_fc3_ebtimeF_dtTrue_RECENT10_2  
+mse:0.21824046969413757, mae:0.3555425703525543, dtw:Not calculated
+
+Multiple_run_Results:long_term_forecast_RECENT10_iTransformer_pl5_iTransformer_custom_ftMS_sl256_ll48_pl5_dm64_nh4_el2_dl1_df128_expand2_dc4_fc3_ebtimeF_dtTrue_RECENT10_2  
+MSE:0.2174±0.0017, MAE:0.3548±0.0014,                    msIC:0.0144±0.0042, msIR:0.0286±0.0084
+

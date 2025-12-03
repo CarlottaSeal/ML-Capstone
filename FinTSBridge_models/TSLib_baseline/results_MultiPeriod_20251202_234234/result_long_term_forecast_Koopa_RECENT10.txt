@@ -1,0 +1,12 @@
+long_term_forecast_RECENT10_Koopa_pl5_Koopa_custom_ftMS_sl256_ll48_pl5_dm512_nh8_el2_dl1_df2048_expand2_dc4_fc3_ebtimeF_dtTrue_RECENT10_0  
+mse:0.23568959534168243, mae:0.36671116948127747, dtw:Not calculated
+
+long_term_forecast_RECENT10_Koopa_pl5_Koopa_custom_ftMS_sl256_ll48_pl5_dm512_nh8_el2_dl1_df2048_expand2_dc4_fc3_ebtimeF_dtTrue_RECENT10_1  
+mse:0.21532922983169556, mae:0.3505804240703583, dtw:Not calculated
+
+long_term_forecast_RECENT10_Koopa_pl5_Koopa_custom_ftMS_sl256_ll48_pl5_dm512_nh8_el2_dl1_df2048_expand2_dc4_fc3_ebtimeF_dtTrue_RECENT10_2  
+mse:0.2207222878932953, mae:0.35632720589637756, dtw:Not calculated
+
+Multiple_run_Results:long_term_forecast_RECENT10_Koopa_pl5_Koopa_custom_ftMS_sl256_ll48_pl5_dm512_nh8_el2_dl1_df2048_expand2_dc4_fc3_ebtimeF_dtTrue_RECENT10_2  
+MSE:0.2239±0.0086, MAE:0.3579±0.0067,                    msIC:0.0168±0.0322, msIR:0.0340±0.0643
+

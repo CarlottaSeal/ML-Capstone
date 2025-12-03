@@ -1,0 +1,12 @@
+long_term_forecast_RECENT10_Nonstationary_Transformer_pl5_Nonstationary_Transformer_custom_ftMS_sl256_ll48_pl5_dm64_nh4_el2_dl1_df64_expand2_dc4_fc3_ebtimeF_dtTrue_RECENT10_0  
+mse:0.20528675615787506, mae:0.3423657715320587, dtw:Not calculated
+
+long_term_forecast_RECENT10_Nonstationary_Transformer_pl5_Nonstationary_Transformer_custom_ftMS_sl256_ll48_pl5_dm64_nh4_el2_dl1_df64_expand2_dc4_fc3_ebtimeF_dtTrue_RECENT10_1  
+mse:0.2093840092420578, mae:0.3454231321811676, dtw:Not calculated
+
+long_term_forecast_RECENT10_Nonstationary_Transformer_pl5_Nonstationary_Transformer_custom_ftMS_sl256_ll48_pl5_dm64_nh4_el2_dl1_df64_expand2_dc4_fc3_ebtimeF_dtTrue_RECENT10_2  
+mse:0.20528331398963928, mae:0.3454498052597046, dtw:Not calculated
+
+Multiple_run_Results:long_term_forecast_RECENT10_Nonstationary_Transformer_pl5_Nonstationary_Transformer_custom_ftMS_sl256_ll48_pl5_dm64_nh4_el2_dl1_df64_expand2_dc4_fc3_ebtimeF_dtTrue_RECENT10_2  
+MSE:0.2067±0.0019, MAE:0.3444±0.0014,                    msIC:0.0205±0.0155, msIR:0.0418±0.0317
+

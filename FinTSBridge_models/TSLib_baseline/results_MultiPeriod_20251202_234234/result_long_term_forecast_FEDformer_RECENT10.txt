@@ -1,0 +1,12 @@
+long_term_forecast_RECENT10_FEDformer_pl5_FEDformer_custom_ftMS_sl256_ll48_pl5_dm64_nh4_el2_dl1_df128_expand2_dc4_fc3_ebtimeF_dtTrue_RECENT10_0  
+mse:0.21565647423267365, mae:0.35469698905944824, dtw:Not calculated
+
+long_term_forecast_RECENT10_FEDformer_pl5_FEDformer_custom_ftMS_sl256_ll48_pl5_dm64_nh4_el2_dl1_df128_expand2_dc4_fc3_ebtimeF_dtTrue_RECENT10_1  
+mse:0.22258614003658295, mae:0.3645501732826233, dtw:Not calculated
+
+long_term_forecast_RECENT10_FEDformer_pl5_FEDformer_custom_ftMS_sl256_ll48_pl5_dm64_nh4_el2_dl1_df128_expand2_dc4_fc3_ebtimeF_dtTrue_RECENT10_2  
+mse:0.2212858647108078, mae:0.3619958758354187, dtw:Not calculated
+
+Multiple_run_Results:long_term_forecast_RECENT10_FEDformer_pl5_FEDformer_custom_ftMS_sl256_ll48_pl5_dm64_nh4_el2_dl1_df128_expand2_dc4_fc3_ebtimeF_dtTrue_RECENT10_2  
+MSE:0.2198±0.0030, MAE:0.3604±0.0042,                    msIC:-0.0123±0.0115, msIR:-0.0249±0.0230
+
